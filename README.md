@@ -1,12 +1,14 @@
 # CS449
 
-# Nine Men's Morris with Alex, Caleb, Edgar, Gabe, and Iuma.
+Nine Men's Morris with C#.
 
-# Front-End:
-  # Alex
-  # Caleb
+Front-End:
 
-# Back-End:
-  # Edgar
-  # Gabe
-  # Iuma
+  Alex
+  Caleb
+
+Back-End:
+
+  Edgar
+  Gabe
+  Iuma
