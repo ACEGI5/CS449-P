@@ -16,10 +16,21 @@ namespace NineMansMorrisUi
         {
             InitializeComponent();
         }
+        
 
-        private void button1_Click(object sender, EventArgs e)
+
+        private void BtnResetClick(object sender, EventArgs e)
         {
-            MessageBox.Show("hello world!");
+            var gameSelectionForm = new GameSelectionForm();
+            //need reset method for pieces and player objects
+            gameSelectionForm.Show();
+            this.Hide();
+
+        }
+
+        private void BtnExitClick(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
