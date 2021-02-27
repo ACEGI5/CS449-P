@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace NineMansMorrisUiTests
+namespace NineMansMorrisTests
 {
     [TestFixture]
     public class PlayerTest

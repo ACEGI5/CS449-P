@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NineMansMorrisUi", "NineMan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NineMansMorrisLib", "NineMansMorrisLib\NineMansMorrisLib.csproj", "{C3C39338-D566-4597-B986-084570DBDC6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NineMansMorrisUiTests", "NineMansMorrisUiTests\NineMansMorrisUiTests.csproj", "{CF1269AF-A2DB-41CB-AB37-54FF0200D830}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NineMansMorrisTests", "NineMansMorrisTests\NineMansMorrisTests.csproj", "{CF1269AF-A2DB-41CB-AB37-54FF0200D830}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
