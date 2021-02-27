@@ -1,8 +1,7 @@
-﻿using System;
-using NineMansMorrisLib;
+﻿using NineMansMorrisLib;
 using NUnit.Framework;
 
-namespace NineMansMorrisTests
+namespace NineMansMorrisUiTests
 {
     [TestFixture]
     public class Tests

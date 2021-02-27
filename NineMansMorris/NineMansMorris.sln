@@ -4,7 +4,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NineMansMorrisUi", "NineMan
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NineMansMorrisLib", "NineMansMorrisLib\NineMansMorrisLib.csproj", "{C3C39338-D566-4597-B986-084570DBDC6D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NineMansMorrisTests", "NineMansMorrisTests\NineMansMorrisTests.csproj", "{3902A27A-B90B-41BB-8576-9718EC0F1729}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NineMansMorrisUiTests", "NineMansMorrisUiTests\NineMansMorrisUiTests.csproj", "{CF1269AF-A2DB-41CB-AB37-54FF0200D830}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +20,9 @@ Global
 		{C3C39338-D566-4597-B986-084570DBDC6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3C39338-D566-4597-B986-084570DBDC6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3C39338-D566-4597-B986-084570DBDC6D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3902A27A-B90B-41BB-8576-9718EC0F1729}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3902A27A-B90B-41BB-8576-9718EC0F1729}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3902A27A-B90B-41BB-8576-9718EC0F1729}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3902A27A-B90B-41BB-8576-9718EC0F1729}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF1269AF-A2DB-41CB-AB37-54FF0200D830}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF1269AF-A2DB-41CB-AB37-54FF0200D830}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF1269AF-A2DB-41CB-AB37-54FF0200D830}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF1269AF-A2DB-41CB-AB37-54FF0200D830}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
