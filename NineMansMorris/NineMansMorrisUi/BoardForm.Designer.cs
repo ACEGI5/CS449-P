@@ -70,7 +70,7 @@
             // 
             // lable1
             // 
-            this.lable1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.lable1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lable1.Location = new System.Drawing.Point(207, 395);
             this.lable1.Name = "lable1";
             this.lable1.Size = new System.Drawing.Size(21, 22);
@@ -79,7 +79,7 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(268, 395);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(21, 22);
@@ -88,7 +88,7 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(321, 395);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(21, 22);
@@ -97,7 +97,7 @@
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label3.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(376, 395);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(21, 22);
@@ -106,7 +106,7 @@
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label4.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(434, 395);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(21, 22);
@@ -115,7 +115,7 @@
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label5.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(481, 395);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(21, 22);
@@ -124,7 +124,7 @@
             // 
             // label6
             // 
-            this.label6.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label6.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(534, 395);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(21, 22);
@@ -133,7 +133,7 @@
             // 
             // label7
             // 
-            this.label7.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label7.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(133, 320);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(21, 22);
@@ -142,7 +142,7 @@
             // 
             // label8
             // 
-            this.label8.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label8.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(133, 274);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(21, 22);
@@ -151,7 +151,7 @@
             // 
             // label9
             // 
-            this.label9.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label9.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(133, 234);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(21, 22);
@@ -160,7 +160,7 @@
             // 
             // label10
             // 
-            this.label10.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label10.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(133, 197);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(21, 22);
@@ -169,7 +169,7 @@
             // 
             // label11
             // 
-            this.label11.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label11.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.Location = new System.Drawing.Point(133, 154);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(21, 22);
@@ -178,7 +178,7 @@
             // 
             // label12
             // 
-            this.label12.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label12.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.Location = new System.Drawing.Point(133, 106);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(21, 22);
@@ -187,7 +187,7 @@
             // 
             // label13
             // 
-            this.label13.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label13.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.Location = new System.Drawing.Point(133, 69);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(21, 22);
@@ -196,6 +196,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackgroundImage = global::NineMansMorrisUi.Properties.Resources.NineMansMorrisBoard;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Location = new System.Drawing.Point(176, 46);
             this.panel1.Name = "panel1";
@@ -227,6 +228,7 @@
             this.Name = "BoardForm";
             this.Text = "9 Mans Morris";
             this.ResumeLayout(false);
+
         }
 
         private System.Windows.Forms.Panel panel1;
