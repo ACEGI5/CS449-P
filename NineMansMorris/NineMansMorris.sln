@@ -1,5 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NineMansMorrisUi", "NineMansMorrisUi\NineMansMorrisUi.csproj", "{DE14FCC3-09E8-4B3A-8DE7-A24D7E391776}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NineMansMorrisLib", "NineMansMorrisLib\NineMansMorrisLib.csproj", "{C3C39338-D566-4597-B986-084570DBDC6D}"
@@ -24,5 +27,11 @@ Global
 		{CF1269AF-A2DB-41CB-AB37-54FF0200D830}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF1269AF-A2DB-41CB-AB37-54FF0200D830}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF1269AF-A2DB-41CB-AB37-54FF0200D830}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {711062F6-BABF-4E2C-A421-D78D04B11AB8}
 	EndGlobalSection
 EndGlobal
