@@ -2,6 +2,6 @@
 {
     public class Board
     {
-        //gabe suck
+        //gabe reallly do suck
     }
 }
