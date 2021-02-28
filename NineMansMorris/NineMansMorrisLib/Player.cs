@@ -6,6 +6,7 @@
         public int piecesInPlay = 0;
         public bool canFly = false;
         public bool allPiecesPlaced = false;
+        public char playColor;
 
         public void threePiecesLeft()
         {
