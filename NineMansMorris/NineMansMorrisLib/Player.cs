@@ -2,16 +2,18 @@
 {
     public class Player
     {
-        private Player()
-        {
-            turn = false;
-        }
-        private bool turn; // field
+        public int piecesToPlace = 9;
+        public int piecesInPlay = 0;
+        public bool canFly = false;
+        public bool allPiecesPlaced = false;
+        public char playColor;
 
-        public bool Turn   // property
+        public void threePiecesLeft()
         {
-            get { return turn; }   // get method
-            set { turn = value; }  // set method
+            if (piecesInPlay == 3 && allPiecesPlaced)
+            {
+                canFly = true;
+            }
         }
     }
 }
