@@ -4,16 +4,17 @@
     {
         public int piecesToPlace = 9;
         public int piecesInPlay = 0;
-        public bool canFly = false;
         public bool allPiecesPlaced = false;
-        public char playColor;
+        public char playerColor;
 
-        public void threePiecesLeft()
+        // Checks if a player has only three pieces left.
+        // If so, player may begin flying pieces.
+        // Output: bool representing if player can fly.
+        public bool playerCanFly()
         {
-            if (piecesInPlay == 3 && allPiecesPlaced)
-            {
-                canFly = true;
-            }
+            return (piecesInPlay == 3 && allPiecesPlaced);
         }
+        
+        
     }
 }
