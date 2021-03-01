@@ -30,5 +30,10 @@
                 AllPiecesPlaced = true;
             }
         }
+
+        public bool PlayerHasLost()
+        {
+            return ((PiecesInPlay < 3) && AllPiecesPlaced);
+        }
     }
 }
