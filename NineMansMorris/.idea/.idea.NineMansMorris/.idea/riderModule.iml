@@ -5,7 +5,8 @@
     <content url="file://$USER_HOME$/.nuget/packages/microsoft.testplatform.testhost/16.9.1/build/netcoreapp2.1/x64/Microsoft.TestPlatform.PlatformAbstractions.dll" />
     <content url="file://$USER_HOME$/.nuget/packages/microsoft.testplatform.testhost/16.9.1/build/netcoreapp2.1/x64/testhost.dll" />
     <content url="file://$USER_HOME$/.nuget/packages/microsoft.testplatform.testhost/16.9.1/build/netcoreapp2.1/x64/testhost.exe" />
-    <content url="file://$MODULE_DIR$/../../.." />
+    <content url="file://$MODULE_DIR$/../../../../CS449" />
+    <content url="file://$MODULE_DIR$/../.." />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
