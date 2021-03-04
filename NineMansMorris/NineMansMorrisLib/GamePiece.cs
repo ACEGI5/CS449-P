@@ -8,19 +8,14 @@
             white,
             open
         }
-        private PieceColor color;
+        public PieceColor color
+        {
+            get;
+            set;
+        }
         public GamePiece()
         {
             color = PieceColor.open;
-        }
-        
-        public PieceColor getColor()
-        {
-            return color;
-        }
-        public void setColor(PieceColor newColor)
-        {
-            color = newColor;
         }
     }
 }
