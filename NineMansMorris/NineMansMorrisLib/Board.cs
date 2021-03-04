@@ -2,6 +2,11 @@
 {
     public class Board
     {
-        //gabe reallly do suck
+        private const int BoardSize = 9;
+        private GamePiece[,] _boardArray;
+        public Board()
+        {
+            _boardArray = new GamePiece[BoardSize, BoardSize];
+        }
     }
 }
