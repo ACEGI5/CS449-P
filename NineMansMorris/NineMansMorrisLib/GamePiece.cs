@@ -4,18 +4,19 @@
     {
         public enum PieceColor
         {
-            black,
-            white,
-            open
+            Black,
+            White,
+            Open
         }
-        public PieceColor color
+
+        public PieceColor Color
         {
             get;
             set;
         }
         public GamePiece()
         {
-            color = PieceColor.open;
+            Color = PieceColor.Open;
         }
     }
 }
