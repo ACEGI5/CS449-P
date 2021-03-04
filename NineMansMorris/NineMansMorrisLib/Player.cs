@@ -2,14 +2,15 @@
 {
     public class Player
     {
-        public int PiecesToPlace = 9;
-        public int PiecesInPlay = 0;
-        public bool AllPiecesPlaced = false;
-        public char PlayerColor;
+        public int PiecesToPlace;
+        public int PiecesInPlay;
+        public bool AllPiecesPlaced;
 
-        public void SetPlayerColor(char color)
+        public Player()
         {
-            PlayerColor = color;
+            PiecesToPlace = 9;
+            PiecesInPlay = 0;
+            AllPiecesPlaced = false;
         }
 
         // Checks if a player has only three pieces left.
