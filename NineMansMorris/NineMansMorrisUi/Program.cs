@@ -15,7 +15,7 @@ namespace NineMansMorrisUi
             var test = new Board();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BoardForm());
+            Application.Run(new GameSelectionForm());
         }
     }
 }
