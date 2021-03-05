@@ -5,16 +5,17 @@ namespace NineMansMorrisLib
 {
     public class NineMansMorrisLogic
     {
-        private int _turn;
-        private Player _whitePlayer;
-        private Player _blackPlayer;
-        private Board _gameBoard;
+        public int Turn { get; private set; }
+        public Player WhitePlayer { get; private set; }
+        public Player BlackPlayer { get; private set; }
+        
+        public Board GameBoard { get; private set; }
         public NineMansMorrisLogic()
         {
             Random rnd = new Random();
-            _turn = rnd.Next(0, 2);
-            _whitePlayer = new Player();
-            _blackPlayer = new Player();
+            Turn = rnd.Next(0, 2);
+            WhitePlayer = new Player();
+            BlackPlayer = new Player();
         }
         
         public void MovePiece(Player player, int oldRow, int oldColumn, int newRow, int newColumn)
@@ -28,7 +29,7 @@ namespace NineMansMorrisLib
                 
             }
         }
-        public void PlacePiece(Player player)
+        public void PlacePiece(Player player, int row, int column)
         {
             
         }

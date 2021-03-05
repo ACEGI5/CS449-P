@@ -9,11 +9,7 @@
             Open
         }
 
-        public PieceColor Color
-        {
-            get;
-            set;
-        }
+        private PieceColor Color {get; set;}
         public GamePiece()
         {
             Color = PieceColor.Open;

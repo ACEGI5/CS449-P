@@ -2,9 +2,9 @@
 {
     public class Player
     {
-        public int PiecesToPlace;
-        public int PiecesInPlay;
-        public bool AllPiecesPlaced;
+        public int PiecesToPlace { get; private set; }
+        public int PiecesInPlay { get; private set; }
+        public bool AllPiecesPlaced { get; private set; }
 
         public Player()
         {
