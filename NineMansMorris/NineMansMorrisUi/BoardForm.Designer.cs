@@ -52,6 +52,10 @@
             this.textBoxPlayerOnePiecesLeft = new System.Windows.Forms.TextBox();
             this.textBoxPlayerTwoPiecesToPlace = new System.Windows.Forms.TextBox();
             this.textBoxPlayerTwoPiecesLeft = new System.Windows.Forms.TextBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnReset
@@ -270,11 +274,55 @@
             this.textBoxPlayerTwoPiecesLeft.Size = new System.Drawing.Size(82, 38);
             this.textBoxPlayerTwoPiecesLeft.TabIndex = 23;
             // 
+            // label16
+            // 
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label16.Location = new System.Drawing.Point(1547, 220);
+            this.label16.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(319, 52);
+            this.label16.TabIndex = 24;
+            this.label16.Text = "Pieces To Place";
+            // 
+            // label17
+            // 
+            this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label17.Location = new System.Drawing.Point(1547, 647);
+            this.label17.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(319, 52);
+            this.label17.TabIndex = 25;
+            this.label17.Text = "Pieces To Place";
+            // 
+            // label18
+            // 
+            this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label18.Location = new System.Drawing.Point(1547, 267);
+            this.label18.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(319, 52);
+            this.label18.TabIndex = 26;
+            this.label18.Text = "Pieces left";
+            // 
+            // label19
+            // 
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label19.Location = new System.Drawing.Point(1547, 695);
+            this.label19.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(319, 52);
+            this.label19.TabIndex = 27;
+            this.label19.Text = "Pieces left";
+            // 
             // BoardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1968, 1168);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.textBoxPlayerTwoPiecesLeft);
             this.Controls.Add(this.textBoxPlayerTwoPiecesToPlace);
             this.Controls.Add(this.textBoxPlayerOnePiecesLeft);
@@ -304,6 +352,12 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label19;
+
+        private System.Windows.Forms.Label label16;
 
         private System.Windows.Forms.TextBox textBoxPlayerTwoPiecesLeft;
         private System.Windows.Forms.TextBox textBoxPlayerOnePiecesLeft;
