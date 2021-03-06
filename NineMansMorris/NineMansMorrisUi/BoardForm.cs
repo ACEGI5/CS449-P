@@ -25,10 +25,12 @@ namespace NineMansMorrisUi
                 {
                     if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
                     {
-                        _btnGrid[row, col] = new Button {Height = buttonSize, Width = buttonSize};
+                        _btnGrid[row, col] = new Button {Height = buttonSize, Width = buttonSize, Text = "U"};
                         _btnGrid[row, col].Click += Grid_Button_click;
                         panel1.Controls.Add(_btnGrid[row,col]);
-                        _btnGrid[row,col].Location = new Point( (row*50)+60 , (col*50)+60);
+                        _btnGrid[row, col].BringToFront();
+                        _btnGrid[row,col].Location = new Point( (row*50) , (col*50));
+                        _btnGrid[row, col].Tag = new Point(row, col);
                     }
                     else
                     {
@@ -43,7 +45,12 @@ namespace NineMansMorrisUi
 
         private void Grid_Button_click(object sender, EventArgs e)
         {
-            
+            var clickedButton =(Button) sender;
+            var location = (Point) clickedButton.Tag;
+            var row = location.X;
+            var col = location.Y;
+            clickedButton.Text = "O";
+
         }
 
         public void PopulateGameBoard()
