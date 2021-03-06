@@ -5,7 +5,7 @@ namespace NineMansMorrisLib
 {
     public class Board
     {
-        private const int BoardSize = 7;
+        public const  int BoardSize = 7;
         private const int CenterOfBoard = BoardSize / 2;
         public GamePiece[,] GameBoard { get; private set; }
 
@@ -14,14 +14,15 @@ namespace NineMansMorrisLib
             GameBoard = new GamePiece[BoardSize, BoardSize];
             PopulateBoard(GameBoard);
         }
-
+        
+        //populates board with open and invalid positions
         private static void PopulateBoard(GamePiece[,] boardArray)
-        {
+        {   
             PopulateDiagonal(boardArray);
             PopulateReverseDiagonal(boardArray);
             PopulateMiddleCells(boardArray);
         }
-
+        
         private static void PopulateMiddleCells(GamePiece[,] boardArray)
         {
             for (var row = 0; row < BoardSize; row++)

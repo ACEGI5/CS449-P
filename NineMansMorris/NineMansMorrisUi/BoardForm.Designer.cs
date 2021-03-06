@@ -83,7 +83,7 @@
             // lable1
             // 
             this.lable1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.lable1.Location = new System.Drawing.Point(456, 779);
+            this.lable1.Location = new System.Drawing.Point(1136, 818);
             this.lable1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lable1.Name = "lable1";
             this.lable1.Size = new System.Drawing.Size(56, 52);
@@ -93,7 +93,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label1.Location = new System.Drawing.Point(546, 779);
+            this.label1.Location = new System.Drawing.Point(1226, 818);
             this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 52);
@@ -103,7 +103,7 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label2.Location = new System.Drawing.Point(630, 779);
+            this.label2.Location = new System.Drawing.Point(1310, 818);
             this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 52);
@@ -113,7 +113,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label3.Location = new System.Drawing.Point(726, 779);
+            this.label3.Location = new System.Drawing.Point(1406, 818);
             this.label3.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 52);
@@ -123,7 +123,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label4.Location = new System.Drawing.Point(829, 779);
+            this.label4.Location = new System.Drawing.Point(1509, 818);
             this.label4.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 52);
@@ -133,7 +133,7 @@
             // label5
             // 
             this.label5.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label5.Location = new System.Drawing.Point(928, 779);
+            this.label5.Location = new System.Drawing.Point(1608, 818);
             this.label5.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 52);
@@ -143,7 +143,7 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label6.Location = new System.Drawing.Point(1025, 779);
+            this.label6.Location = new System.Drawing.Point(1705, 818);
             this.label6.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 52);
@@ -153,7 +153,7 @@
             // label7
             // 
             this.label7.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label7.Location = new System.Drawing.Point(349, 677);
+            this.label7.Location = new System.Drawing.Point(106, 650);
             this.label7.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 52);
@@ -163,7 +163,7 @@
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label8.Location = new System.Drawing.Point(349, 575);
+            this.label8.Location = new System.Drawing.Point(106, 548);
             this.label8.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 52);
@@ -173,7 +173,7 @@
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label9.Location = new System.Drawing.Point(349, 488);
+            this.label9.Location = new System.Drawing.Point(106, 461);
             this.label9.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 52);
@@ -183,7 +183,7 @@
             // label10
             // 
             this.label10.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label10.Location = new System.Drawing.Point(349, 391);
+            this.label10.Location = new System.Drawing.Point(106, 364);
             this.label10.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(56, 52);
@@ -193,7 +193,7 @@
             // label11
             // 
             this.label11.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label11.Location = new System.Drawing.Point(349, 299);
+            this.label11.Location = new System.Drawing.Point(106, 272);
             this.label11.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(56, 52);
@@ -203,7 +203,7 @@
             // label12
             // 
             this.label12.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label12.Location = new System.Drawing.Point(349, 209);
+            this.label12.Location = new System.Drawing.Point(106, 182);
             this.label12.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(56, 52);
@@ -213,7 +213,7 @@
             // label13
             // 
             this.label13.Font = new System.Drawing.Font("Comic Sans MS", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label13.Location = new System.Drawing.Point(349, 124);
+            this.label13.Location = new System.Drawing.Point(106, 97);
             this.label13.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 52);
@@ -222,9 +222,11 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.panel1.BackColor = System.Drawing.SystemColors.Window;
             this.panel1.BackgroundImage = global::NineMansMorrisUi.Properties.Resources.NineMansMorrisBoard;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(413, 79);
+            this.panel1.Location = new System.Drawing.Point(357, 59);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(700, 700);
