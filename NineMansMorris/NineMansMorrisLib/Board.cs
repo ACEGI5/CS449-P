@@ -15,20 +15,15 @@ namespace NineMansMorrisLib
             PopulateBoard(GameBoard);
         }
 
-        private void PopulateBoard(GamePiece[,] boardArray)
+        private static void PopulateBoard(GamePiece[,] boardArray)
         {
-            for (var row = 0; row < BoardSize; row++)
-            {
-                boardArray[row, row] = new GamePiece {PieceState = PieceState.Open};
-            }
+            PopulateDiagonal(boardArray);
+            PopulateReverseDiagonal(boardArray);
+            PopulateMiddleCells(boardArray);
+        }
 
-            int r = BoardSize-1;
-            int c = 0;
-            for (; r >= 0 && c< BoardSize; r--, c++)
-            {
-                boardArray[r, c] = new GamePiece {PieceState = PieceState.Open};
-            }
-
+        private static void PopulateMiddleCells(GamePiece[,] boardArray)
+        {
             for (var row = 0; row < BoardSize; row++)
             {
                 for (var col = 0; col < BoardSize; col++)
@@ -40,12 +35,26 @@ namespace NineMansMorrisLib
 
                     boardArray[row, col] ??= new GamePiece() {PieceState = PieceState.Invalid};
                 }
-                
             }
-
             boardArray[CenterOfBoard, CenterOfBoard].PieceState = PieceState.Invalid;
         }
-        
 
+        private static void PopulateReverseDiagonal(GamePiece[,] boardArray)
+        {
+            var row = BoardSize - 1;
+            var col = 0;
+            for (; row >= 0 && col < BoardSize; row--, col++)
+            {
+                boardArray[row, col] = new GamePiece {PieceState = PieceState.Open};
+            }
+        }
+
+        private static void PopulateDiagonal(GamePiece[,] boardArray)
+        {
+            for (var row = 0; row < BoardSize; row++)
+            {
+                boardArray[row, row] = new GamePiece {PieceState = PieceState.Open};
+            }
+        }
     }
 }
