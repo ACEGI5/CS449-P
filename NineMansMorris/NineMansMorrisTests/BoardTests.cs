@@ -7,10 +7,11 @@ namespace NineMansMorrisUiTests
     public class Tests
     {
         [Test]
-        public void Test1()
+        public void  PopulateBoard()
         {
-            var test = new Board();
-            Assert.NotNull(test);
+            var sut = new Board();
+            
+
         }
     }
 }

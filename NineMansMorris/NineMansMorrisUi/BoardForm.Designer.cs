@@ -88,7 +88,7 @@
             this.lable1.Name = "lable1";
             this.lable1.Size = new System.Drawing.Size(56, 52);
             this.lable1.TabIndex = 3;
-            this.lable1.Text = "A";
+            this.lable1.Text = "0";
             // 
             // label1
             // 
@@ -98,7 +98,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 52);
             this.label1.TabIndex = 4;
-            this.label1.Text = "B";
+            this.label1.Text = "1";
             // 
             // label2
             // 
@@ -108,7 +108,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(56, 52);
             this.label2.TabIndex = 5;
-            this.label2.Text = "C";
+            this.label2.Text = "2";
             // 
             // label3
             // 
@@ -118,7 +118,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 52);
             this.label3.TabIndex = 6;
-            this.label3.Text = "D";
+            this.label3.Text = "3";
             // 
             // label4
             // 
@@ -128,7 +128,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(56, 52);
             this.label4.TabIndex = 7;
-            this.label4.Text = "E";
+            this.label4.Text = "4";
             // 
             // label5
             // 
@@ -138,7 +138,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 52);
             this.label5.TabIndex = 8;
-            this.label5.Text = "F";
+            this.label5.Text = "5";
             // 
             // label6
             // 
@@ -148,7 +148,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 52);
             this.label6.TabIndex = 9;
-            this.label6.Text = "G";
+            this.label6.Text = "6";
             // 
             // label7
             // 
@@ -158,7 +158,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 52);
             this.label7.TabIndex = 10;
-            this.label7.Text = "1";
+            this.label7.Text = "6";
             // 
             // label8
             // 
@@ -168,7 +168,7 @@
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(56, 52);
             this.label8.TabIndex = 11;
-            this.label8.Text = "2";
+            this.label8.Text = "5";
             // 
             // label9
             // 
@@ -178,7 +178,7 @@
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(56, 52);
             this.label9.TabIndex = 12;
-            this.label9.Text = "3";
+            this.label9.Text = "4";
             // 
             // label10
             // 
@@ -188,7 +188,7 @@
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(56, 52);
             this.label10.TabIndex = 13;
-            this.label10.Text = "4";
+            this.label10.Text = "3";
             // 
             // label11
             // 
@@ -198,7 +198,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(56, 52);
             this.label11.TabIndex = 14;
-            this.label11.Text = "5";
+            this.label11.Text = "2";
             // 
             // label12
             // 
@@ -208,7 +208,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(56, 52);
             this.label12.TabIndex = 15;
-            this.label12.Text = "6";
+            this.label12.Text = "1";
             // 
             // label13
             // 
@@ -218,14 +218,14 @@
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(56, 52);
             this.label13.TabIndex = 16;
-            this.label13.Text = "7";
+            this.label13.Text = "0";
             // 
             // panel1
             // 
             this.panel1.BackgroundImage = global::NineMansMorrisUi.Properties.Resources.NineMansMorrisBoard;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Location = new System.Drawing.Point(413, 79);
-            this.panel1.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1000, 1000);
             this.panel1.TabIndex = 17;
@@ -250,6 +250,7 @@
             // 
             this.textBoxPlayerOnePiecesToPlace.Location = new System.Drawing.Point(1454, 223);
             this.textBoxPlayerOnePiecesToPlace.Name = "textBoxPlayerOnePiecesToPlace";
+            this.textBoxPlayerOnePiecesToPlace.ReadOnly = true;
             this.textBoxPlayerOnePiecesToPlace.Size = new System.Drawing.Size(82, 38);
             this.textBoxPlayerOnePiecesToPlace.TabIndex = 20;
             // 
@@ -257,6 +258,7 @@
             // 
             this.textBoxPlayerOnePiecesLeft.Location = new System.Drawing.Point(1454, 267);
             this.textBoxPlayerOnePiecesLeft.Name = "textBoxPlayerOnePiecesLeft";
+            this.textBoxPlayerOnePiecesLeft.ReadOnly = true;
             this.textBoxPlayerOnePiecesLeft.Size = new System.Drawing.Size(82, 38);
             this.textBoxPlayerOnePiecesLeft.TabIndex = 21;
             // 
@@ -264,6 +266,7 @@
             // 
             this.textBoxPlayerTwoPiecesToPlace.Location = new System.Drawing.Point(1454, 650);
             this.textBoxPlayerTwoPiecesToPlace.Name = "textBoxPlayerTwoPiecesToPlace";
+            this.textBoxPlayerTwoPiecesToPlace.ReadOnly = true;
             this.textBoxPlayerTwoPiecesToPlace.Size = new System.Drawing.Size(82, 38);
             this.textBoxPlayerTwoPiecesToPlace.TabIndex = 22;
             // 
@@ -271,6 +274,7 @@
             // 
             this.textBoxPlayerTwoPiecesLeft.Location = new System.Drawing.Point(1454, 695);
             this.textBoxPlayerTwoPiecesLeft.Name = "textBoxPlayerTwoPiecesLeft";
+            this.textBoxPlayerTwoPiecesLeft.ReadOnly = true;
             this.textBoxPlayerTwoPiecesLeft.Size = new System.Drawing.Size(82, 38);
             this.textBoxPlayerTwoPiecesLeft.TabIndex = 23;
             // 

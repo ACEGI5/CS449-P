@@ -8,8 +8,13 @@ namespace NineMansMorrisUi
         public BoardForm()
         {
             InitializeComponent();
+            
         }
 
+        public void PopulateGameBoard()
+        {
+            
+        }
 
         private void BtnResetClick(object sender, EventArgs e)
         {
