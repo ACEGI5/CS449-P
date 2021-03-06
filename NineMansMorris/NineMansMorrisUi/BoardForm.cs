@@ -19,12 +19,14 @@ namespace NineMansMorrisUi
 
         private void SetUpForm()
         {
-            lblTurnIndicator.Text = _nineMansMorrisGame.Turn == 0 ? "Whites Turn" : "Blacks Turn";
+            lblTurnIndicator.Text = _nineMansMorrisGame.Turn == 0 ? "White's Turn" : "Black's Turn";
             textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
             textBoxWhitePlayerPiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
             textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
             textBoxBlackPlayerPiecesLeft.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
-
+            btnUnoccupiedKey.BackColor = Color.LightGoldenrodYellow;
+            btnWhiteKey.BackColor = Color.White;
+            btnBlackKey.BackColor = Color.Black;
         }
         
         private void PopulateButtonGrid()
@@ -36,7 +38,7 @@ namespace NineMansMorrisUi
                 {
                     if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
                     {
-                        _btnGrid[row, col] = new Button {Height = buttonSize, Width = buttonSize,};
+                        _btnGrid[row, col] = new Button {Height = buttonSize, Width = buttonSize,BackColor = Color.LightGoldenrodYellow};
                         _btnGrid[row, col].Click += Grid_Button_click;
                         panel1.Controls.Add(_btnGrid[row,col]);
                         _btnGrid[row, col].BringToFront();
@@ -60,18 +62,20 @@ namespace NineMansMorrisUi
             Point location = (Point)clickedButton.Tag;
             int row = location.X;
             int col = location.Y;
-            if (_nineMansMorrisGame.Turn == 0)
+            if (_nineMansMorrisGame.Turn == 0 && _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced==false)
             {
-                clickedButton.Text = "W";
+                clickedButton.BackColor = Color.White;
                 _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.WhitePlayer,row,col);
                 textBoxWhitePlayerPiecesToPlace.Text=_nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
+                lblTurnIndicator.Text = "Black's Turn";
 
             }
-            else
+            else if(_nineMansMorrisGame.Turn == 1 && _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced==false)
             {
-                clickedButton.Text = "B";
+                clickedButton.BackColor=Color.Black;
                 _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer,row,col);
                 textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
+                lblTurnIndicator.Text = "Whites's Turn";
             }
 
         }

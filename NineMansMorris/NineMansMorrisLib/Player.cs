@@ -20,22 +20,16 @@
         {
             return (PiecesInPlay == 3 && AllPiecesPlaced);
         }
-
-        // Checks if player has placed all pieces.
-        // If so, player must start moving placed pieces on board.
-        // Output: returns no value.
-        public void PiecesPlaced()
-        {
-            if (PiecesToPlace == 0)
-            {
-                AllPiecesPlaced = true;
-            }
-        }
+        
 
         public void PlacePiece()
         {
             PiecesToPlace--;
             PiecesInPlay++;
+            if (PiecesToPlace == 0)
+            {
+                AllPiecesPlaced = true;
+            }
         }
 
         public bool PlayerHasLost()

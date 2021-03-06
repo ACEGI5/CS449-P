@@ -58,6 +58,12 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.lblTurnIndicator = new System.Windows.Forms.Label();
+            this.btnUnoccupiedKey = new System.Windows.Forms.Button();
+            this.btnBlackKey = new System.Windows.Forms.Button();
+            this.btnWhiteKey = new System.Windows.Forms.Button();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -245,7 +251,7 @@
             this.pictureBox1.InitialImage = global::NineMansMorrisUi.Properties.Resources.NineMansMorrisBoard;
             this.pictureBox1.Location = new System.Drawing.Point(-67, -47);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(847, 778);
+            this.pictureBox1.Size = new System.Drawing.Size(852, 778);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -255,7 +261,7 @@
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(207, 54);
             this.label14.TabIndex = 18;
-            this.label14.Text = "Player One:";
+            this.label14.Text = "White Player:";
             // 
             // label15
             // 
@@ -263,9 +269,9 @@
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(207, 54);
             this.label15.TabIndex = 19;
-            this.label15.Text = "Player Two:";
+            this.label15.Text = "Black Player:";
             // 
-            // textBoxPlayerOnePiecesToPlace
+            // textBoxWhitePlayerPiecesToPlace
             // 
             this.textBoxWhitePlayerPiecesToPlace.Location = new System.Drawing.Point(1454, 223);
             this.textBoxWhitePlayerPiecesToPlace.Name = "textBoxWhitePlayerPiecesToPlace";
@@ -273,7 +279,7 @@
             this.textBoxWhitePlayerPiecesToPlace.Size = new System.Drawing.Size(82, 38);
             this.textBoxWhitePlayerPiecesToPlace.TabIndex = 20;
             // 
-            // textBoxPlayerOnePiecesLeft
+            // textBoxWhitePlayerPiecesLeft
             // 
             this.textBoxWhitePlayerPiecesLeft.Location = new System.Drawing.Point(1454, 267);
             this.textBoxWhitePlayerPiecesLeft.Name = "textBoxWhitePlayerPiecesLeft";
@@ -281,7 +287,7 @@
             this.textBoxWhitePlayerPiecesLeft.Size = new System.Drawing.Size(82, 38);
             this.textBoxWhitePlayerPiecesLeft.TabIndex = 21;
             // 
-            // textBoxPlayerTwoPiecesToPlace
+            // textBoxBlackPlayerPiecesToPlace
             // 
             this.textBoxBlackPlayerPiecesToPlace.Location = new System.Drawing.Point(1454, 650);
             this.textBoxBlackPlayerPiecesToPlace.Name = "textBoxBlackPlayerPiecesToPlace";
@@ -289,7 +295,7 @@
             this.textBoxBlackPlayerPiecesToPlace.Size = new System.Drawing.Size(82, 38);
             this.textBoxBlackPlayerPiecesToPlace.TabIndex = 22;
             // 
-            // textBoxPlayerTwoPiecesLeft
+            // textBoxBlackPlayerPiecesLeft
             // 
             this.textBoxBlackPlayerPiecesLeft.Location = new System.Drawing.Point(1454, 695);
             this.textBoxBlackPlayerPiecesLeft.Name = "textBoxBlackPlayerPiecesLeft";
@@ -343,13 +349,70 @@
             this.lblTurnIndicator.Name = "lblTurnIndicator";
             this.lblTurnIndicator.Size = new System.Drawing.Size(247, 54);
             this.lblTurnIndicator.TabIndex = 28;
-            this.lblTurnIndicator.Text = "label20";
+            this.lblTurnIndicator.Text = "Player indicator";
+            // 
+            // btnUnoccupiedKey
+            // 
+            this.btnUnoccupiedKey.Enabled = false;
+            this.btnUnoccupiedKey.Location = new System.Drawing.Point(198, 149);
+            this.btnUnoccupiedKey.Name = "btnUnoccupiedKey";
+            this.btnUnoccupiedKey.Size = new System.Drawing.Size(40, 36);
+            this.btnUnoccupiedKey.TabIndex = 29;
+            this.btnUnoccupiedKey.UseVisualStyleBackColor = true;
+            // 
+            // btnBlackKey
+            // 
+            this.btnBlackKey.Enabled = false;
+            this.btnBlackKey.Location = new System.Drawing.Point(198, 223);
+            this.btnBlackKey.Name = "btnBlackKey";
+            this.btnBlackKey.Size = new System.Drawing.Size(40, 38);
+            this.btnBlackKey.TabIndex = 30;
+            this.btnBlackKey.UseVisualStyleBackColor = true;
+            // 
+            // btnWhiteKey
+            // 
+            this.btnWhiteKey.Enabled = false;
+            this.btnWhiteKey.Location = new System.Drawing.Point(198, 291);
+            this.btnWhiteKey.Name = "btnWhiteKey";
+            this.btnWhiteKey.Size = new System.Drawing.Size(40, 40);
+            this.btnWhiteKey.TabIndex = 31;
+            this.btnWhiteKey.UseVisualStyleBackColor = true;
+            // 
+            // label20
+            // 
+            this.label20.Location = new System.Drawing.Point(12, 150);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(180, 29);
+            this.label20.TabIndex = 32;
+            this.label20.Text = "unoccupied:";
+            // 
+            // label21
+            // 
+            this.label21.Location = new System.Drawing.Point(12, 220);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(180, 29);
+            this.label21.TabIndex = 33;
+            this.label21.Text = "Black Piece:";
+            // 
+            // label22
+            // 
+            this.label22.Location = new System.Drawing.Point(12, 302);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(180, 29);
+            this.label22.TabIndex = 34;
+            this.label22.Text = "White Piece:";
             // 
             // BoardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1968, 1168);
+            this.Controls.Add(this.label22);
+            this.Controls.Add(this.label21);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.btnWhiteKey);
+            this.Controls.Add(this.btnBlackKey);
+            this.Controls.Add(this.btnUnoccupiedKey);
             this.Controls.Add(this.lblTurnIndicator);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
@@ -386,6 +449,16 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+
+        private System.Windows.Forms.Button btnBlackKey;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnWhiteKey;
+        private System.Windows.Forms.Label label20;
+
+        private System.Windows.Forms.Button btnUnoccupiedKey;
 
         private System.Windows.Forms.Label lblTurnIndicator;
 
