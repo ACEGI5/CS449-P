@@ -30,8 +30,17 @@ namespace NineMansMorrisLib
             }
         }
 
-        public void PlacePiece(Player player, int row, int column)
+        public void PlacePiece(Player player, int row, int col)
         {
+            if (player == WhitePlayer&& GameBoard.GameBoard[row,col].PieceState==PieceState.Open)
+            {
+                WhitePlayer.PlacePiece();
+                GameBoard.GameBoard[row, col].PieceState = PieceState.White;
+            }else if (player == BlackPlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
+            {
+                BlackPlayer.PlacePiece();
+                GameBoard.GameBoard[row, col].PieceState = PieceState.Black;
+            }
         }
 
         public void TakeTurn(Player player)

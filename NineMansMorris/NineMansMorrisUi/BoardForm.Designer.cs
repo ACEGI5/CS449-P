@@ -49,10 +49,10 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.textBoxPlayerOnePiecesToPlace = new System.Windows.Forms.TextBox();
-            this.textBoxPlayerOnePiecesLeft = new System.Windows.Forms.TextBox();
-            this.textBoxPlayerTwoPiecesToPlace = new System.Windows.Forms.TextBox();
-            this.textBoxPlayerTwoPiecesLeft = new System.Windows.Forms.TextBox();
+            this.textBoxWhitePlayerPiecesToPlace = new System.Windows.Forms.TextBox();
+            this.textBoxWhitePlayerPiecesLeft = new System.Windows.Forms.TextBox();
+            this.textBoxBlackPlayerPiecesToPlace = new System.Windows.Forms.TextBox();
+            this.textBoxBlackPlayerPiecesLeft = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -267,35 +267,35 @@
             // 
             // textBoxPlayerOnePiecesToPlace
             // 
-            this.textBoxPlayerOnePiecesToPlace.Location = new System.Drawing.Point(1454, 223);
-            this.textBoxPlayerOnePiecesToPlace.Name = "textBoxPlayerOnePiecesToPlace";
-            this.textBoxPlayerOnePiecesToPlace.ReadOnly = true;
-            this.textBoxPlayerOnePiecesToPlace.Size = new System.Drawing.Size(82, 38);
-            this.textBoxPlayerOnePiecesToPlace.TabIndex = 20;
+            this.textBoxWhitePlayerPiecesToPlace.Location = new System.Drawing.Point(1454, 223);
+            this.textBoxWhitePlayerPiecesToPlace.Name = "textBoxWhitePlayerPiecesToPlace";
+            this.textBoxWhitePlayerPiecesToPlace.ReadOnly = true;
+            this.textBoxWhitePlayerPiecesToPlace.Size = new System.Drawing.Size(82, 38);
+            this.textBoxWhitePlayerPiecesToPlace.TabIndex = 20;
             // 
             // textBoxPlayerOnePiecesLeft
             // 
-            this.textBoxPlayerOnePiecesLeft.Location = new System.Drawing.Point(1454, 267);
-            this.textBoxPlayerOnePiecesLeft.Name = "textBoxPlayerOnePiecesLeft";
-            this.textBoxPlayerOnePiecesLeft.ReadOnly = true;
-            this.textBoxPlayerOnePiecesLeft.Size = new System.Drawing.Size(82, 38);
-            this.textBoxPlayerOnePiecesLeft.TabIndex = 21;
+            this.textBoxWhitePlayerPiecesLeft.Location = new System.Drawing.Point(1454, 267);
+            this.textBoxWhitePlayerPiecesLeft.Name = "textBoxWhitePlayerPiecesLeft";
+            this.textBoxWhitePlayerPiecesLeft.ReadOnly = true;
+            this.textBoxWhitePlayerPiecesLeft.Size = new System.Drawing.Size(82, 38);
+            this.textBoxWhitePlayerPiecesLeft.TabIndex = 21;
             // 
             // textBoxPlayerTwoPiecesToPlace
             // 
-            this.textBoxPlayerTwoPiecesToPlace.Location = new System.Drawing.Point(1454, 650);
-            this.textBoxPlayerTwoPiecesToPlace.Name = "textBoxPlayerTwoPiecesToPlace";
-            this.textBoxPlayerTwoPiecesToPlace.ReadOnly = true;
-            this.textBoxPlayerTwoPiecesToPlace.Size = new System.Drawing.Size(82, 38);
-            this.textBoxPlayerTwoPiecesToPlace.TabIndex = 22;
+            this.textBoxBlackPlayerPiecesToPlace.Location = new System.Drawing.Point(1454, 650);
+            this.textBoxBlackPlayerPiecesToPlace.Name = "textBoxBlackPlayerPiecesToPlace";
+            this.textBoxBlackPlayerPiecesToPlace.ReadOnly = true;
+            this.textBoxBlackPlayerPiecesToPlace.Size = new System.Drawing.Size(82, 38);
+            this.textBoxBlackPlayerPiecesToPlace.TabIndex = 22;
             // 
             // textBoxPlayerTwoPiecesLeft
             // 
-            this.textBoxPlayerTwoPiecesLeft.Location = new System.Drawing.Point(1454, 695);
-            this.textBoxPlayerTwoPiecesLeft.Name = "textBoxPlayerTwoPiecesLeft";
-            this.textBoxPlayerTwoPiecesLeft.ReadOnly = true;
-            this.textBoxPlayerTwoPiecesLeft.Size = new System.Drawing.Size(82, 38);
-            this.textBoxPlayerTwoPiecesLeft.TabIndex = 23;
+            this.textBoxBlackPlayerPiecesLeft.Location = new System.Drawing.Point(1454, 695);
+            this.textBoxBlackPlayerPiecesLeft.Name = "textBoxBlackPlayerPiecesLeft";
+            this.textBoxBlackPlayerPiecesLeft.ReadOnly = true;
+            this.textBoxBlackPlayerPiecesLeft.Size = new System.Drawing.Size(82, 38);
+            this.textBoxBlackPlayerPiecesLeft.TabIndex = 23;
             // 
             // label16
             // 
@@ -355,10 +355,10 @@
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.textBoxPlayerTwoPiecesLeft);
-            this.Controls.Add(this.textBoxPlayerTwoPiecesToPlace);
-            this.Controls.Add(this.textBoxPlayerOnePiecesLeft);
-            this.Controls.Add(this.textBoxPlayerOnePiecesToPlace);
+            this.Controls.Add(this.textBoxBlackPlayerPiecesLeft);
+            this.Controls.Add(this.textBoxBlackPlayerPiecesToPlace);
+            this.Controls.Add(this.textBoxWhitePlayerPiecesLeft);
+            this.Controls.Add(this.textBoxWhitePlayerPiecesToPlace);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.panel1);
@@ -397,10 +397,10 @@
 
         private System.Windows.Forms.Label label16;
 
-        private System.Windows.Forms.TextBox textBoxPlayerTwoPiecesLeft;
-        private System.Windows.Forms.TextBox textBoxPlayerOnePiecesLeft;
-        private System.Windows.Forms.TextBox textBoxPlayerOnePiecesToPlace;
-        private System.Windows.Forms.TextBox textBoxPlayerTwoPiecesToPlace;
+        private System.Windows.Forms.TextBox textBoxBlackPlayerPiecesLeft;
+        private System.Windows.Forms.TextBox textBoxWhitePlayerPiecesLeft;
+        private System.Windows.Forms.TextBox textBoxWhitePlayerPiecesToPlace;
+        private System.Windows.Forms.TextBox textBoxBlackPlayerPiecesToPlace;
 
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;

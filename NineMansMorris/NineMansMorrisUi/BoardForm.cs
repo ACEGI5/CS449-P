@@ -20,10 +20,10 @@ namespace NineMansMorrisUi
         private void SetUpForm()
         {
             lblTurnIndicator.Text = _nineMansMorrisGame.Turn == 0 ? "Whites Turn" : "Blacks Turn";
-            textBoxPlayerOnePiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
-            textBoxPlayerOnePiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
-            textBoxPlayerTwoPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
-            textBoxPlayerTwoPiecesLeft.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
+            textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
+            textBoxWhitePlayerPiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
+            textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
+            textBoxBlackPlayerPiecesLeft.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
 
         }
         
@@ -57,15 +57,21 @@ namespace NineMansMorrisUi
         private void Grid_Button_click(object sender, EventArgs e)
         {
             var clickedButton = (Button) sender;
+            Point location = (Point)clickedButton.Tag;
+            int row = location.X;
+            int col = location.Y;
             if (_nineMansMorrisGame.Turn == 0)
             {
                 clickedButton.Text = "W";
-                _nineMansMorrisGame.WhitePlayer.PlacePiece();
-                
+                _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.WhitePlayer,row,col);
+                textBoxWhitePlayerPiecesToPlace.Text=_nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
+
             }
             else
             {
                 clickedButton.Text = "B";
+                _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer,row,col);
+                textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
             }
 
         }
