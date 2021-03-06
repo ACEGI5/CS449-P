@@ -57,6 +57,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.lblTurnIndicator = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -336,11 +337,20 @@
             this.label19.TabIndex = 27;
             this.label19.Text = "Pieces left";
             // 
+            // lblTurnIndicator
+            // 
+            this.lblTurnIndicator.Location = new System.Drawing.Point(1114, 131);
+            this.lblTurnIndicator.Name = "lblTurnIndicator";
+            this.lblTurnIndicator.Size = new System.Drawing.Size(247, 54);
+            this.lblTurnIndicator.TabIndex = 28;
+            this.lblTurnIndicator.Text = "label20";
+            // 
             // BoardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1968, 1168);
+            this.Controls.Add(this.lblTurnIndicator);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label17);
@@ -376,6 +386,8 @@
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label lblTurnIndicator;
 
         private System.Windows.Forms.PictureBox pictureBox1;
 

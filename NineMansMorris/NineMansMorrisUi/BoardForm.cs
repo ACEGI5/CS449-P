@@ -14,8 +14,19 @@ namespace NineMansMorrisUi
         {
             InitializeComponent();
             PopulateButtonGrid();
+            SetUpForm();
         }
 
+        private void SetUpForm()
+        {
+            lblTurnIndicator.Text = _nineMansMorrisGame.Turn == 0 ? "Whites Turn" : "Blacks Turn";
+            textBoxPlayerOnePiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
+            textBoxPlayerOnePiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
+            textBoxPlayerTwoPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
+            textBoxPlayerTwoPiecesLeft.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
+
+        }
+        
         private void PopulateButtonGrid()
         {
             var buttonSize = 20;
@@ -25,7 +36,7 @@ namespace NineMansMorrisUi
                 {
                     if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
                     {
-                        _btnGrid[row, col] = new Button {Height = buttonSize, Width = buttonSize, Text = "U"};
+                        _btnGrid[row, col] = new Button {Height = buttonSize, Width = buttonSize,};
                         _btnGrid[row, col].Click += Grid_Button_click;
                         panel1.Controls.Add(_btnGrid[row,col]);
                         _btnGrid[row, col].BringToFront();
@@ -45,11 +56,17 @@ namespace NineMansMorrisUi
 
         private void Grid_Button_click(object sender, EventArgs e)
         {
-            var clickedButton =(Button) sender;
-            var location = (Point) clickedButton.Tag;
-            var row = location.X;
-            var col = location.Y;
-            clickedButton.Text = "O";
+            var clickedButton = (Button) sender;
+            if (_nineMansMorrisGame.Turn == 0)
+            {
+                clickedButton.Text = "W";
+                _nineMansMorrisGame.WhitePlayer.PlacePiece();
+                
+            }
+            else
+            {
+                clickedButton.Text = "B";
+            }
 
         }
 

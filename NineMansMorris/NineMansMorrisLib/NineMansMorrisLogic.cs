@@ -4,6 +4,7 @@ namespace NineMansMorrisLib
 {
     public class NineMansMorrisLogic
     {
+        //turn 0 white turn 1 black(this should be enum)
         public int Turn { get; private set; }
         public Player WhitePlayer { get; private set; }
         public Player BlackPlayer { get; private set; }
@@ -37,7 +38,6 @@ namespace NineMansMorrisLib
         {
         }
 
-
-        //gabe reallly do suck
+        
     }
 }

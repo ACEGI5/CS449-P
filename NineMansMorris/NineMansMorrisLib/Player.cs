@@ -32,6 +32,12 @@
             }
         }
 
+        public void PlacePiece()
+        {
+            PiecesToPlace--;
+            PiecesInPlay++;
+        }
+
         public bool PlayerHasLost()
         {
             return ((PiecesInPlay < 3) && AllPiecesPlaced);
