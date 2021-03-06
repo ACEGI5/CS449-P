@@ -48,6 +48,10 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.textBoxPlayerOnePiecesToPlace = new System.Windows.Forms.TextBox();
+            this.textBoxPlayerOnePiecesLeft = new System.Windows.Forms.TextBox();
+            this.textBoxPlayerTwoPiecesToPlace = new System.Windows.Forms.TextBox();
+            this.textBoxPlayerTwoPiecesLeft = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // btnReset
@@ -238,11 +242,43 @@
             this.label15.TabIndex = 19;
             this.label15.Text = "Player Two:";
             // 
+            // textBoxPlayerOnePiecesToPlace
+            // 
+            this.textBoxPlayerOnePiecesToPlace.Location = new System.Drawing.Point(1454, 223);
+            this.textBoxPlayerOnePiecesToPlace.Name = "textBoxPlayerOnePiecesToPlace";
+            this.textBoxPlayerOnePiecesToPlace.Size = new System.Drawing.Size(82, 38);
+            this.textBoxPlayerOnePiecesToPlace.TabIndex = 20;
+            // 
+            // textBoxPlayerOnePiecesLeft
+            // 
+            this.textBoxPlayerOnePiecesLeft.Location = new System.Drawing.Point(1454, 267);
+            this.textBoxPlayerOnePiecesLeft.Name = "textBoxPlayerOnePiecesLeft";
+            this.textBoxPlayerOnePiecesLeft.Size = new System.Drawing.Size(82, 38);
+            this.textBoxPlayerOnePiecesLeft.TabIndex = 21;
+            // 
+            // textBoxPlayerTwoPiecesToPlace
+            // 
+            this.textBoxPlayerTwoPiecesToPlace.Location = new System.Drawing.Point(1454, 650);
+            this.textBoxPlayerTwoPiecesToPlace.Name = "textBoxPlayerTwoPiecesToPlace";
+            this.textBoxPlayerTwoPiecesToPlace.Size = new System.Drawing.Size(82, 38);
+            this.textBoxPlayerTwoPiecesToPlace.TabIndex = 22;
+            // 
+            // textBoxPlayerTwoPiecesLeft
+            // 
+            this.textBoxPlayerTwoPiecesLeft.Location = new System.Drawing.Point(1454, 695);
+            this.textBoxPlayerTwoPiecesLeft.Name = "textBoxPlayerTwoPiecesLeft";
+            this.textBoxPlayerTwoPiecesLeft.Size = new System.Drawing.Size(82, 38);
+            this.textBoxPlayerTwoPiecesLeft.TabIndex = 23;
+            // 
             // BoardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1968, 1168);
+            this.Controls.Add(this.textBoxPlayerTwoPiecesLeft);
+            this.Controls.Add(this.textBoxPlayerTwoPiecesToPlace);
+            this.Controls.Add(this.textBoxPlayerOnePiecesLeft);
+            this.Controls.Add(this.textBoxPlayerOnePiecesToPlace);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.panel1);
@@ -266,7 +302,13 @@
             this.Name = "BoardForm";
             this.Text = "9 Mans Morris";
             this.ResumeLayout(false);
+            this.PerformLayout();
         }
+
+        private System.Windows.Forms.TextBox textBoxPlayerTwoPiecesLeft;
+        private System.Windows.Forms.TextBox textBoxPlayerOnePiecesLeft;
+        private System.Windows.Forms.TextBox textBoxPlayerOnePiecesToPlace;
+        private System.Windows.Forms.TextBox textBoxPlayerTwoPiecesToPlace;
 
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
