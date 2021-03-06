@@ -21,7 +21,8 @@ namespace NineMansMorrisUi
 
         private void BtnExitClick(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
+            
         }
     }
 }
