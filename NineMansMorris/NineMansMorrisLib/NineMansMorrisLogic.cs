@@ -39,11 +39,25 @@ namespace NineMansMorrisLib
 
         public void FlyPiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
         {
-            
+            // Checks if it's white players' turn and if the chosen position is open.
+            if (player == WhitePlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open)
+            {
+                // Places white in the new position and makes the old position open.
+                GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.White;
+                GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
+            } 
+            // Checks if it's white players' turn and if the chosen position is open.
+            else if (player == BlackPlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open)
+            {
+                // Places black in the new position and makes the old position open.
+                GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.Black;
+                GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
+            }
         }
 
         public void PlacePiece(Player player, int row, int col)
         {
+            // checks if it is white players turn and if 
             if (player == WhitePlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Open &&
                 WhitePlayer.AllPiecesPlaced == false)
             {
