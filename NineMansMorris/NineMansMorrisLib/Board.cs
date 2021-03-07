@@ -1,5 +1,7 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using Microsoft.VisualBasic;
+
 
 namespace NineMansMorrisLib
 {
@@ -55,6 +57,11 @@ namespace NineMansMorrisLib
             {
                 boardArray[row, row] = new GamePiece {PieceState = PieceState.Open};
             }
+        }
+
+        public bool CheckIfAdjacent(int newRow, int newCol, int oldRow, int oldCol)
+        {
+            return (Math.Abs(newRow - oldRow) + Math.Abs(newCol - oldCol)) == 1;
         }
     }
 }
