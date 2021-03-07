@@ -49,12 +49,14 @@ namespace NineMansMorrisLib
             {
                 WhitePlayer.PlacePiece();
                 GameBoard.GameBoard[row, col].PieceState = PieceState.White;
+                Turn = 1;
             }
             else if (player == BlackPlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Open &&
                      BlackPlayer.AllPiecesPlaced == false)
             {
                 BlackPlayer.PlacePiece();
                 GameBoard.GameBoard[row, col].PieceState = PieceState.Black;
+                Turn = 0;
             }
         }
 
