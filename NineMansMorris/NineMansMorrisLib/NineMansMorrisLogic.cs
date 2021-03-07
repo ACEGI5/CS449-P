@@ -45,6 +45,7 @@ namespace NineMansMorrisLib
                 // Places white in the new position and makes the old position open.
                 GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.White;
                 GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
+                Turn = 1;
             } 
             // Checks if it's white players' turn and if the chosen position is open.
             else if (player == BlackPlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open)
@@ -52,6 +53,7 @@ namespace NineMansMorrisLib
                 // Places black in the new position and makes the old position open.
                 GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.Black;
                 GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
+                Turn = 0;
             }
         }
 
