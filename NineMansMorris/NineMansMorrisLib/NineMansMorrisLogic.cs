@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 
 namespace NineMansMorrisLib
 {
@@ -20,14 +21,14 @@ namespace NineMansMorrisLib
             GameBoard = new Board();
         }
 
-        public void MovePiece(Player player, int oldRow, int oldColumn, int newRow, int newColumn)
+        public void MovePiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
         {
-            if (player.PlayerCanFly())
-            {
-            }
-            else
-            {
-            }
+          
+        }
+
+        public void FlyPiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
+        {
+            
         }
 
         public void PlacePiece(Player player, int row, int col)
@@ -36,20 +37,60 @@ namespace NineMansMorrisLib
                 WhitePlayer.AllPiecesPlaced == false)
             {
                 WhitePlayer.PlacePiece();
-                Turn = 1;
                 GameBoard.GameBoard[row, col].PieceState = PieceState.White;
             }
             else if (player == BlackPlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Open &&
                      BlackPlayer.AllPiecesPlaced == false)
             {
                 BlackPlayer.PlacePiece();
-                Turn = 0;
                 GameBoard.GameBoard[row, col].PieceState = PieceState.Black;
             }
         }
 
-        public void TakeTurn(Player player)
+        public void TakeTurn(Player player, int newRow, int newCol, int oldRow, int oldCol)
         {
+            if (Turn == 0)
+            {
+                //WhitePlayer
+                if (WhitePlayer.PiecesToPlace != 0)
+                {
+                    PlacePiece(WhitePlayer, newRow, newCol);
+                }
+                else if (!WhitePlayer.PlayerCanFly())
+                {
+                    MovePiece(WhitePlayer, newRow,  newCol, oldRow, oldCol);
+
+                }
+                else if (WhitePlayer.PlayerCanFly())
+                {
+                    FlyPiece(WhitePlayer, newRow,  newCol, oldRow, oldCol);
+
+                }
+                //check mill function then -> prompt for player to select which opp piece to mill 
+                Turn = 1;
+            }
+            else if(Turn == 1)
+            {
+                //Black Player
+                if (WhitePlayer.PiecesToPlace != 0)
+                {
+                    PlacePiece(WhitePlayer, newRow, newCol);
+                }
+                else if (!WhitePlayer.PlayerCanFly())
+                {
+                    MovePiece(WhitePlayer, newRow,  newCol, oldRow, oldCol);
+
+                }
+                else if (WhitePlayer.PlayerCanFly())
+                {
+                    FlyPiece(WhitePlayer, newRow,  newCol, oldRow, oldCol);
+
+                }
+                //check mill function then -> prompt for player to select which opp piece to mill  
+                Turn = 0;
+            }
         }
+        
+        
     }
 }
