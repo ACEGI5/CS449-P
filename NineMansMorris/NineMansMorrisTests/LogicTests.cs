@@ -4,17 +4,19 @@ using NUnit.Framework;
 namespace NineMansMorrisTests
 {
     [TestFixture]
-    public class NineMansMorrisLogic
+    public class NineMansMorrisLogicTest
     {
-        [TestFixture]
-        public class GamePieceTest
+        [TestCase(0, 0, PieceState.White)]
+        public void PlacePiece(int row, int col, PieceState color)
         {
-            [Test]
-            public void METHOD()
-            {
-                var gp = new GamePiece();
-                Assert.NotNull(gp);
-            }
+            NineMansMorrisLogic sut = new NineMansMorrisLogic();
+            
+            sut.PlacePiece(sut.WhitePlayer,row,col);
+            
+            Assert.AreEqual(PieceState.White,sut.GameBoard.GameBoard[0,0].PieceState);
+
         }
+        
+       
     }
 }
