@@ -79,11 +79,7 @@ namespace NineMansMorrisUi
             }
 
         }
-
-        public void PopulateGameBoard()
-        {
-            
-        }
+        
 
         private void BtnResetClick(object sender, EventArgs e)
         {

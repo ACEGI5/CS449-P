@@ -7,7 +7,7 @@ namespace NineMansMorrisTests
     public class NineMansMorrisLogicTest
     {
         [TestCase(0, 0, PieceState.White)]
-        public void PlacePiece(int row, int col, PieceState color)
+        public void TestValidPlacePiece(int row, int col, PieceState color)
         {
             NineMansMorrisLogic sut = new NineMansMorrisLogic();
             
