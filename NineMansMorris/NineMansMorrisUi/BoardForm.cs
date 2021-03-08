@@ -56,12 +56,14 @@ namespace NineMansMorrisUi
 
         }
 
+//defualt pass in or member varibale
         private void Grid_Button_click(object sender, EventArgs e)
         {
             var clickedButton = (Button) sender;
             Point location = (Point)clickedButton.Tag;
             int row = location.X;
             int col = location.Y;
+            //check if occupied
             if (_nineMansMorrisGame.Turn == 0 && _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced==false)
             {
                 clickedButton.BackColor = Color.White;
@@ -78,6 +80,11 @@ namespace NineMansMorrisUi
                 lblTurnIndicator.Text = "Whites's Turn";
             }
 
+            if (_nineMansMorrisGame.Turn == 1 && _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced == true)
+            {
+              //  _nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.BlackPlayer);
+                
+            }
         }
         
 

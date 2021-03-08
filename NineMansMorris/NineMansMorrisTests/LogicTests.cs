@@ -13,10 +13,16 @@ namespace NineMansMorrisTests
             
             sut.PlacePiece(sut.WhitePlayer,row,col);
             
-            Assert.AreEqual(PieceState.White,sut.GameBoard.GameBoard[0,0].PieceState);
+            Assert.AreEqual(PieceState.White,sut.GameBoard.GameBoard[row,col].PieceState);
 
         }
-        
+        [TestCase(0, 1, PieceState.White)]
+        public void TestInvalidPiecePlacement(int row, int col, PieceState color)
+        {
+            NineMansMorrisLogic sut = new NineMansMorrisLogic();
+            sut.PlacePiece(sut.WhitePlayer,row,col);
+            Assert.AreEqual(PieceState.Invalid, sut.GameBoard.GameBoard[row, col].PieceState);
+        }
        
     }
 }
