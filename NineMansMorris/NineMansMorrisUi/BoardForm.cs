@@ -9,7 +9,8 @@ namespace NineMansMorrisUi
     public partial class BoardForm : Form
     {
         private NineMansMorrisLogic _nineMansMorrisGame = new NineMansMorrisLogic();
-        private Button[,] _btnGrid = new Button[BoardSize,BoardSize];
+        private Button[,] _btnGrid = new Button[BoardSize, BoardSize];
+
         public BoardForm()
         {
             InitializeComponent();
@@ -28,7 +29,7 @@ namespace NineMansMorrisUi
             btnWhiteKey.BackColor = Color.White;
             btnBlackKey.BackColor = Color.Black;
         }
-        
+
         private void PopulateButtonGrid()
         {
             var buttonSize = 20;
@@ -38,55 +39,53 @@ namespace NineMansMorrisUi
                 {
                     if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
                     {
-                        _btnGrid[row, col] = new Button {Height = buttonSize, Width = buttonSize,BackColor = Color.LightGoldenrodYellow};
+                        _btnGrid[row, col] = new Button
+                            {Height = buttonSize, Width = buttonSize, BackColor = Color.LightGoldenrodYellow};
                         _btnGrid[row, col].Click += Grid_Button_click;
-                        panel1.Controls.Add(_btnGrid[row,col]);
+                        panel1.Controls.Add(_btnGrid[row, col]);
                         _btnGrid[row, col].BringToFront();
-                        _btnGrid[row,col].Location = new Point( (row*50) , (col*50));
+                        _btnGrid[row, col].Location = new Point((row * 50), (col * 50));
                         _btnGrid[row, col].Tag = new Point(row, col);
                     }
                     else
                     {
                         _btnGrid[row, col] = null;
                     }
-
-                    
                 }
             }
-
         }
 
-//defualt pass in or member varibale
+//default pass in or member variable
+//anchor board
         private void Grid_Button_click(object sender, EventArgs e)
         {
             var clickedButton = (Button) sender;
-            Point location = (Point)clickedButton.Tag;
+            Point location = (Point) clickedButton.Tag;
             int row = location.X;
             int col = location.Y;
-            //check if occupied
-            if (_nineMansMorrisGame.Turn == 0 && _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced==false)
+            if (_nineMansMorrisGame.Turn == 0 && _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced == false &&
+                _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
             {
                 clickedButton.BackColor = Color.White;
-                _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.WhitePlayer,row,col);
-                textBoxWhitePlayerPiecesToPlace.Text=_nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
+                _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.WhitePlayer, row, col);
+                textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
                 lblTurnIndicator.Text = "Black's Turn";
-
             }
-            else if(_nineMansMorrisGame.Turn == 1 && _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced==false)
+            else if (_nineMansMorrisGame.Turn == 1 && _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced == false&&
+                     _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
             {
-                clickedButton.BackColor=Color.Black;
-                _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer,row,col);
+                clickedButton.BackColor = Color.Black;
+                _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer, row, col);
                 textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
                 lblTurnIndicator.Text = "Whites's Turn";
             }
 
             if (_nineMansMorrisGame.Turn == 1 && _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced == true)
             {
-              //  _nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.BlackPlayer);
-                
+                //  _nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.BlackPlayer);
             }
         }
-        
+
 
         private void BtnResetClick(object sender, EventArgs e)
         {
@@ -99,7 +98,6 @@ namespace NineMansMorrisUi
         private void BtnExitClick(object sender, EventArgs e)
         {
             Application.Exit();
-            
         }
     }
 }
