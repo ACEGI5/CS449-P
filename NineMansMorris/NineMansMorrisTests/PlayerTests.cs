@@ -1,5 +1,4 @@
-﻿using NineMansMorrisLib;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace NineMansMorrisTests
 {

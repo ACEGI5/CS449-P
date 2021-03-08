@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 
 namespace NineMansMorrisLib
 {
@@ -24,13 +23,13 @@ namespace NineMansMorrisLib
         public void MovePiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
         {
             if (player == WhitePlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
-                WhitePlayer.AllPiecesPlaced == true && GameBoard.CheckIfAdjacent(newRow, newCol, oldRow, oldCol))
+                WhitePlayer.AllPiecesPlaced && GameBoard.CheckIfAdjacent(newRow, newCol, oldRow, oldCol))
             {
                 GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.White;
                 GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
             }
             else if (player == BlackPlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
-                     WhitePlayer.AllPiecesPlaced == true && GameBoard.CheckIfAdjacent(newRow, newCol, oldRow, oldCol))
+                     WhitePlayer.AllPiecesPlaced && GameBoard.CheckIfAdjacent(newRow, newCol, oldRow, oldCol))
             {
                 GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.Black;
                 GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;

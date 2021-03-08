@@ -80,7 +80,7 @@ namespace NineMansMorrisUi
                 lblTurnIndicator.Text = "Whites's Turn";
             }
 
-            if (_nineMansMorrisGame.Turn == 1 && _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced == true)
+            if (_nineMansMorrisGame.Turn == 1 && _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced)
             {
                 //  _nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.BlackPlayer);
             }
