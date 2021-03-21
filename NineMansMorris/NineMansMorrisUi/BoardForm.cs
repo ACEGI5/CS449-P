@@ -11,8 +11,8 @@ namespace NineMansMorrisUi
         private NineMansMorrisLogic _nineMansMorrisGame = new NineMansMorrisLogic();
         private Button[,] _btnGrid = new Button[BoardSize, BoardSize];
         private Button _selectButton = null;
-        private string _turnIndicatorWhite = "White's turn";
-        private string _turnIndicatorBlack = "Black's turn";
+        private string _turnIndicatorWhite = "White's Turn";
+        private string _turnIndicatorBlack = "Black's Turn";
         private Color _unoccupiedColor= Color.Red;
         private Color _whiteColor= Color.GhostWhite;
         private Color _blackColor= Color.Black;
