@@ -117,7 +117,7 @@ namespace NineMansMorrisLib {
                 
             }
             
-            else if(Turn == 1) {
+            else if (Turn == 1) {
                 
                 //Black Player
                 if (WhitePlayer.PiecesToPlace != 0) {
@@ -146,7 +146,8 @@ namespace NineMansMorrisLib {
         }
         
         // this method was moved from Board.cs
-        public bool CheckIfAdjacent(int newRow, int newCol, int oldRow, int oldCol) {
+        // this method has changed from public to private
+        private bool CheckIfAdjacent(int newRow, int newCol, int oldRow, int oldCol) {
             
          return (Math.Abs(newRow - oldRow) + Math.Abs(newCol - oldCol)) == 1;
             
