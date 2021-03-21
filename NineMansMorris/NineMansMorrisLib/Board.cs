@@ -43,6 +43,8 @@ namespace NineMansMorrisLib {
                     }
 
                     // why are we using a null-coalescing operator ?
+                    // i don't really understand what's going on here because the
+                    // documentation or explanation into these statements does not exist
                     boardArray[row, col] ??= new GamePiece() {PieceState = PieceState.Invalid};
                     
                 }
