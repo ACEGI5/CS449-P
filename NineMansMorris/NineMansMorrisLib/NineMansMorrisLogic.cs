@@ -29,6 +29,7 @@ namespace NineMansMorrisLib {
                 GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
                 
             }
+            
             else if (player == BlackPlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
                      WhitePlayer.AllPiecesPlaced && CheckIfAdjacent(newRow, newCol, oldRow, oldCol)) {
                 
