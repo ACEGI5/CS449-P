@@ -10,6 +10,7 @@ namespace NineMansMorrisLib {
 
         public Board GameBoard { get; private set; }
 
+        // 
         public NineMansMorrisLogic() {
             
             var rnd = new Random();
@@ -20,6 +21,7 @@ namespace NineMansMorrisLib {
             
         }
 
+        // 
         public void MovePiece(Player player, int newRow, int newCol, int oldRow, int oldCol) {
             
             if (player == WhitePlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
@@ -40,6 +42,7 @@ namespace NineMansMorrisLib {
             
         }
 
+        // 
         public void FlyPiece(Player player, int newRow, int newCol, int oldRow, int oldCol) {
             
             // Checks if it's white players' turn and if the chosen position is open.
@@ -64,6 +67,7 @@ namespace NineMansMorrisLib {
             
         }
 
+        // 
         public void PlacePiece(Player player, int row, int col) {
             
             // checks if it is white player's turn and if
@@ -89,6 +93,7 @@ namespace NineMansMorrisLib {
             
         }
 
+        // 
         public void TakeTurn(Player player, int newRow, int newCol, int oldRow, int oldCol) {
             
             if (Turn == 0) {
