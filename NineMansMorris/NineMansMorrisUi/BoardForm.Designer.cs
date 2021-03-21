@@ -334,6 +334,7 @@
             // 
             // lblTurnIndicator
             // 
+            this.lblTurnIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lblTurnIndicator.Location = new System.Drawing.Point(442, 60);
             this.lblTurnIndicator.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblTurnIndicator.Name = "lblTurnIndicator";
