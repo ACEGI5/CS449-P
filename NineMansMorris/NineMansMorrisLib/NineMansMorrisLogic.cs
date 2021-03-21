@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace NineMansMorrisLib
-{
-    public class NineMansMorrisLogic
-    {
+namespace NineMansMorrisLib {
+    public class NineMansMorrisLogic {
         //turn 0 white turn 1 black(this should be enum)
         public int Turn { get; private set; }
         public Player WhitePlayer { get; private set; }
@@ -11,8 +9,7 @@ namespace NineMansMorrisLib
 
         public Board GameBoard { get; private set; }
 
-        public NineMansMorrisLogic()
-        {
+        public NineMansMorrisLogic() {
             var rnd = new Random();
             Turn = rnd.Next(0, 2);
             WhitePlayer = new Player();
@@ -20,16 +17,16 @@ namespace NineMansMorrisLib
             GameBoard = new Board();
         }
 
-        public void MovePiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
-        {
+        public void MovePiece(Player player, int newRow, int newCol, int oldRow, int oldCol) {
+            
             if (player == WhitePlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
-                WhitePlayer.AllPiecesPlaced && GameBoard.CheckIfAdjacent(newRow, newCol, oldRow, oldCol))
-            {
+                WhitePlayer.AllPiecesPlaced && CheckIfAdjacent(newRow, newCol, oldRow, oldCol)) {
+                
                 GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.White;
                 GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
             }
             else if (player == BlackPlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
-                     WhitePlayer.AllPiecesPlaced && GameBoard.CheckIfAdjacent(newRow, newCol, oldRow, oldCol))
+                     WhitePlayer.AllPiecesPlaced && CheckIfAdjacent(newRow, newCol, oldRow, oldCol))
             {
                 GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.Black;
                 GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
@@ -58,7 +55,8 @@ namespace NineMansMorrisLib
 
         public void PlacePiece(Player player, int row, int col)
         {
-            // checks if it is white players turn and if 
+            // checks if it is white players turn and if
+            // this condition was adjusted with regards to isAdjacent
             if (player == WhitePlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Open &&
                 WhitePlayer.AllPiecesPlaced == false)
             {
@@ -66,6 +64,8 @@ namespace NineMansMorrisLib
                 GameBoard.GameBoard[row, col].PieceState = PieceState.White;
                 Turn = 1;
             }
+            
+            // this condition was adjusted with regards to isAdjacent
             else if (player == BlackPlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Open &&
                      BlackPlayer.AllPiecesPlaced == false)
             {
@@ -119,6 +119,12 @@ namespace NineMansMorrisLib
             }
         }
         
+        // this method was moved from Board.cs
+        public bool CheckIfAdjacent(int newRow, int newCol, int oldRow, int oldCol) {
+            
+         return (Math.Abs(newRow - oldRow) + Math.Abs(newCol - oldCol)) == 1;
+            
+        }
         
     }
 }

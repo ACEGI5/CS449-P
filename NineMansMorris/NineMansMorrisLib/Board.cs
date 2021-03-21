@@ -66,11 +66,11 @@ namespace NineMansMorrisLib {
             
         }
 
-        public bool CheckIfAdjacent(int newRow, int newCol, int oldRow, int oldCol) {
+        //public bool CheckIfAdjacent(int newRow, int newCol, int oldRow, int oldCol) {
             
-            return (Math.Abs(newRow - oldRow) + Math.Abs(newCol - oldCol)) == 1;
+           // return (Math.Abs(newRow - oldRow) + Math.Abs(newCol - oldCol)) == 1;
             
-        }
+        //}
         
     }
     
