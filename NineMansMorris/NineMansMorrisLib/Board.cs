@@ -5,6 +5,8 @@ namespace NineMansMorrisLib {
     public class Board {
         
         public const int BoardSize = 7;
+        // thought: if we're following documentation and given this is a private variable-- 
+        // should this then be _CenterOfBoard?
         private const int CenterOfBoard = BoardSize / 2;
         public GamePiece[,] GameBoard { get; private set; }
 
@@ -16,6 +18,9 @@ namespace NineMansMorrisLib {
         }
 
         //populates board with open and invalid positions
+        // what was your reasoning to make the following methods static?
+        // *because under my understanding right now*: we're creating one
+        // board at a time; one instance. so what are the impacts of having a static method?
         private static void PopulateBoard(GamePiece[,] boardArray) {
             
             PopulateDiagonal(boardArray);
@@ -24,6 +29,7 @@ namespace NineMansMorrisLib {
             
         }
 
+        // all of these methods need commenting
         private static void PopulateMiddleCells(GamePiece[,] boardArray) {
             
             for (var row = 0; row < BoardSize; row++) {
@@ -36,6 +42,7 @@ namespace NineMansMorrisLib {
                         
                     }
 
+                    // why are we using a null-coalescing operator ?
                     boardArray[row, col] ??= new GamePiece() {PieceState = PieceState.Invalid};
                     
                 }
@@ -65,13 +72,9 @@ namespace NineMansMorrisLib {
             }
             
         }
-
-        //public bool CheckIfAdjacent(int newRow, int newCol, int oldRow, int oldCol) {
-            
-           // return (Math.Abs(newRow - oldRow) + Math.Abs(newCol - oldCol)) == 1;
-            
-        //}
         
+        // isAdjacent was here
+
     }
     
 }
