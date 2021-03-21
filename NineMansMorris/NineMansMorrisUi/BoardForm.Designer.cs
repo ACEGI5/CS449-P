@@ -332,7 +332,7 @@
             // 
             // lblTurnIndicator
             // 
-            this.lblTurnIndicator.Location = new System.Drawing.Point(442, 54);
+            this.lblTurnIndicator.Location = new System.Drawing.Point(442, 60);
             this.lblTurnIndicator.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblTurnIndicator.Name = "lblTurnIndicator";
             this.lblTurnIndicator.Size = new System.Drawing.Size(93, 23);
@@ -343,7 +343,7 @@
             // btnUnoccupiedKey
             // 
             this.btnUnoccupiedKey.Enabled = false;
-            this.btnUnoccupiedKey.Location = new System.Drawing.Point(74, 62);
+            this.btnUnoccupiedKey.Location = new System.Drawing.Point(74, 60);
             this.btnUnoccupiedKey.Margin = new System.Windows.Forms.Padding(1);
             this.btnUnoccupiedKey.Name = "btnUnoccupiedKey";
             this.btnUnoccupiedKey.Size = new System.Drawing.Size(15, 15);
@@ -353,7 +353,7 @@
             // btnBlackKey
             // 
             this.btnBlackKey.Enabled = false;
-            this.btnBlackKey.Location = new System.Drawing.Point(74, 94);
+            this.btnBlackKey.Location = new System.Drawing.Point(74, 90);
             this.btnBlackKey.Margin = new System.Windows.Forms.Padding(1);
             this.btnBlackKey.Name = "btnBlackKey";
             this.btnBlackKey.Size = new System.Drawing.Size(15, 16);
@@ -363,7 +363,7 @@
             // btnWhiteKey
             // 
             this.btnWhiteKey.Enabled = false;
-            this.btnWhiteKey.Location = new System.Drawing.Point(74, 122);
+            this.btnWhiteKey.Location = new System.Drawing.Point(74, 120);
             this.btnWhiteKey.Margin = new System.Windows.Forms.Padding(1);
             this.btnWhiteKey.Name = "btnWhiteKey";
             this.btnWhiteKey.Size = new System.Drawing.Size(15, 17);
@@ -372,30 +372,32 @@
             // 
             // label20
             // 
-            this.label20.Location = new System.Drawing.Point(4, 63);
+            this.label20.Location = new System.Drawing.Point(4, 60);
             this.label20.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(68, 12);
             this.label20.TabIndex = 32;
-            this.label20.Text = "unoccupied:";
+            this.label20.Text = "Unoccupied";
             // 
             // label21
             // 
-            this.label21.Location = new System.Drawing.Point(4, 92);
+            this.label21.Location = new System.Drawing.Point(4, 90);
             this.label21.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(68, 12);
             this.label21.TabIndex = 33;
-            this.label21.Text = "Black Piece:";
+            this.label21.Text = "Black";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label22
             // 
-            this.label22.Location = new System.Drawing.Point(4, 127);
+            this.label22.Location = new System.Drawing.Point(4, 120);
             this.label22.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(68, 12);
             this.label22.TabIndex = 34;
-            this.label22.Text = "White Piece:";
+            this.label22.Text = "White";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // BoardForm
             // 
