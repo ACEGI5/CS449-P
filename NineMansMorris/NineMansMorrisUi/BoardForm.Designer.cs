@@ -242,6 +242,7 @@
             // 
             // label14
             // 
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label14.Location = new System.Drawing.Point(433, 119);
             this.label14.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label14.Name = "label14";
@@ -252,6 +253,7 @@
             // 
             // label15
             // 
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label15.Location = new System.Drawing.Point(433, 218);
             this.label15.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label15.Name = "label15";
@@ -321,7 +323,7 @@
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(120, 22);
             this.label18.TabIndex = 26;
-            this.label18.Text = "Pieces left";
+            this.label18.Text = "Pieces Left";
             // 
             // label19
             // 
@@ -330,7 +332,7 @@
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(120, 22);
             this.label19.TabIndex = 27;
-            this.label19.Text = "Pieces left";
+            this.label19.Text = "Pieces Left";
             // 
             // lblTurnIndicator
             // 
