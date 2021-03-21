@@ -242,25 +242,27 @@
             // 
             // label14
             // 
-            this.label14.Location = new System.Drawing.Point(433, 124);
+            this.label14.Location = new System.Drawing.Point(433, 119);
             this.label14.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(78, 23);
             this.label14.TabIndex = 18;
-            this.label14.Text = "White Player:";
+            this.label14.Text = "White";
+            this.label14.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(433, 223);
+            this.label15.Location = new System.Drawing.Point(433, 218);
             this.label15.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(78, 23);
             this.label15.TabIndex = 19;
-            this.label15.Text = "Black Player:";
+            this.label15.Text = "Black";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // textBoxWhitePlayerPiecesToPlace
             // 
-            this.textBoxWhitePlayerPiecesToPlace.Location = new System.Drawing.Point(433, 148);
+            this.textBoxWhitePlayerPiecesToPlace.Location = new System.Drawing.Point(433, 143);
             this.textBoxWhitePlayerPiecesToPlace.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxWhitePlayerPiecesToPlace.Name = "textBoxWhitePlayerPiecesToPlace";
             this.textBoxWhitePlayerPiecesToPlace.ReadOnly = true;
@@ -269,7 +271,7 @@
             // 
             // textBoxWhitePlayerPiecesLeft
             // 
-            this.textBoxWhitePlayerPiecesLeft.Location = new System.Drawing.Point(433, 166);
+            this.textBoxWhitePlayerPiecesLeft.Location = new System.Drawing.Point(433, 173);
             this.textBoxWhitePlayerPiecesLeft.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxWhitePlayerPiecesLeft.Name = "textBoxWhitePlayerPiecesLeft";
             this.textBoxWhitePlayerPiecesLeft.ReadOnly = true;
@@ -278,7 +280,7 @@
             // 
             // textBoxBlackPlayerPiecesToPlace
             // 
-            this.textBoxBlackPlayerPiecesToPlace.Location = new System.Drawing.Point(433, 247);
+            this.textBoxBlackPlayerPiecesToPlace.Location = new System.Drawing.Point(433, 242);
             this.textBoxBlackPlayerPiecesToPlace.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxBlackPlayerPiecesToPlace.Name = "textBoxBlackPlayerPiecesToPlace";
             this.textBoxBlackPlayerPiecesToPlace.ReadOnly = true;
@@ -287,7 +289,7 @@
             // 
             // textBoxBlackPlayerPiecesLeft
             // 
-            this.textBoxBlackPlayerPiecesLeft.Location = new System.Drawing.Point(433, 265);
+            this.textBoxBlackPlayerPiecesLeft.Location = new System.Drawing.Point(433, 272);
             this.textBoxBlackPlayerPiecesLeft.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxBlackPlayerPiecesLeft.Name = "textBoxBlackPlayerPiecesLeft";
             this.textBoxBlackPlayerPiecesLeft.ReadOnly = true;
@@ -315,7 +317,7 @@
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label18.Location = new System.Drawing.Point(468, 166);
+            this.label18.Location = new System.Drawing.Point(468, 176);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(120, 22);
             this.label18.TabIndex = 26;
@@ -324,7 +326,7 @@
             // label19
             // 
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label19.Location = new System.Drawing.Point(468, 265);
+            this.label19.Location = new System.Drawing.Point(468, 275);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(120, 22);
             this.label19.TabIndex = 27;
