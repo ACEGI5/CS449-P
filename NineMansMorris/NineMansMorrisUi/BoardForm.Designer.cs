@@ -70,7 +70,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(536, 12);
+            this.btnReset.Location = new System.Drawing.Point(501, 455);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(87, 23);
             this.btnReset.TabIndex = 0;
@@ -234,7 +234,7 @@
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.InitialImage = global::NineMansMorrisUi.Properties.Resources.NineMansMorrisBoard;
             this.pictureBox1.Location = new System.Drawing.Point(-25, -20);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(320, 326);
             this.pictureBox1.TabIndex = 0;
@@ -242,7 +242,7 @@
             // 
             // label14
             // 
-            this.label14.Location = new System.Drawing.Point(545, 70);
+            this.label14.Location = new System.Drawing.Point(433, 124);
             this.label14.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(78, 23);
@@ -251,7 +251,7 @@
             // 
             // label15
             // 
-            this.label15.Location = new System.Drawing.Point(545, 249);
+            this.label15.Location = new System.Drawing.Point(433, 223);
             this.label15.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(78, 23);
@@ -260,8 +260,8 @@
             // 
             // textBoxWhitePlayerPiecesToPlace
             // 
-            this.textBoxWhitePlayerPiecesToPlace.Location = new System.Drawing.Point(545, 94);
-            this.textBoxWhitePlayerPiecesToPlace.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxWhitePlayerPiecesToPlace.Location = new System.Drawing.Point(433, 148);
+            this.textBoxWhitePlayerPiecesToPlace.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxWhitePlayerPiecesToPlace.Name = "textBoxWhitePlayerPiecesToPlace";
             this.textBoxWhitePlayerPiecesToPlace.ReadOnly = true;
             this.textBoxWhitePlayerPiecesToPlace.Size = new System.Drawing.Size(33, 20);
@@ -269,8 +269,8 @@
             // 
             // textBoxWhitePlayerPiecesLeft
             // 
-            this.textBoxWhitePlayerPiecesLeft.Location = new System.Drawing.Point(545, 112);
-            this.textBoxWhitePlayerPiecesLeft.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxWhitePlayerPiecesLeft.Location = new System.Drawing.Point(433, 166);
+            this.textBoxWhitePlayerPiecesLeft.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxWhitePlayerPiecesLeft.Name = "textBoxWhitePlayerPiecesLeft";
             this.textBoxWhitePlayerPiecesLeft.ReadOnly = true;
             this.textBoxWhitePlayerPiecesLeft.Size = new System.Drawing.Size(33, 20);
@@ -278,8 +278,8 @@
             // 
             // textBoxBlackPlayerPiecesToPlace
             // 
-            this.textBoxBlackPlayerPiecesToPlace.Location = new System.Drawing.Point(545, 273);
-            this.textBoxBlackPlayerPiecesToPlace.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxBlackPlayerPiecesToPlace.Location = new System.Drawing.Point(433, 247);
+            this.textBoxBlackPlayerPiecesToPlace.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxBlackPlayerPiecesToPlace.Name = "textBoxBlackPlayerPiecesToPlace";
             this.textBoxBlackPlayerPiecesToPlace.ReadOnly = true;
             this.textBoxBlackPlayerPiecesToPlace.Size = new System.Drawing.Size(33, 20);
@@ -287,8 +287,8 @@
             // 
             // textBoxBlackPlayerPiecesLeft
             // 
-            this.textBoxBlackPlayerPiecesLeft.Location = new System.Drawing.Point(545, 291);
-            this.textBoxBlackPlayerPiecesLeft.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.textBoxBlackPlayerPiecesLeft.Location = new System.Drawing.Point(433, 265);
+            this.textBoxBlackPlayerPiecesLeft.Margin = new System.Windows.Forms.Padding(1);
             this.textBoxBlackPlayerPiecesLeft.Name = "textBoxBlackPlayerPiecesLeft";
             this.textBoxBlackPlayerPiecesLeft.ReadOnly = true;
             this.textBoxBlackPlayerPiecesLeft.Size = new System.Drawing.Size(33, 20);
@@ -297,7 +297,7 @@
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label16.Location = new System.Drawing.Point(580, 92);
+            this.label16.Location = new System.Drawing.Point(468, 146);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(120, 22);
             this.label16.TabIndex = 24;
@@ -306,7 +306,7 @@
             // label17
             // 
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label17.Location = new System.Drawing.Point(580, 271);
+            this.label17.Location = new System.Drawing.Point(468, 245);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(120, 22);
             this.label17.TabIndex = 25;
@@ -315,7 +315,7 @@
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label18.Location = new System.Drawing.Point(580, 112);
+            this.label18.Location = new System.Drawing.Point(468, 166);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(120, 22);
             this.label18.TabIndex = 26;
@@ -324,7 +324,7 @@
             // label19
             // 
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label19.Location = new System.Drawing.Point(580, 291);
+            this.label19.Location = new System.Drawing.Point(468, 265);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(120, 22);
             this.label19.TabIndex = 27;
@@ -332,18 +332,19 @@
             // 
             // lblTurnIndicator
             // 
-            this.lblTurnIndicator.Location = new System.Drawing.Point(418, 55);
+            this.lblTurnIndicator.Location = new System.Drawing.Point(442, 54);
             this.lblTurnIndicator.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
             this.lblTurnIndicator.Name = "lblTurnIndicator";
             this.lblTurnIndicator.Size = new System.Drawing.Size(93, 23);
             this.lblTurnIndicator.TabIndex = 28;
-            this.lblTurnIndicator.Text = "Player indicator";
+            this.lblTurnIndicator.Text = "Turn\r\n";
+            this.lblTurnIndicator.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnUnoccupiedKey
             // 
             this.btnUnoccupiedKey.Enabled = false;
             this.btnUnoccupiedKey.Location = new System.Drawing.Point(74, 62);
-            this.btnUnoccupiedKey.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnUnoccupiedKey.Margin = new System.Windows.Forms.Padding(1);
             this.btnUnoccupiedKey.Name = "btnUnoccupiedKey";
             this.btnUnoccupiedKey.Size = new System.Drawing.Size(15, 15);
             this.btnUnoccupiedKey.TabIndex = 29;
@@ -353,7 +354,7 @@
             // 
             this.btnBlackKey.Enabled = false;
             this.btnBlackKey.Location = new System.Drawing.Point(74, 94);
-            this.btnBlackKey.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnBlackKey.Margin = new System.Windows.Forms.Padding(1);
             this.btnBlackKey.Name = "btnBlackKey";
             this.btnBlackKey.Size = new System.Drawing.Size(15, 16);
             this.btnBlackKey.TabIndex = 30;
@@ -363,7 +364,7 @@
             // 
             this.btnWhiteKey.Enabled = false;
             this.btnWhiteKey.Location = new System.Drawing.Point(74, 122);
-            this.btnWhiteKey.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.btnWhiteKey.Margin = new System.Windows.Forms.Padding(1);
             this.btnWhiteKey.Name = "btnWhiteKey";
             this.btnWhiteKey.Size = new System.Drawing.Size(15, 17);
             this.btnWhiteKey.TabIndex = 31;
