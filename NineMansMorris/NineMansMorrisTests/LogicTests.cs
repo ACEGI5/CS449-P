@@ -9,7 +9,7 @@ namespace NineMansMorrisTests
         [TestCase(0, 0, PieceState.White)]
         public void TestValidPlacePiece(int row, int col, PieceState color)
         {
-            NineMansMorrisLogic sut = new NineMansMorrisLogic();
+            var sut = new NineMansMorrisLogic();
 
             sut.PlacePiece(sut.WhitePlayer, row, col);
 
@@ -19,7 +19,7 @@ namespace NineMansMorrisTests
         [TestCase(0, 1, PieceState.White)]
         public void TestInvalidPiecePlacementInvalidSpot(int row, int col, PieceState color)
         {
-            NineMansMorrisLogic sut = new NineMansMorrisLogic();
+            var sut = new NineMansMorrisLogic();
             sut.PlacePiece(sut.WhitePlayer, row, col);
             Assert.AreEqual(PieceState.Invalid, sut.GameBoard.GameBoard[row, col].PieceState);
         }
@@ -27,7 +27,7 @@ namespace NineMansMorrisTests
         [TestCase(0, 0, PieceState.White)]
         public void TestInvalidPiecePlacementOccupiedSpot(int row, int col, PieceState color)
         {
-            NineMansMorrisLogic sut = new NineMansMorrisLogic();
+            var sut = new NineMansMorrisLogic();
             sut.PlacePiece(sut.BlackPlayer, row, col);
             sut.PlacePiece(sut.WhitePlayer, row, col);
             Assert.AreEqual(PieceState.Black, sut.GameBoard.GameBoard[row, col].PieceState);
@@ -36,7 +36,7 @@ namespace NineMansMorrisTests
         [TestCase(0, 0)]
         public void TestTurnSwitchingOnPlacement(int row, int col)
         {
-            NineMansMorrisLogic sut = new NineMansMorrisLogic();
+            var sut = new NineMansMorrisLogic();
             if (sut.Turn == 0)
             {
                 sut.PlacePiece(sut.WhitePlayer, row, col);
@@ -51,7 +51,7 @@ namespace NineMansMorrisTests
         [TestCase(0, 1)]
         public void TestNotTurnSwitchingOnInvalidSpot(int row, int col)
         {
-            NineMansMorrisLogic sut = new NineMansMorrisLogic();
+            var sut = new NineMansMorrisLogic();
             if (sut.Turn == 0)
             {
                 sut.PlacePiece(sut.WhitePlayer, row, col);
@@ -66,7 +66,7 @@ namespace NineMansMorrisTests
         [TestCase(0, 0)]
         public void TestNotTurnSwitchingOnOccupiedSpot(int row, int col)
         {
-            NineMansMorrisLogic sut = new NineMansMorrisLogic();
+            var sut = new NineMansMorrisLogic();
             sut.PlacePiece(sut.WhitePlayer, row, col);
             if (sut.Turn == 0)
             {
@@ -83,7 +83,7 @@ namespace NineMansMorrisTests
         [TestCase(0, 1)]
         public void TestRandomPlayerSelected(int row, int col)
         {
-            NineMansMorrisLogic sut = new NineMansMorrisLogic();
+            var sut = new NineMansMorrisLogic();
             switch (sut.Turn)
             {
                 case 0:
