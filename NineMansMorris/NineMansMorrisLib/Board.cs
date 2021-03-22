@@ -26,7 +26,7 @@ namespace NineMansMorrisLib {
             PopulateDiagonal(boardArray);
             PopulateMiddleCells(boardArray);
             PopulateReverseDiagonal(boardArray);
-            
+            boardArray[CenterOfBoard, CenterOfBoard].PieceState = PieceState.Invalid;
         }
 
         // all of these methods need commenting

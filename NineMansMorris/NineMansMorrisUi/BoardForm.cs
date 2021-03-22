@@ -13,9 +13,9 @@ namespace NineMansMorrisUi
         private Button _selectButton = null;
         private string _turnIndicatorWhite = "White's Turn";
         private string _turnIndicatorBlack = "Black's Turn";
-        private Color _unoccupiedColor= Color.Red;
-        private Color _whiteColor= Color.GhostWhite;
-        private Color _blackColor= Color.Black;
+        private readonly Color _unoccupiedColor= Color.Red;
+        private readonly Color _whiteColor= Color.GhostWhite;
+        private readonly Color _blackColor= Color.Black;
         public BoardForm()
         {
             InitializeComponent();
