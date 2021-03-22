@@ -150,5 +150,11 @@ namespace NineMansMorrisUi
         {
             Application.Exit();
         }
+
+
+        private void buttonExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }
