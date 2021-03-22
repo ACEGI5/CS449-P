@@ -6,6 +6,7 @@ namespace NineMansMorrisUi
     public partial class GameSelectionForm : Form
     {
         BoardForm boardForm = new BoardForm();
+
         public GameSelectionForm()
         {
             InitializeComponent();

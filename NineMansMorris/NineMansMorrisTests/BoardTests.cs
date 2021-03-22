@@ -27,6 +27,7 @@ namespace NineMansMorrisTests
             var sut = new Board();
             Assert.AreEqual(sut.GameBoard[row, col].PieceState, state);
         }
+
         [TestCase(0, 0, PieceState.Open)]
         [TestCase(1, 1, PieceState.Open)]
         [TestCase(2, 2, PieceState.Open)]
@@ -40,6 +41,7 @@ namespace NineMansMorrisTests
             var sut = new Board();
             Assert.AreEqual(sut.GameBoard[row, col].PieceState, state);
         }
+
         [TestCase(0, 6, PieceState.Open)]
         [TestCase(1, 5, PieceState.Open)]
         [TestCase(2, 4, PieceState.Open)]
@@ -48,10 +50,12 @@ namespace NineMansMorrisTests
         [TestCase(5, 1, PieceState.Open)]
         [TestCase(6, 0, PieceState.Open)]
         public void TestPopulateReverseDiagonal(int row, int col, PieceState state)
-        {//testing side effect of method
+        {
+            //testing side effect of method
             var sut = new Board();
             Assert.AreEqual(sut.GameBoard[row, col].PieceState, state);
         }
+
         [TestCase(0, 3, PieceState.Open)]
         [TestCase(1, 3, PieceState.Open)]
         [TestCase(2, 3, PieceState.Open)]

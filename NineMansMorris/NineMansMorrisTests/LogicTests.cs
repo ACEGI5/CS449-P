@@ -48,6 +48,7 @@ namespace NineMansMorrisTests
                 Assert.AreEqual(sut.Turn, 0);
             }
         }
+
         [TestCase(0, 1)]
         public void TestNotTurnSwitchingOnInvalidSpot(int row, int col)
         {
@@ -63,6 +64,7 @@ namespace NineMansMorrisTests
                 Assert.AreEqual(sut.Turn, 1);
             }
         }
+
         [TestCase(0, 0)]
         public void TestNotTurnSwitchingOnOccupiedSpot(int row, int col)
         {
@@ -79,7 +81,7 @@ namespace NineMansMorrisTests
                 Assert.AreEqual(sut.Turn, 1);
             }
         }
-        
+
         [TestCase(0, 1)]
         public void TestRandomPlayerSelected(int row, int col)
         {
@@ -94,8 +96,5 @@ namespace NineMansMorrisTests
                     break;
             }
         }
-
-       
-        
     }
 }

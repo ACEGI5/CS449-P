@@ -13,9 +13,10 @@ namespace NineMansMorrisUi
         private Button _selectButton;
         private readonly string _turnIndicatorWhite = "White's Turn";
         private readonly string _turnIndicatorBlack = "Black's Turn";
-        private readonly Color _unoccupiedColor= Color.Red;
-        private readonly Color _whiteColor= Color.GhostWhite;
-        private readonly Color _blackColor= Color.Black;
+        private readonly Color _unoccupiedColor = Color.Red;
+        private readonly Color _whiteColor = Color.GhostWhite;
+        private readonly Color _blackColor = Color.Black;
+
         public BoardForm()
         {
             InitializeComponent();
@@ -90,7 +91,7 @@ namespace NineMansMorrisUi
                                   (lblTurnIndicator.Text == _turnIndicatorBlack && _nineMansMorrisGame.Turn == 1 &&
                                    oldPieceState == PieceState.Black);
 
-                if ( _selectButton != clickedButton && _selectButton != null &&
+                if (_selectButton != clickedButton && _selectButton != null &&
                     _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open && correctTurn)
                 {
                     switch (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState)
