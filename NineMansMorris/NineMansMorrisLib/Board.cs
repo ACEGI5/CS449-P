@@ -1,13 +1,11 @@
 ﻿using System;
 
+
 namespace NineMansMorrisLib
 {
     public class Board
     {
         public const int BoardSize = 7;
-
-        // thought: if we're following documentation and given this is a private variable-- 
-        // should this then be _CenterOfBoard?
         private const int CenterOfBoard = BoardSize / 2;
         public GamePiece[,] GameBoard { get; private set; }
 
@@ -18,18 +16,13 @@ namespace NineMansMorrisLib
         }
 
         //populates board with open and invalid positions
-        // what was your reasoning to make the following methods static?
-        // *because under my understanding right now*: we're creating one
-        // board at a time; one instance. so what are the impacts of having a static method?
         private static void PopulateBoard(GamePiece[,] boardArray)
         {
             PopulateDiagonal(boardArray);
-            PopulateMiddleCells(boardArray);
             PopulateReverseDiagonal(boardArray);
-            boardArray[CenterOfBoard, CenterOfBoard].PieceState = PieceState.Invalid;
+            PopulateMiddleCells(boardArray);
         }
 
-        // all of these methods need commenting
         private static void PopulateMiddleCells(GamePiece[,] boardArray)
         {
             for (var row = 0; row < BoardSize; row++)
@@ -41,9 +34,6 @@ namespace NineMansMorrisLib
                         boardArray[row, col] = new GamePiece() {PieceState = PieceState.Open};
                     }
 
-                    // why are we using a null-coalescing operator ?
-                    // i don't really understand what's going on here because the
-                    // documentation or explanation into these statements does not exist
                     boardArray[row, col] ??= new GamePiece() {PieceState = PieceState.Invalid};
                 }
             }
@@ -67,6 +57,9 @@ namespace NineMansMorrisLib
             }
         }
 
-        // isAdjacent was here
+        public bool CheckIfAdjacent(int newRow, int newCol, int oldRow, int oldCol)
+        {
+            return (Math.Abs(newRow - oldRow) + Math.Abs(newCol - oldCol)) == 1;
+        }
     }
 }

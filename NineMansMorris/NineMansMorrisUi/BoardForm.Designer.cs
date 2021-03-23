@@ -71,7 +71,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(1036, 878);
+            this.btnReset.Location = new System.Drawing.Point(26, 417);
             this.btnReset.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(232, 55);
@@ -356,7 +356,7 @@
             // lblTurnIndicator
             // 
             this.lblTurnIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.lblTurnIndicator.Location = new System.Drawing.Point(1179, 143);
+            this.lblTurnIndicator.Location = new System.Drawing.Point(1149, 207);
             this.lblTurnIndicator.Name = "lblTurnIndicator";
             this.lblTurnIndicator.Size = new System.Drawing.Size(248, 55);
             this.lblTurnIndicator.TabIndex = 28;
@@ -421,9 +421,9 @@
             // 
             // buttonExit
             // 
-            this.buttonExit.Location = new System.Drawing.Point(1308, 878);
+            this.buttonExit.Location = new System.Drawing.Point(26, 508);
             this.buttonExit.Name = "buttonExit";
-            this.buttonExit.Size = new System.Drawing.Size(240, 55);
+            this.buttonExit.Size = new System.Drawing.Size(232, 55);
             this.buttonExit.TabIndex = 35;
             this.buttonExit.Text = "Exit";
             this.buttonExit.UseVisualStyleBackColor = true;
