@@ -1,4 +1,6 @@
-﻿using NineMansMorrisLib;
+﻿using System;
+using System.Diagnostics;
+using NineMansMorrisLib;
 using NUnit.Framework;
 
 namespace NineMansMorrisTests
@@ -6,6 +8,22 @@ namespace NineMansMorrisTests
     [TestFixture]
     public class BoardTests
     {
+        private Stopwatch _stopWatch;
+
+        [SetUp]
+        public void Init()
+        {
+            _stopWatch = new Stopwatch();
+            _stopWatch.Start();
+        }
+
+        [TearDown]
+        public void Cleanup()
+        {
+            _stopWatch.Stop();
+            Console.WriteLine($"{_stopWatch.ElapsedMilliseconds} ms");
+        }
+
         [TestCase(0, 0, PieceState.Open)]
         [TestCase(6, 6, PieceState.Open)]
         [TestCase(6, 0, PieceState.Open)]
