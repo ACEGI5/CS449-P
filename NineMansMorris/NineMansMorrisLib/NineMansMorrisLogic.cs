@@ -24,19 +24,21 @@ namespace NineMansMorrisLib
         // Needs rewriting with new isAdjacent method
         public void MovePiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
         {
-            //if (player == WhitePlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
-            //    WhitePlayer.AllPiecesPlaced && CheckIfAdjacent(newRow, newCol, oldRow, oldCol))
-            //{
-            //    GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.White;
-            //    GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
-            //}
+            Hashtable validMoves = CheckIfAdjacent(oldRow, oldCol);
+            
+            if (player == WhitePlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
+                WhitePlayer.AllPiecesPlaced && IsValidMove(validMoves, newRow, newCol))
+            {
+                GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.White;
+                GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
+            }
 
-            //else if (player == BlackPlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
-            //         WhitePlayer.AllPiecesPlaced && CheckIfAdjacent(newRow, newCol, oldRow, oldCol))
-            //{
-            //    GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.Black;
-            //    GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
-            //}
+            else if (player == BlackPlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
+                     WhitePlayer.AllPiecesPlaced && IsValidMove(validMoves, newRow, newCol))
+            {
+                GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.Black;
+                GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
+            }
         }
 
         // 
@@ -249,6 +251,12 @@ namespace NineMansMorrisLib
             }
 
             return validMoves;
+        }
+
+        private bool IsValidMove(Hashtable validMoves, int newRow, int newCol)
+        {
+    Console.WriteLine(validMoves.ContainsValue(new Tuple<int, int>(newRow, newCol))); // Naive test
+            return validMoves.ContainsValue(new Tuple<int, int>(newRow, newCol));
         }
     }
 }
