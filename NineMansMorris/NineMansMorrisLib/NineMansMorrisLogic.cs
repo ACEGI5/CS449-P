@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace NineMansMorrisLib
 {
@@ -10,6 +11,14 @@ namespace NineMansMorrisLib
         public Player BlackPlayer { get; private set; }
 
         public Board GameBoard { get; private set; }
+        
+        private Dictionary<string, int[]> directions = new Dictionary<string, int[]>()
+        {
+                
+            {"up", new int[] {-1, 0}}, {"down", new int[] {1, 0}},
+            {"left", new int[] {0, -1}}, {"right", new int[] {0, 1}}
+
+        };
 
         // 
         public NineMansMorrisLogic()
