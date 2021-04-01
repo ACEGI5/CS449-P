@@ -20,7 +20,6 @@ namespace NineMansMorrisLib
 
         };
 
-        // 
         public NineMansMorrisLogic()
         {
             var rnd = new Random();
@@ -73,7 +72,6 @@ namespace NineMansMorrisLib
             }
         }
 
-        // 
         public void PlacePiece(Player player, int row, int col)
         {
             // checks if it is white player's turn and if
@@ -144,128 +142,68 @@ namespace NineMansMorrisLib
             }
         }
 
-        // this method was moved from Board.cs
-        // this method has changed from public to private
-        private Hashtable CheckIfAdjacent(int curRow, int curCol)
+        // pre : 
+        private bool isValid(int rowTo, int colTo, int rowFrom, int colFrom)
         {
-            // Board needs accessor to allow this class to get the board size.
-            Hashtable validMoves = new Hashtable();
-            
-            validMoves.Add("left", new Tuple<int, int>(-1, -1));
-            validMoves.Add("right", new Tuple<int, int>(-1, -1));
-            validMoves.Add("up", new Tuple<int, int>(-1, -1));
-            validMoves.Add("down", new Tuple<int, int>(-1, -1));
 
-            int temp;
-            
-            // Checks case where piece isn't on far left and finds valid move on the left
-            if (curRow > 0)
+            // traverse each direction
+            foreach (KeyValuePair<string, int[]> direction in directions)
             {
-                temp = curRow - 1;
-                while (temp >= 0)
-                {
-                    // if the first valid spot that is encountered is open, then the left position is set and the loop is broken
-                    if (GameBoard.GameBoard[temp, curCol].PieceState == PieceState.Open)
-                    {
-                        validMoves["left"] = new Tuple<int, int>(temp, curCol);
-                        break;
-                    }
-                    // if spot is invalid, then keep traversing the board to find a valid spot
-                    else if (GameBoard.GameBoard[temp, curCol].PieceState == PieceState.Invalid)
-                    {
-                        temp--;
-                    }
-                    // otherwise, the spot is valid and occupied, and thus can't be moved to
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
 
-            // Checks case where piece isn't on far right and finds valid move
-            if (curRow < 6)
-            {
-                temp = curRow + 1;
-                while (temp < 7)
+                // while move is not possible
+                while (true)
                 {
-                    // if the first valid spot that is encountered is open, then the right position is set and the loop is broken
-                    if (GameBoard.GameBoard[temp, curCol].PieceState == PieceState.Open)
+
+                    // update position
+                    int row = rowFrom + direction.Value[0];
+                    int col = colFrom + direction.Value[1];
+
+                    // if out of bounds
+                    if ((row < 10 && col < 10) && (col > -1) && (row > -1))
                     {
-                        validMoves["right"] = new Tuple<int, int>(temp, curCol);
+
                         break;
+
                     }
-                    // if spot is invalid, then keep traversing the board to find a valid spot
-                    else if (GameBoard.GameBoard[temp, curCol].PieceState == PieceState.Invalid)
+
+                    // if middle, do not cross
+                    if (row == 3 && col == 3)
                     {
-                        temp++;
-                    }
-                    // otherwise, the spot is valid and occupied, and thus can't be moved to
-                    else
-                    {
+
                         break;
+
                     }
+
+                    // if black, white, open
+                    if (GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid)
+                    {
+
+                        // if spot is open
+                        if (GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
+                        {
+                            
+                            // if spot is where user wants to go
+                            if (rowTo == row && colTo == col)
+                            {
+
+                                return true;
+
+                            }
+
+                        }
+
+                        return false;
+
+                    }
+
                 }
-            }
-            
-            // Checks case where piece isn't at top and finds valid move
-            if (curCol > 0)
-            {
-                temp = curCol - 1;
-                while (temp >= 0)
-                {
-                    // if the first valid spot that is encountered is open, then the up position is set and the loop is broken
-                    if (GameBoard.GameBoard[curRow, temp].PieceState == PieceState.Open)
-                    {
-                        validMoves["up"] = new Tuple<int, int>(curRow, temp);
-                        break;
-                    }
-                    // if spot is invalid, then keep traversing the board to find a valid spot
-                    else if (GameBoard.GameBoard[curRow, temp].PieceState == PieceState.Invalid)
-                    {
-                        temp--;
-                    }
-                    // otherwise, the spot is valid and occupied, and thus can't be moved to
-                    else
-                    {
-                        break;
-                    }
-                }
-            }
-            
-            // Checks case where piece isn't at bottom and finds valid move
-            
-            if (curCol < 6)
-            {
-                temp = curCol + 1;
-                while (temp < 7)
-                {
-                    // if the first valid spot that is encountered is open, then the down position is set and the loop is broken
-                    if (GameBoard.GameBoard[curRow, temp].PieceState == PieceState.Open)
-                    {
-                        validMoves["down"] = new Tuple<int, int>(curRow, temp);
-                        break;
-                    }
-                    // if spot is invalid, then keep traversing the board to find a valid spot
-                    else if (GameBoard.GameBoard[curRow, temp].PieceState == PieceState.Invalid)
-                    {
-                        temp++;
-                    }
-                    // otherwise, the spot is valid and occupied, and thus can't be moved to
-                    else
-                    {
-                        break;
-                    }
-                }
+                
             }
 
-            return validMoves;
+            return false;
+
         }
-
-        private bool IsValidMove(Hashtable validMoves, int newRow, int newCol)
-        {
-    Console.WriteLine(validMoves.ContainsValue(new Tuple<int, int>(newRow, newCol))); // Naive test
-            return validMoves.ContainsValue(new Tuple<int, int>(newRow, newCol));
-        }
+        // post : 
+        
     }
 }
