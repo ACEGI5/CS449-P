@@ -60,9 +60,7 @@ namespace NineMansMorrisUi
                 }
             }
         }
-
-//default pass in or member variable
-//anchor board
+        
         private void Grid_Button_click(object sender, EventArgs e)
         {
             var clickedButton = (Button) sender;
@@ -124,42 +122,57 @@ namespace NineMansMorrisUi
 
         private void PiecePlacement(int row, int col, Control clickedButton)
         {
+            
             if (_nineMansMorrisGame.Turn == 0 && _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced == false &&
                 _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
             {
+                
                 clickedButton.BackColor = _whiteColor;
                 _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.WhitePlayer, row, col);
                 textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
                 lblTurnIndicator.Text = _turnIndicatorBlack;
+                
             }
+            
             else if (_nineMansMorrisGame.Turn == 1 && _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced == false &&
                      _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
             {
+                
                 clickedButton.BackColor = _blackColor;
                 _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer, row, col);
                 textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
                 lblTurnIndicator.Text = _turnIndicatorWhite;
+                
             }
+            
         }
 
 
         private void BtnResetClick(object sender, EventArgs e)
         {
+            
             var gameSelectionForm = new GameSelectionForm();
             //need reset method for pieces and player objects
             gameSelectionForm.Show();
             this.Hide();
+            
         }
 
         private void BtnExitClick(object sender, EventArgs e)
         {
+            
             Application.Exit();
+            
         }
 
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
+            
             Application.Exit();
+            
         }
+        
     }
+    
 }

@@ -29,26 +29,43 @@ namespace NineMansMorrisLib
             GameBoard = new Board();
         }
 
-        // Needs rewriting with new isAdjacent method
-        public void MovePiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
+        // pre : 
+        public bool movePiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
-            Hashtable validMoves = CheckIfAdjacent(oldRow, oldCol);
+            // if valid placement and all pieces placed
+            if (isValid(rowTo, colTo, rowFrom, colFrom) && player.AllPiecesPlaced)
+            {
+
+                // if white
+                if (player == WhitePlayer)
+                {
+
+                    // update
+                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.White;
+                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+
+                }
+
+                // if black
+                else
+                {
+
+                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
+                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+
+                }
+                
+                // events were successful
+                return true;
+
+            }
+
+            // events were not successful
+            return false;
             
-            if (player == WhitePlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
-                WhitePlayer.AllPiecesPlaced && IsValidMove(validMoves, newRow, newCol))
-            {
-                GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.White;
-                GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
-            }
-
-            else if (player == BlackPlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
-                     WhitePlayer.AllPiecesPlaced && IsValidMove(validMoves, newRow, newCol))
-            {
-                GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.Black;
-                GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
-            }
         }
-
+        // post : 
+        
         // 
         public void FlyPiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
         {
