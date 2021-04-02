@@ -59,12 +59,12 @@ namespace NineMansMorrisLib
 
                 }
                 
-                // events were successful
+                // events have taken place
                 return true;
 
             }
 
-            // events were not successful
+            // events have not taken place
             return false;
             
         }
@@ -98,12 +98,12 @@ namespace NineMansMorrisLib
 
                 }
                 
-                // events were successful
+                // events have taken place
                 return true;
 
             }
 
-            // events were not successful
+            // events have not taken place
             return false;
 
         }
@@ -137,77 +137,17 @@ namespace NineMansMorrisLib
 
 
                 }
-                
+
+                // events have taken place
+                return true;
+
             }
-            
+
+            // events have not taken place
+            return false;
+
         }
         // post : 
-
-        // 
-        public void TakeTurn(Player player, int newRow, int newCol, int oldRow, int oldCol)
-        {
-            
-            //if (Turn == 0)
-            {
-                
-                //WhitePlayer
-                if (WhitePlayer.PiecesToPlace != 0)
-                {
-                    
-                    PlacePiece(WhitePlayer, newRow, newCol);
-                    
-                }
-
-                else if (!WhitePlayer.PlayerCanFly())
-                {
-                    
-                    //MovePiece(WhitePlayer, newRow, newCol, oldRow, oldCol);
-                    
-                }
-
-                else if (WhitePlayer.PlayerCanFly())
-                {
-                    
-                    FlyPiece(WhitePlayer, newRow, newCol, oldRow, oldCol);
-                    
-                }
-
-                //check mill function then -> prompt for player to select which opp piece to mill 
-                //Turn = 1;
-                
-            }
-
-            else if (//Turn == 1)
-            {
-                
-                //Black Player
-                if (WhitePlayer.PiecesToPlace != 0)
-                {
-                    
-                    PlacePiece(WhitePlayer, newRow, newCol);
-                    
-                }
-
-                else if (!WhitePlayer.PlayerCanFly())
-                {
-                    
-                    //MovePiece(WhitePlayer, newRow, newCol, oldRow, oldCol);
-                    
-                }
-
-                else if (WhitePlayer.PlayerCanFly())
-                {
-                    
-                    FlyPiece(WhitePlayer, newRow, newCol, oldRow, oldCol);
-                    
-                }
-
-                //check mill function then -> prompt for player to select which opp piece to mill  
-                //Turn = 0;
-                
-            }
-            
-        }
 
         // pre : 
         private bool isValid(int rowTo, int colTo, int rowFrom, int colFrom)
