@@ -8,7 +8,7 @@ namespace NineMansMorrisLib
     public class NineMansMorrisLogic
     {
         
-        public int Turn { get; private set; }
+        //public int Turn { get; private set; }
         public Player WhitePlayer { get; private set; }
         public Player BlackPlayer { get; private set; }
 
@@ -25,8 +25,6 @@ namespace NineMansMorrisLib
         public NineMansMorrisLogic()
         {
             
-            var rnd = new Random();
-            Turn = rnd.Next(0, 2);
             WhitePlayer = new Player();
             BlackPlayer = new Player();
             GameBoard = new Board();
@@ -34,7 +32,7 @@ namespace NineMansMorrisLib
         }
 
         // pre : 
-        public bool movePiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
+        public bool MovePiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
             
             // if valid placement and all pieces placed
@@ -55,6 +53,7 @@ namespace NineMansMorrisLib
                 else
                 {
 
+                    // update
                     GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
                     GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
 
@@ -71,32 +70,44 @@ namespace NineMansMorrisLib
         }
         // post : 
         
-        // 
-        public void FlyPiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
+        // pre : 
+        public bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
 
-            // Checks if it's white players' turn and if the chosen position is open.
-            if (player == WhitePlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open)
+            // if player can fly
+            if (player.PlayerCanFly())
             {
+
+                // if white
+                if (player == WhitePlayer)
+                {
+
+                    // update
+                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.White;
+                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+
+                }
+
+                // if black
+                else
+                {
+
+                    // update
+                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
+                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+
+                }
                 
-                // Places white in the new position and makes the old position open.
-                GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.White;
-                GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
-                Turn = 1;
-                
+                // events were successful
+                return true;
+
             }
 
-            // Checks if it's white players' turn and if the chosen position is open.
-            else if (player == BlackPlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open)
-            {
-                // Places black in the new position and makes the old position open.
-                GameBoard.GameBoard[newRow, newCol].PieceState = PieceState.Black;
-                GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
-                Turn = 0;
-                
-            }
-            
+            // events were not successful
+            return false;
+
         }
+        // post : 
 
         public void PlacePiece(Player player, int row, int col)
         {
@@ -109,7 +120,7 @@ namespace NineMansMorrisLib
                 
                 WhitePlayer.PlacePiece();
                 GameBoard.GameBoard[row, col].PieceState = PieceState.White;
-                Turn = 1;
+                //Turn = 1;
                 
             }
 
@@ -120,7 +131,7 @@ namespace NineMansMorrisLib
                 
                 BlackPlayer.PlacePiece();
                 GameBoard.GameBoard[row, col].PieceState = PieceState.Black;
-                Turn = 0;
+                //Turn = 0;
                 
             }
             
@@ -130,7 +141,7 @@ namespace NineMansMorrisLib
         public void TakeTurn(Player player, int newRow, int newCol, int oldRow, int oldCol)
         {
             
-            if (Turn == 0)
+            //if (Turn == 0)
             {
                 
                 //WhitePlayer
@@ -144,7 +155,7 @@ namespace NineMansMorrisLib
                 else if (!WhitePlayer.PlayerCanFly())
                 {
                     
-                    MovePiece(WhitePlayer, newRow, newCol, oldRow, oldCol);
+                    //MovePiece(WhitePlayer, newRow, newCol, oldRow, oldCol);
                     
                 }
 
@@ -156,11 +167,11 @@ namespace NineMansMorrisLib
                 }
 
                 //check mill function then -> prompt for player to select which opp piece to mill 
-                Turn = 1;
+                //Turn = 1;
                 
             }
 
-            else if (Turn == 1)
+            else if (//Turn == 1)
             {
                 
                 //Black Player
@@ -174,7 +185,7 @@ namespace NineMansMorrisLib
                 else if (!WhitePlayer.PlayerCanFly())
                 {
                     
-                    MovePiece(WhitePlayer, newRow, newCol, oldRow, oldCol);
+                    //MovePiece(WhitePlayer, newRow, newCol, oldRow, oldCol);
                     
                 }
 
@@ -186,7 +197,7 @@ namespace NineMansMorrisLib
                 }
 
                 //check mill function then -> prompt for player to select which opp piece to mill  
-                Turn = 0;
+                //Turn = 0;
                 
             }
             
