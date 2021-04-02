@@ -3,9 +3,9 @@
     
     public class Player
     {
-        
-        public int PiecesToPlace { get; private set; }
+
         public int PiecesInPlay { get; private set; }
+        public int PiecesToPlace { get; private set; }
         public bool AllPiecesPlaced { get; private set; }
 
         public Player()
@@ -30,16 +30,16 @@
         public void PlacePiece()
         {
             
-            PiecesToPlace--;
-            PiecesInPlay++;
+            PiecesInPlay += 1;
+            PiecesToPlace += 1;
 
             if (PiecesToPlace == 0)
             {
-                
+
                 AllPiecesPlaced = true;
-                
+
             }
-            
+
         }
 
         public bool PlayerHasLost()

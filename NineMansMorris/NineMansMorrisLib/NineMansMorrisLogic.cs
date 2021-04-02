@@ -25,9 +25,9 @@ namespace NineMansMorrisLib
         public NineMansMorrisLogic()
         {
             
+            GameBoard = new Board();
             WhitePlayer = new Player();
             BlackPlayer = new Player();
-            GameBoard = new Board();
             
         }
 
@@ -109,33 +109,39 @@ namespace NineMansMorrisLib
         }
         // post : 
 
-        public void PlacePiece(Player player, int row, int col)
+        // pre : 
+        public bool PlacePiece(Player player, int row, int col)
         {
-            
-            // checks if it is white player's turn and if
-            // this condition was adjusted with regards to isAdjacent
-            if (player == WhitePlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Open &&
-                WhitePlayer.AllPiecesPlaced == false)
-            {
-                
-                WhitePlayer.PlacePiece();
-                GameBoard.GameBoard[row, col].PieceState = PieceState.White;
-                //Turn = 1;
-                
-            }
 
-            // this condition was adjusted with regards to isAdjacent
-            else if (player == BlackPlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Open &&
-                     BlackPlayer.AllPiecesPlaced == false)
+            // if not all pieces place and spot is valid
+            if (!player.AllPiecesPlaced && GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
             {
-                
-                BlackPlayer.PlacePiece();
-                GameBoard.GameBoard[row, col].PieceState = PieceState.Black;
-                //Turn = 0;
+
+                // if white
+                if (player == WhitePlayer)
+                {
+                    
+                    // update
+                    WhitePlayer.PlacePiece();
+                    GameBoard.GameBoard[row, col].PieceState = PieceState.White;
+
+                }
+
+                // if black
+                else
+                {
+                    
+                    // update
+                    BlackPlayer.PlacePiece();
+                    GameBoard.GameBoard[row, col].PieceState = PieceState.Black;
+
+
+                }
                 
             }
             
         }
+        // post : 
 
         // 
         public void TakeTurn(Player player, int newRow, int newCol, int oldRow, int oldCol)
