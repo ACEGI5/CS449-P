@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net;
 
 namespace NineMansMorrisLib
 {
@@ -98,7 +99,7 @@ namespace NineMansMorrisLib
                 }
                 
                 // events have taken place
-                return true;
+                return true;up, DownloadDataCompletedEventArgs, 
 
             }
 
