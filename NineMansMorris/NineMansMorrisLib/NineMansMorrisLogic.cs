@@ -167,7 +167,7 @@ namespace NineMansMorrisLib
                     // if the first valid spot that is encountered is open, then the left position is set and the loop is broken
                     if (GameBoard.GameBoard[temp, curCol].PieceState == PieceState.Open)
                     {
-                        validMoves["left"] = new Tuple<int, int>(temp, curCol);
+                        validMoves["up"] = new Tuple<int, int>(temp, curCol);
                         break;
                     }
                     // if spot is invalid, then keep traversing the board to find a valid spot
@@ -192,7 +192,7 @@ namespace NineMansMorrisLib
                     // if the first valid spot that is encountered is open, then the right position is set and the loop is broken
                     if (GameBoard.GameBoard[temp, curCol].PieceState == PieceState.Open)
                     {
-                        validMoves["right"] = new Tuple<int, int>(temp, curCol);
+                        validMoves["down"] = new Tuple<int, int>(temp, curCol);
                         break;
                     }
                     // if spot is invalid, then keep traversing the board to find a valid spot
@@ -217,7 +217,7 @@ namespace NineMansMorrisLib
                     // if the first valid spot that is encountered is open, then the up position is set and the loop is broken
                     if (GameBoard.GameBoard[curRow, temp].PieceState == PieceState.Open)
                     {
-                        validMoves["up"] = new Tuple<int, int>(curRow, temp);
+                        validMoves["left"] = new Tuple<int, int>(curRow, temp);
                         break;
                     }
                     // if spot is invalid, then keep traversing the board to find a valid spot
@@ -243,7 +243,7 @@ namespace NineMansMorrisLib
                     // if the first valid spot that is encountered is open, then the down position is set and the loop is broken
                     if (GameBoard.GameBoard[curRow, temp].PieceState == PieceState.Open)
                     {
-                        validMoves["down"] = new Tuple<int, int>(curRow, temp);
+                        validMoves["right"] = new Tuple<int, int>(curRow, temp);
                         break;
                     }
                     // if spot is invalid, then keep traversing the board to find a valid spot
