@@ -9,10 +9,9 @@ namespace NineMansMorrisLib
     {
         
         //public int Turn { get; private set; }
+        public Board GameBoard { get; private set; }
         public Player WhitePlayer { get; private set; }
         public Player BlackPlayer { get; private set; }
-
-        public Board GameBoard { get; private set; }
         
         private Dictionary<string, int[]> directions = new Dictionary<string, int[]>()
         {
