@@ -28,85 +28,7 @@ namespace NineMansMorrisLib
             BlackPlayer = new Player();
             
         }
-
-        // pre : 
-        public bool MovePiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
-        {
-            
-            // if valid placement and all pieces placed
-            if (isValid(rowTo, colTo, rowFrom, colFrom) && player.AllPiecesPlaced)
-            {
-
-                // if white
-                if (player == WhitePlayer)
-                {
-
-                    // update
-                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.White;
-                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
-
-                }
-
-                // if black
-                else
-                {
-
-                    // update
-                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
-                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
-
-                }
-                
-                // events have taken place
-                return true;
-
-            }
-
-            // events have not taken place
-            return false;
-            
-        }
-        // post : 
         
-        // pre : 
-        public bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
-        {
-
-            // if player can fly
-            if (player.PlayerCanFly())
-            {
-
-                // if white
-                if (player == WhitePlayer)
-                {
-
-                    // update
-                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.White;
-                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
-
-                }
-
-                // if black
-                else
-                {
-
-                    // update
-                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
-                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
-
-                }
-                
-                // events have taken place
-                return true;
-
-            }
-
-            // events have not taken place
-            return false;
-
-        }
-        // post : 
-
         // pre : 
         public bool PlacePiece(Player player, int row, int col)
         {
@@ -147,6 +69,45 @@ namespace NineMansMorrisLib
         }
         // post : 
 
+        // pre : 
+        public bool MovePiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
+        {
+            
+            // if valid placement and all pieces placed
+            if (isValid(rowTo, colTo, rowFrom, colFrom) && player.AllPiecesPlaced)
+            {
+
+                // if white
+                if (player == WhitePlayer)
+                {
+
+                    // update
+                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.White;
+                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+
+                }
+
+                // if black
+                else
+                {
+
+                    // update
+                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
+                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+
+                }
+                
+                // events have taken place
+                return true;
+
+            }
+
+            // events have not taken place
+            return false;
+            
+        }
+        // post : 
+        
         // pre : 
         private bool isValid(int rowTo, int colTo, int rowFrom, int colFrom)
         {
@@ -210,5 +171,44 @@ namespace NineMansMorrisLib
         }
         // post : 
         
+        // pre : 
+        public bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
+        {
+
+            // if player can fly
+            if (player.CanFly())
+            {
+
+                // if white
+                if (player == WhitePlayer)
+                {
+
+                    // update
+                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.White;
+                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+
+                }
+
+                // if black
+                else
+                {
+
+                    // update
+                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
+                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+
+                }
+                
+                // events have taken place
+                return true;
+
+            }
+
+            // events have not taken place
+            return false;
+
+        }
+        // post : 
+
     }
 }

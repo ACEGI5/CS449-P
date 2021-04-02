@@ -20,7 +20,7 @@
         // Checks if a player has only three pieces left.
         // If so, player may begin flying pieces.
         // Output: bool representing if player can fly.
-        public bool PlayerCanFly()
+        public bool CanFly()
         {
             
             return (PiecesInPlay == 3 && AllPiecesPlaced);
