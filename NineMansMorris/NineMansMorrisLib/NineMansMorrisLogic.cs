@@ -8,7 +8,6 @@ namespace NineMansMorrisLib
     public class NineMansMorrisLogic
     {
         
-        //public int Turn { get; private set; }
         public Board GameBoard { get; private set; }
         public Player WhitePlayer { get; private set; }
         public Player BlackPlayer { get; private set; }
