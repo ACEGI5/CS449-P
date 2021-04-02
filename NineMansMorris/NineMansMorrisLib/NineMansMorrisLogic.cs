@@ -152,12 +152,14 @@ namespace NineMansMorrisLib
                             if (rowTo == row && colTo == col)
                             {
 
+                                // spot is valid
                                 return true;
 
                             }
 
                         }
 
+                        // spot is invalid
                         return false;
 
                     }
@@ -166,10 +168,52 @@ namespace NineMansMorrisLib
                 
             }
 
+            // not a valid placement
             return false;
 
         }
         // post : 
+        
+        // pre : 
+        public bool RemovePiece(Player player, int row, int col)
+        {
+
+            // if black, white, open
+            if (GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid)
+            {
+
+                // if white and removing opponent piece
+                if (player == WhitePlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Black)
+                {
+
+                    // update
+                    WhitePlayer.RemovePiece();
+                    GameBoard.GameBoard[row, col].PieceState = PieceState.Open;
+                    
+                    // events have taken place
+                    return true;
+
+                }
+
+                // if black and removing opponent piece
+                if (player == BlackPlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.White)
+                {
+
+                    // update
+                    BlackPlayer.RemovePiece();
+                    GameBoard.GameBoard[row, col].PieceState = PieceState.Open;
+                    
+                    // events have taken place
+                    return true;
+
+                }
+                
+            }
+
+            // events have not taken place
+            return false;
+
+        }
         
         // pre : 
         public bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)

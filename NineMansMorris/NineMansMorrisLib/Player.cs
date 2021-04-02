@@ -42,6 +42,13 @@
 
         }
 
+        public void RemovePiece()
+        {
+
+            PiecesInPlay -= 1;
+
+        }
+
         public bool PlayerHasLost()
         {
             
