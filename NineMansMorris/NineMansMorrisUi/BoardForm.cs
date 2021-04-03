@@ -175,9 +175,30 @@ namespace NineMansMorrisUi
 
         private void RemovePiece(int row, int col, Control clickedButton)
         {
-            //if(_nineMansMorrisGame.RemovePiece())
-            
-            
+            switch (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState)
+            {
+                case PieceState.White:
+                    if (_nineMansMorrisGame.RemovePiece(_nineMansMorrisGame.WhitePlayer, row, col))
+                    {
+                        _btnGrid[row, col].BackColor = _unoccupiedColor;
+                        lblTurnIndicator.Text = _turnIndicatorBlack;
+                        gameTurn = Turn.Black;
+                        _selectButton = null;
+                    }
+
+                    break;
+                case PieceState.Black:
+                    if (_nineMansMorrisGame.RemovePiece(_nineMansMorrisGame.BlackPlayer, row, col))
+                    {
+                        _btnGrid[row, col].BackColor = _unoccupiedColor;
+                        lblTurnIndicator.Text = _turnIndicatorWhite;
+                        gameTurn = Turn.White;
+                        _selectButton = null;
+                    }
+
+                    break;
+            }
+
         }
 
         private void BtnResetClick(object sender, EventArgs e)
