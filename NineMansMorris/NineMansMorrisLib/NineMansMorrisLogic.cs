@@ -12,7 +12,7 @@ namespace NineMansMorrisLib
 
         public Board GameBoard { get; private set; }
         
-        private Dictionary<string, int[]> directions = new Dictionary<string, int[]>()
+        private Dictionary<string, int[]> _directions = new Dictionary<string, int[]>()
         {
                 
             {"up", new int[] {-1, 0}}, {"down", new int[] {1, 0}},
@@ -31,7 +31,7 @@ namespace NineMansMorrisLib
         }
 
         // Needs rewriting with new isAdjacent method
-        public void MovePiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
+        private void MovePiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
         {
             Hashtable validMoves = CheckIfAdjacent(oldRow, oldCol);
             
@@ -51,7 +51,7 @@ namespace NineMansMorrisLib
         }
 
         // 
-        public void FlyPiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
+        private void FlyPiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
         {
 
             // Checks if it's white players' turn and if the chosen position is open.
@@ -74,7 +74,7 @@ namespace NineMansMorrisLib
         }
 
         // 
-        public void PlacePiece(Player player, int row, int col)
+        private void PlacePiece(Player player, int row, int col)
         {
             // checks if it is white player's turn and if
             // this condition was adjusted with regards to isAdjacent
@@ -96,8 +96,8 @@ namespace NineMansMorrisLib
             }
         }
 
-        // 
-        public void TakeTurn(Player player, int newRow, int newCol, int oldRow, int oldCol)
+        // old row and column are optional parameters for place piece condition with default set to negative one, when game stage is in movement or fly values will be passed in from UI
+        public void TakeTurn(Player player, int newRow, int newCol, int oldRow=-1, int oldCol=-1)
         {
             if (Turn == 0)
             {
@@ -124,19 +124,19 @@ namespace NineMansMorrisLib
             else if (Turn == 1)
             {
                 //Black Player
-                if (WhitePlayer.PiecesToPlace != 0)
+                if (BlackPlayer.PiecesToPlace != 0)
                 {
-                    PlacePiece(WhitePlayer, newRow, newCol);
+                    PlacePiece(BlackPlayer, newRow, newCol);
                 }
 
-                else if (!WhitePlayer.PlayerCanFly())
+                else if (!BlackPlayer.PlayerCanFly())
                 {
-                    MovePiece(WhitePlayer, newRow, newCol, oldRow, oldCol);
+                    MovePiece(BlackPlayer, newRow, newCol, oldRow, oldCol);
                 }
 
-                else if (WhitePlayer.PlayerCanFly())
+                else if (BlackPlayer.PlayerCanFly())
                 {
-                    FlyPiece(WhitePlayer, newRow, newCol, oldRow, oldCol);
+                    FlyPiece(BlackPlayer, newRow, newCol, oldRow, oldCol);
                 }
 
                 //check mill function then -> prompt for player to select which opp piece to mill  
