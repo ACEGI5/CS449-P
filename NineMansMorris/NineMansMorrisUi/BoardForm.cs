@@ -97,18 +97,24 @@ namespace NineMansMorrisUi
                     switch (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState)
                     {
                         case PieceState.White:
-                            _nineMansMorrisGame.TakeTurn(_nineMansMorrisGame.WhitePlayer, row, col, oldRow, oldCol);
-                            _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
-                            _btnGrid[row, col].BackColor = _whiteColor;
-                            lblTurnIndicator.Text = _turnIndicatorBlack;
-                            _selectButton = null;
+                            if (_nineMansMorrisGame.TakeTurn(_nineMansMorrisGame.WhitePlayer, row, col, oldRow, oldCol))
+                            {
+                                _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
+                                _btnGrid[row, col].BackColor = _whiteColor;
+                                lblTurnIndicator.Text = _turnIndicatorBlack;
+                                _selectButton = null;
+                            }
+
                             break;
                         case PieceState.Black:
-                            _nineMansMorrisGame.TakeTurn(_nineMansMorrisGame.BlackPlayer, row, col, oldRow, oldCol);
-                            _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
-                            _btnGrid[row, col].BackColor = _blackColor;
-                            lblTurnIndicator.Text = _turnIndicatorWhite;
-                            _selectButton = null;
+                            if (_nineMansMorrisGame.TakeTurn(_nineMansMorrisGame.BlackPlayer, row, col, oldRow, oldCol))
+                            {
+                                _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
+                                _btnGrid[row, col].BackColor = _blackColor;
+                                lblTurnIndicator.Text = _turnIndicatorWhite;
+                                _selectButton = null;
+                            }
+
                             break;
                         case PieceState.Open:
                             break;
