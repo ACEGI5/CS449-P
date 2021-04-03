@@ -104,7 +104,7 @@ namespace NineMansMorrisUi
                     switch (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState)
                     {
                         case PieceState.White:
-                            _nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.WhitePlayer, row, col, oldRow, oldCol);
+                            _nineMansMorrisGame.MovePiece(_nineMansMorrisGame.WhitePlayer, row, col, oldRow, oldCol);
                             _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                             _btnGrid[row, col].BackColor = _whiteColor;
                             lblTurnIndicator.Text = _turnIndicatorBlack;
@@ -112,7 +112,7 @@ namespace NineMansMorrisUi
                             _selectButton = null;
                             break;
                         case PieceState.Black:
-                            _nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.BlackPlayer, row, col, oldRow, oldCol);
+                            _nineMansMorrisGame.MovePiece(_nineMansMorrisGame.BlackPlayer, row, col, oldRow, oldCol);
                             _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                             _btnGrid[row, col].BackColor = _blackColor;
                             lblTurnIndicator.Text = _turnIndicatorWhite;
