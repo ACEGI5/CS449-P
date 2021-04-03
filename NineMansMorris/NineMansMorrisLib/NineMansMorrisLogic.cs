@@ -88,7 +88,6 @@ namespace NineMansMorrisLib
         }
         // post : 
 
-        // pre : 
         private bool isValid(int rowTo, int colTo, int rowFrom, int colFrom)
         {
             // traverse each direction
@@ -96,15 +95,17 @@ namespace NineMansMorrisLib
             {
                 
                 // while move is not possible
+                int row = rowFrom;
+                int col = colFrom;
                 while (true)
                 {
                     
                     // update position
-                    int row = rowFrom + direction.Value[0];
-                    int col = colFrom + direction.Value[1];
+                    row += direction.Value[0];
+                    col += direction.Value[1];
 
                     // if out of bounds
-                    if ((row > 6 || col > 6) || (col <= -1) || (row <= -1))
+                    if ((row < 6 && col < 6) && (col > -1) && (row > -1))
                     {
                         break;
                     }
