@@ -94,15 +94,17 @@ namespace NineMansMorrisLib
             // traverse each direction
             foreach (KeyValuePair<string, int[]> direction in directions)
             {
+                
                 // while move is not possible
                 while (true)
                 {
+                    
                     // update position
                     int row = rowFrom + direction.Value[0];
                     int col = colFrom + direction.Value[1];
 
                     // if out of bounds
-                    if ((row < 10 && col < 10) && (col > -1) && (row > -1))
+                    if ((row > 6 || col > 6) || (col <= -1) || (row <= -1))
                     {
                         break;
                     }
@@ -116,21 +118,29 @@ namespace NineMansMorrisLib
                     // if black, white, open
                     if (GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid)
                     {
+                        
                         // if spot is open
                         if (GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
                         {
+                            
                             // if spot is where user wants to go
                             if (rowTo == row && colTo == col)
                             {
+                                
                                 // spot is valid
                                 return true;
+                                
                             }
+                            
                         }
 
                         // spot is invalid
                         return false;
+                        
                     }
+                    
                 }
+                
             }
 
             // not a valid placement

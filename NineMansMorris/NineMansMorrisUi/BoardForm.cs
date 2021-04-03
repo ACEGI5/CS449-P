@@ -16,6 +16,7 @@ namespace NineMansMorrisUi
         private readonly Color _unoccupiedColor = Color.Red;
         private readonly Color _whiteColor = Color.GhostWhite;
         private readonly Color _blackColor = Color.Black;
+
         private enum Turn
         {
             Black,
@@ -23,10 +24,11 @@ namespace NineMansMorrisUi
         }
 
         private Turn gameTurn;
+
         public BoardForm()
         {
             Random r = new Random();
-            gameTurn = (Turn) r.Next(3);
+            gameTurn = (Turn) r.Next(2);
             InitializeComponent();
             PopulateButtonGrid();
             SetUpForm();
@@ -34,7 +36,6 @@ namespace NineMansMorrisUi
 
         private void SetUpForm()
         {
-            
             lblTurnIndicator.Text = gameTurn == Turn.White ? _turnIndicatorWhite : _turnIndicatorBlack;
             textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
             textBoxWhitePlayerPiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
@@ -69,7 +70,7 @@ namespace NineMansMorrisUi
                 }
             }
         }
-        
+
         private void Grid_Button_click(object sender, EventArgs e)
         {
             var clickedButton = (Button) sender;
@@ -78,6 +79,11 @@ namespace NineMansMorrisUi
             var col = location.Y;
             PiecePlacement(row, col, clickedButton);
             PieceMovement(row, col, clickedButton);
+            if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid &&
+                _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState != PieceState.Open)
+            {
+             RemovePiece(row,col,clickedButton);   
+            }
             _selectButton = clickedButton;
         }
 
@@ -93,9 +99,9 @@ namespace NineMansMorrisUi
                 var oldPieceState = _nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState;
 
 
-                var correctTurn = (lblTurnIndicator.Text == _turnIndicatorWhite && gameTurn==Turn.White&&
+                var correctTurn = (lblTurnIndicator.Text == _turnIndicatorWhite && gameTurn == Turn.White &&
                                    oldPieceState == PieceState.White) ||
-                                  (lblTurnIndicator.Text == _turnIndicatorBlack &&gameTurn==Turn.Black &&
+                                  (lblTurnIndicator.Text == _turnIndicatorBlack && gameTurn == Turn.Black &&
                                    oldPieceState == PieceState.Black);
 
                 if (_selectButton != clickedButton && _selectButton != null &&
@@ -104,20 +110,28 @@ namespace NineMansMorrisUi
                     switch (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState)
                     {
                         case PieceState.White:
-                            _nineMansMorrisGame.MovePiece(_nineMansMorrisGame.WhitePlayer, row, col, oldRow, oldCol);
-                            _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
-                            _btnGrid[row, col].BackColor = _whiteColor;
-                            lblTurnIndicator.Text = _turnIndicatorBlack;
-                            gameTurn = Turn.Black;
-                            _selectButton = null;
+                            if (_nineMansMorrisGame.MovePiece(_nineMansMorrisGame.WhitePlayer, row, col, oldRow,
+                                oldCol))
+                            {
+                                _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
+                                _btnGrid[row, col].BackColor = _whiteColor;
+                                lblTurnIndicator.Text = _turnIndicatorBlack;
+                                gameTurn = Turn.Black;
+                                _selectButton = null;
+                            }
+
                             break;
                         case PieceState.Black:
-                            _nineMansMorrisGame.MovePiece(_nineMansMorrisGame.BlackPlayer, row, col, oldRow, oldCol);
-                            _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
-                            _btnGrid[row, col].BackColor = _blackColor;
-                            lblTurnIndicator.Text = _turnIndicatorWhite;
-                            gameTurn = Turn.White;
-                            _selectButton = null;
+                            if (_nineMansMorrisGame.MovePiece(_nineMansMorrisGame.BlackPlayer, row, col, oldRow,
+                                oldCol))
+                            {
+                                _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
+                                _btnGrid[row, col].BackColor = _blackColor;
+                                lblTurnIndicator.Text = _turnIndicatorWhite;
+                                gameTurn = Turn.White;
+                                _selectButton = null;
+                            }
+
                             break;
                         case PieceState.Open:
                             break;
@@ -133,59 +147,56 @@ namespace NineMansMorrisUi
 
         private void PiecePlacement(int row, int col, Control clickedButton)
         {
-            
             if (gameTurn == Turn.White && _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced == false &&
                 _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
             {
-                
-                clickedButton.BackColor = _whiteColor;
-                _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.WhitePlayer, row, col);
-                textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
-                lblTurnIndicator.Text = _turnIndicatorBlack;
-                gameTurn = Turn.Black;
-                
+                if (_nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.WhitePlayer, row, col))
+                {
+                    clickedButton.BackColor = _whiteColor;
+                    textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
+                    lblTurnIndicator.Text = _turnIndicatorBlack;
+                    gameTurn = Turn.Black;
+                }
             }
-            
-            else if (gameTurn == Turn.Black&& _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced == false &&
+
+            else if (gameTurn == Turn.Black && _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced == false &&
                      _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
             {
-                
-                clickedButton.BackColor = _blackColor;
-                _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer, row, col);
-                textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
-                lblTurnIndicator.Text = _turnIndicatorWhite;
-                gameTurn = Turn.White;
-                
+                if (_nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer, row, col))
+                {
+                    clickedButton.BackColor = _blackColor;
+                    _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer, row, col);
+                    textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
+                    lblTurnIndicator.Text = _turnIndicatorWhite;
+                    gameTurn = Turn.White;
+                }
             }
+        }
+
+        private void RemovePiece(int row, int col, Control clickedButton)
+        {
+            //if(_nineMansMorrisGame.RemovePiece())
+            
             
         }
 
-
         private void BtnResetClick(object sender, EventArgs e)
         {
-            
             var gameSelectionForm = new GameSelectionForm();
             //need reset method for pieces and player objects
             gameSelectionForm.Show();
             this.Hide();
-            
         }
 
         private void BtnExitClick(object sender, EventArgs e)
         {
-            
             Application.Exit();
-            
         }
 
 
         private void buttonExit_Click(object sender, EventArgs e)
         {
-            
             Application.Exit();
-            
         }
-        
     }
-    
 }
