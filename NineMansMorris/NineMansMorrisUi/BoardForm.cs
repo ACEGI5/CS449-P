@@ -26,7 +26,7 @@ namespace NineMansMorrisUi
         public BoardForm()
         {
             Random r = new Random();
-            gameTurn = (Turn) r.Next(3);
+            gameTurn = (Turn) r.Next(2);
             InitializeComponent();
             PopulateButtonGrid();
             SetUpForm();
