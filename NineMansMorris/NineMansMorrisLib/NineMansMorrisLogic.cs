@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net;
+using NineMansMorrisLib;
 
 namespace NineMansMorrisLib
 {
@@ -201,5 +202,76 @@ namespace NineMansMorrisLib
         }
 
         // post : 
+        public bool CheckMill(Player player, int row, int col)
+        {
+            var currPieceState = GameBoard.GameBoard[row, col].PieceState;
+            int rowCounter = 0;
+            int colCounter = 0;
+            //if current piece is not in the middle column or row we can traverse the entire column or row
+            //and as long as there are a total of three pieces of the same color there is a mill
+            if (row != 3 && col != 3)
+            {
+                for (int i = 0; i <= 6; i++)
+                {
+                    if (GameBoard.GameBoard[row, i].PieceState == currPieceState)
+                    {
+                        rowCounter += 1;
+                    }
+
+                    if (GameBoard.GameBoard[i, col].PieceState == currPieceState)
+                    {
+                        colCounter += 1;
+                    }
+                }
+
+                if (rowCounter == 3 || colCounter == 3)
+                {
+                    return true;
+                }
+            }
+            //if the current piece is in the middle we effectively split the board in half and
+            //traverse the half that the current piece is in adding total number of pieces of the current color
+            else if (row == 3 || col == 3)
+            {
+                if (row < 3 || col < 3)
+                {
+                    for (int i = 0; i <= 3; i++)
+                    {
+                        if (GameBoard.GameBoard[row, i].PieceState == currPieceState)
+                        {
+                            rowCounter += 1;
+                        }
+
+                        if (GameBoard.GameBoard[i, col].PieceState == currPieceState)
+                        {
+                            colCounter += 1;
+                        }
+                    }
+                }
+                else if (row > 3 || col > 3)
+                {
+                    for (int i = 3; i <= 6; i++)
+                    {
+                        if (GameBoard.GameBoard[row, i].PieceState == currPieceState)
+                        {
+                            rowCounter += 1;
+                        }
+
+                        if (GameBoard.GameBoard[i, col].PieceState == currPieceState)
+                        {
+                            colCounter += 1;
+                        }
+                    }
+                }
+
+                if (rowCounter == 3 || colCounter == 3)
+                    return true;
+            }
+
+            return false;
+        }
     }
+    
+    
 }
+
