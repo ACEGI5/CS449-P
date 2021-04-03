@@ -148,6 +148,7 @@ namespace NineMansMorrisLib
             return false;
         }
         // post : 
+        // post : 
 
         // pre : 
         public bool RemovePiece(Player player, int row, int col)
