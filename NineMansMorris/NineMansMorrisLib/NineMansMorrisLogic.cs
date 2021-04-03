@@ -105,7 +105,7 @@ namespace NineMansMorrisLib
                     col += direction.Value[1];
 
                     // if out of bounds
-                    if ((row < 6 && col < 6) && (col > -1) && (row > -1))
+                    if ((row > 7 || col > 7) || (col <= -1) || (row <= -1))
                     {
                         break;
                     }
@@ -147,7 +147,6 @@ namespace NineMansMorrisLib
             // not a valid placement
             return false;
         }
-        // post : 
         // post : 
 
         // pre : 
