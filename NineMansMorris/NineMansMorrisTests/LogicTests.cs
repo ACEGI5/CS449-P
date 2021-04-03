@@ -13,88 +13,124 @@ namespace NineMansMorrisTests
 
             sut.PlacePiece(sut.WhitePlayer, row, col);
 
-            Assert.AreEqual(PieceState.White, sut.GameBoard.GameBoard[row, col].PieceState);
+            Assert.AreEqual(color, sut.GameBoard.GameBoard[row, col].PieceState);
         }
 
-        [TestCase(0, 1, PieceState.White)]
+        [TestCase(0, 1, PieceState.Invalid)]
         public void TestInvalidPiecePlacementInvalidSpot(int row, int col, PieceState color)
         {
             var sut = new NineMansMorrisLogic();
             sut.PlacePiece(sut.WhitePlayer, row, col);
-            Assert.AreEqual(PieceState.Invalid, sut.GameBoard.GameBoard[row, col].PieceState);
+            Assert.AreEqual(color, sut.GameBoard.GameBoard[row, col].PieceState);
         }
 
-        [TestCase(0, 0, PieceState.White)]
+        [TestCase(0, 0, PieceState.Black)]
         public void TestInvalidPiecePlacementOccupiedSpot(int row, int col, PieceState color)
         {
             var sut = new NineMansMorrisLogic();
             sut.PlacePiece(sut.BlackPlayer, row, col);
             sut.PlacePiece(sut.WhitePlayer, row, col);
-            Assert.AreEqual(PieceState.Black, sut.GameBoard.GameBoard[row, col].PieceState);
+            Assert.AreEqual(color, sut.GameBoard.GameBoard[row, col].PieceState);
         }
-
-        [TestCase(0, 0)]
-        public void TestTurnSwitchingOnPlacement(int row, int col)
+        [TestCase(0, 0,3,0, PieceState.Black)]
+        public void TestValidMovement(int oldRow, int oldCol,int newRow, int newCol, PieceState color)
         {
             var sut = new NineMansMorrisLogic();
-            if (sut.Turn == 0)
+            for (int i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
             {
-                sut.PlacePiece(sut.WhitePlayer, row, col);
-                Assert.AreEqual(sut.Turn, 1);
+                sut.BlackPlayer.PlacePiece();
             }
-            else if (sut.Turn == 1)
-            {
-                sut.PlacePiece(sut.BlackPlayer, row, col);
-                Assert.AreEqual(sut.Turn, 0);
-            }
-        }
 
-        [TestCase(0, 1)]
-        public void TestNotTurnSwitchingOnInvalidSpot(int row, int col)
+            sut.PlacePiece(sut.BlackPlayer, oldRow, oldCol);
+            bool isValidMovement = sut.MovePiece(sut.BlackPlayer, newRow, newCol, oldRow, oldCol);
+            Assert.AreEqual(PieceState.Black,sut.GameBoard.GameBoard[newRow,newCol].PieceState);
+            Assert.True(isValidMovement);
+        }
+        [TestCase(0, 0,3,0, PieceState.Black)]
+        public void TestInvalidMovementNotAllPiecesPlaced(int oldRow, int oldCol,int newRow, int newCol, PieceState color)
         {
             var sut = new NineMansMorrisLogic();
-            if (sut.Turn == 0)
-            {
-                sut.PlacePiece(sut.WhitePlayer, row, col);
-                Assert.AreEqual(sut.Turn, 0);
-            }
-            else if (sut.Turn == 1)
-            {
-                sut.PlacePiece(sut.BlackPlayer, row, col);
-                Assert.AreEqual(sut.Turn, 1);
-            }
+            sut.PlacePiece(sut.BlackPlayer, oldRow, oldCol);
+            bool isValidMovement = sut.MovePiece(sut.BlackPlayer, newRow, newCol, oldRow, oldCol);
+            Assert.AreNotEqual(PieceState.Black,sut.GameBoard.GameBoard[newRow,newCol].PieceState);
+            Assert.False(isValidMovement);
         }
-
-        [TestCase(0, 0)]
-        public void TestNotTurnSwitchingOnOccupiedSpot(int row, int col)
+        [TestCase(0, 0,3,0, PieceState.White)]
+        public void TestInvalidMovementOccupied(int oldRow, int oldCol,int newRow, int newCol, PieceState color)
         {
             var sut = new NineMansMorrisLogic();
-            sut.PlacePiece(sut.WhitePlayer, row, col);
-            if (sut.Turn == 0)
+            for (int i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
             {
-                sut.PlacePiece(sut.WhitePlayer, row, col);
-                Assert.AreEqual(sut.Turn, 0);
+                sut.BlackPlayer.PlacePiece();
             }
-            else if (sut.Turn == 1)
-            {
-                sut.PlacePiece(sut.BlackPlayer, row, col);
-                Assert.AreEqual(sut.Turn, 1);
-            }
-        }
 
-        [TestCase(0, 1)]
-        public void TestRandomPlayerSelected(int row, int col)
+            sut.PlacePiece(sut.BlackPlayer, oldRow, oldCol);
+            sut.PlacePiece(sut.WhitePlayer, newRow, newCol);
+            bool isValidMovement = sut.MovePiece(sut.BlackPlayer, newRow, newCol, oldRow, oldCol);
+            Assert.AreEqual(color,sut.GameBoard.GameBoard[newRow,newCol].PieceState);
+            Assert.False(isValidMovement);
+        }
+        [TestCase(0, 0,1,1, PieceState.Open)]
+        [TestCase(0, 0,6,6, PieceState.Open)]
+        public void TestInvalidMovementNotAdjacent(int oldRow, int oldCol,int newRow, int newCol, PieceState color)
         {
             var sut = new NineMansMorrisLogic();
-            switch (sut.Turn)
+            for (int i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
             {
-                case 0:
-                    Assert.AreEqual(sut.Turn, 0);
-                    break;
-                case 1:
-                    Assert.AreEqual(sut.Turn, 1);
-                    break;
+                sut.BlackPlayer.PlacePiece();
             }
+
+            sut.PlacePiece(sut.BlackPlayer, oldRow, oldCol);
+            bool isValidMovement = sut.MovePiece(sut.BlackPlayer, newRow, newCol, oldRow, oldCol);
+            Assert.AreEqual(color,sut.GameBoard.GameBoard[newRow,newCol].PieceState);
+            Assert.False(isValidMovement);
+        }
+        [TestCase(0, 0,3,1)]
+        [TestCase(0, 0,0,3 )]
+        public void TestIsValidValidSpot(int oldRow, int oldCol,int newRow, int newCol)
+        {
+            var sut = new NineMansMorrisLogic();
+            for (int i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
+            {
+                sut.BlackPlayer.PlacePiece();
+            }
+
+            sut.PlacePiece(sut.BlackPlayer, oldRow, oldCol);
+            bool isValidMovement = sut.MovePiece(sut.BlackPlayer, newRow, newCol, oldRow, oldCol);
+            Assert.True(isValidMovement);
+        }
+        [TestCase(0, 0,6,6)]
+        [TestCase(0, 0,1,1 )]
+        [TestCase(0, 0,3,1 )]
+        public void TestIsValidInValidSpot(int oldRow, int oldCol,int newRow, int newCol)
+        {
+            var sut = new NineMansMorrisLogic();
+            for (int i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
+            {
+                sut.BlackPlayer.PlacePiece();
+            }
+
+            sut.PlacePiece(sut.BlackPlayer, oldRow, oldCol);
+            sut.PlacePiece(sut.BlackPlayer, 3, 1);
+            bool isValidMovement = sut.MovePiece(sut.BlackPlayer, newRow, newCol, oldRow, oldCol);
+            Assert.False(isValidMovement);
+        }
+        [TestCase(0, 0,1,1, PieceState.Black)]
+        public void TestValidFly(int oldRow, int oldCol, int newRow, int newCol, PieceState color)
+        {
+            var sut = new NineMansMorrisLogic();
+            for (int i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
+            {
+                sut.BlackPlayer.PlacePiece();
+            }
+            for (int i = sut.BlackPlayer.PiecesInPlay; i > 3; i--)
+            {
+                sut.BlackPlayer.RemovePiece();
+            }
+            sut.PlacePiece(sut.BlackPlayer, oldRow, oldCol);
+            bool isValidFly = sut.FlyPiece(sut.BlackPlayer, newRow, newCol, oldRow, oldCol);
+            Assert.AreEqual(color,sut.GameBoard.GameBoard[newRow,newCol].PieceState);
+            Assert.True(isValidFly);
         }
     }
 }
