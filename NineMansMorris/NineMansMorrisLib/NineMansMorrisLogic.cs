@@ -11,13 +11,11 @@ namespace NineMansMorrisLib
         public Player BlackPlayer { get; private set; }
 
         public Board GameBoard { get; private set; }
-        
+
         private Dictionary<string, int[]> _directions = new Dictionary<string, int[]>()
         {
-                
             {"up", new int[] {-1, 0}}, {"down", new int[] {1, 0}},
             {"left", new int[] {0, -1}}, {"right", new int[] {0, 1}}
-
         };
 
         // 
@@ -34,7 +32,7 @@ namespace NineMansMorrisLib
         private bool MovePiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
         {
             Hashtable validMoves = CheckIfAdjacent(oldRow, oldCol);
-            
+
             if (player == WhitePlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open &&
                 WhitePlayer.AllPiecesPlaced && IsValidMove(validMoves, newRow, newCol))
             {
@@ -50,13 +48,13 @@ namespace NineMansMorrisLib
                 GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
                 return true;
             }
+
             return false;
         }
 
         // 
         private bool FlyPiece(Player player, int newRow, int newCol, int oldRow, int oldCol)
         {
-
             // Checks if it's white players' turn and if the chosen position is open.
             if (player == WhitePlayer && GameBoard.GameBoard[newRow, newCol].PieceState == PieceState.Open)
             {
@@ -74,6 +72,7 @@ namespace NineMansMorrisLib
                 GameBoard.GameBoard[oldRow, oldCol].PieceState = PieceState.Open;
                 return true;
             }
+
             return false;
         }
 
@@ -103,7 +102,7 @@ namespace NineMansMorrisLib
         }
 
         // old row and column are optional parameters for place piece condition with default set to negative one, when game stage is in movement or fly values will be passed in from UI
-        public void TakeTurn(Player player, int newRow, int newCol, int oldRow=-1, int oldCol=-1)
+        public bool TakeTurn(Player player, int newRow, int newCol, int oldRow = -1, int oldCol = -1)
         {
             if (Turn == 0)
             {
@@ -112,41 +111,40 @@ namespace NineMansMorrisLib
                 {
                     if (PlacePiece(WhitePlayer, newRow, newCol))
                     {
-                       Turn = 1; 
+                        Turn = 1;
+                        return true;
                     }
                     else
                     {
-                        Turn = 0; 
-                    }
-                    
-                }
-
-                else if (!WhitePlayer.PlayerCanFly())
-                {
-                    if (MovePiece(WhitePlayer, newRow, newCol,oldCol,oldRow))
-                    {
-                        Turn = 1; 
-                    }
-                    else
-                    {
-                        Turn = 0; 
+                        Turn = 0;
+                        return false;
                     }
                 }
 
-                else if (WhitePlayer.PlayerCanFly())
+                if (!WhitePlayer.PlayerCanFly())
                 {
-                    if (FlyPiece(WhitePlayer, newRow, newCol,oldCol,oldRow))
+                    if (MovePiece(WhitePlayer, newRow, newCol, oldCol, oldRow))
                     {
-                        Turn = 1; 
+                        Turn = 1;
+                        return true;
                     }
-                    else
+
+                    Turn = 0;
+                    return false;
+                }
+                if (WhitePlayer.PlayerCanFly())
+                {
+                    if (FlyPiece(WhitePlayer, newRow, newCol, oldCol, oldRow))
                     {
-                        Turn = 0; 
+                        Turn = 1;
+                        return true;
                     }
+
+                    Turn = 0;
+                    return false;
                 }
 
                 //check mill function then -> prompt for player to select which opp piece to mill 
-                
             }
 
             else if (Turn == 1)
@@ -156,41 +154,41 @@ namespace NineMansMorrisLib
                 {
                     if (PlacePiece(BlackPlayer, newRow, newCol))
                     {
-                        Turn = 0; 
+                        Turn = 0;
+                        return true;
                     }
-                    else
-                    {
-                        Turn = 1; 
-                    }
+
+                    Turn = 1;
+                    return false;
                 }
 
-                else if (!BlackPlayer.PlayerCanFly())
+                if (!BlackPlayer.PlayerCanFly())
                 {
-                    if (MovePiece(BlackPlayer, newRow, newCol,oldCol,oldRow))
+                    if (MovePiece(BlackPlayer, newRow, newCol, oldCol, oldRow))
                     {
-                        Turn = 0; 
+                        Turn = 0;
+                        return true;
                     }
-                    else
-                    {
-                        Turn = 1; 
-                    }
-                }
 
-                else if (BlackPlayer.PlayerCanFly())
+                    Turn = 1;
+                    return false;
+                }
+                if (BlackPlayer.PlayerCanFly())
                 {
-                    if (FlyPiece(BlackPlayer, newRow, newCol,oldCol,oldRow))
+                    if (FlyPiece(BlackPlayer, newRow, newCol, oldCol, oldRow))
                     {
-                        Turn = 0; 
+                        Turn = 0;
+                        return true;
                     }
-                    else
-                    {
-                        Turn = 1; 
-                    }
+
+                    Turn = 1;
+                    return false;
                 }
 
                 //check mill function then -> prompt for player to select which opp piece to mill  
-                
             }
+
+            return false;
         }
 
         // this method was moved from Board.cs
@@ -199,14 +197,14 @@ namespace NineMansMorrisLib
         {
             // Board needs accessor to allow this class to get the board size.
             Hashtable validMoves = new Hashtable();
-            
+
             validMoves.Add("left", new Tuple<int, int>(-1, -1));
             validMoves.Add("right", new Tuple<int, int>(-1, -1));
             validMoves.Add("up", new Tuple<int, int>(-1, -1));
             validMoves.Add("down", new Tuple<int, int>(-1, -1));
 
             int temp;
-            
+
             // Checks case where piece isn't on far left and finds valid move on the left
             if (curRow > 0)
             {
@@ -256,7 +254,7 @@ namespace NineMansMorrisLib
                     }
                 }
             }
-            
+
             // Checks case where piece isn't at top and finds valid move
             if (curCol > 0)
             {
@@ -281,9 +279,9 @@ namespace NineMansMorrisLib
                     }
                 }
             }
-            
+
             // Checks case where piece isn't at bottom and finds valid move
-            
+
             if (curCol < 6)
             {
                 temp = curCol + 1;
@@ -313,7 +311,7 @@ namespace NineMansMorrisLib
 
         private bool IsValidMove(Hashtable validMoves, int newRow, int newCol)
         {
-    Console.WriteLine(validMoves.ContainsValue(new Tuple<int, int>(newRow, newCol))); // Naive test
+            Console.WriteLine(validMoves.ContainsValue(new Tuple<int, int>(newRow, newCol))); // Naive test
             return validMoves.ContainsValue(new Tuple<int, int>(newRow, newCol));
         }
     }
