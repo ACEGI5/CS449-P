@@ -136,7 +136,7 @@ namespace NineMansMorrisLib
                         }
 
                         // spot is invalid
-                        return false;
+                        break;
                         
                     }
                     
