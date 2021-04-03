@@ -79,6 +79,11 @@ namespace NineMansMorrisUi
             var col = location.Y;
             PiecePlacement(row, col, clickedButton);
             PieceMovement(row, col, clickedButton);
+            if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid &&
+                _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState != PieceState.Open)
+            {
+             RemovePiece(row,col,clickedButton);   
+            }
             _selectButton = clickedButton;
         }
 
@@ -145,24 +150,35 @@ namespace NineMansMorrisUi
             if (gameTurn == Turn.White && _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced == false &&
                 _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
             {
-                clickedButton.BackColor = _whiteColor;
-                _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.WhitePlayer, row, col);
-                textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
-                lblTurnIndicator.Text = _turnIndicatorBlack;
-                gameTurn = Turn.Black;
+                if (_nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.WhitePlayer, row, col))
+                {
+                    clickedButton.BackColor = _whiteColor;
+                    textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
+                    lblTurnIndicator.Text = _turnIndicatorBlack;
+                    gameTurn = Turn.Black;
+                }
             }
 
             else if (gameTurn == Turn.Black && _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced == false &&
                      _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
             {
-                clickedButton.BackColor = _blackColor;
-                _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer, row, col);
-                textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
-                lblTurnIndicator.Text = _turnIndicatorWhite;
-                gameTurn = Turn.White;
+                if (_nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer, row, col))
+                {
+                    clickedButton.BackColor = _blackColor;
+                    _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer, row, col);
+                    textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
+                    lblTurnIndicator.Text = _turnIndicatorWhite;
+                    gameTurn = Turn.White;
+                }
             }
         }
 
+        private void RemovePiece(int row, int col, Control clickedButton)
+        {
+            //if(_nineMansMorrisGame.RemovePiece())
+            
+            
+        }
 
         private void BtnResetClick(object sender, EventArgs e)
         {
