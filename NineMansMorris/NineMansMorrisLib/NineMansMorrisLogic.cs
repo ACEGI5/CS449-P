@@ -154,7 +154,7 @@ namespace NineMansMorrisLib
                 //Black Player
                 if (BlackPlayer.PiecesToPlace != 0)
                 {
-                    if (PlacePiece(WhitePlayer, newRow, newCol))
+                    if (PlacePiece(BlackPlayer, newRow, newCol))
                     {
                         Turn = 0; 
                     }
@@ -166,7 +166,7 @@ namespace NineMansMorrisLib
 
                 else if (!BlackPlayer.PlayerCanFly())
                 {
-                    if (MovePiece(WhitePlayer, newRow, newCol,oldCol,oldRow))
+                    if (MovePiece(BlackPlayer, newRow, newCol,oldCol,oldRow))
                     {
                         Turn = 0; 
                     }
@@ -178,7 +178,7 @@ namespace NineMansMorrisLib
 
                 else if (BlackPlayer.PlayerCanFly())
                 {
-                    if (FlyPiece(WhitePlayer, newRow, newCol,oldCol,oldRow))
+                    if (FlyPiece(BlackPlayer, newRow, newCol,oldCol,oldRow))
                     {
                         Turn = 0; 
                     }
