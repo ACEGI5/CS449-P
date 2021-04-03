@@ -8,11 +8,11 @@ namespace NineMansMorrisLib
 {
     public class NineMansMorrisLogic
     {
+        
         public Board GameBoard { get; private set; }
         public Player WhitePlayer { get; private set; }
         public Player BlackPlayer { get; private set; }
-      
-
+        
         private Dictionary<string, int[]> directions = new Dictionary<string, int[]>()
         {
             {"up", new int[] {-1, 0}}, {"down", new int[] {1, 0}},
@@ -213,6 +213,7 @@ namespace NineMansMorrisLib
         }
 
         // post : 
+        
         public bool CheckMill(Player player, int row, int col)
         {
             var currPieceState = GameBoard.GameBoard[row, col].PieceState;
