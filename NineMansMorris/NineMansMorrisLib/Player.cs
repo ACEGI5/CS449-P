@@ -31,7 +31,7 @@
         {
             
             PiecesInPlay += 1;
-            PiecesToPlace += 1;
+            PiecesToPlace -= 1;
 
             if (PiecesToPlace == 0)
             {

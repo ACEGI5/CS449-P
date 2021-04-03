@@ -16,9 +16,17 @@ namespace NineMansMorrisUi
         private readonly Color _unoccupiedColor = Color.Red;
         private readonly Color _whiteColor = Color.GhostWhite;
         private readonly Color _blackColor = Color.Black;
+        private enum Turn
+        {
+            Black,
+            White,
+        }
 
+        private Turn gameTurn;
         public BoardForm()
         {
+            Random r = new Random();
+            gameTurn = (Turn) r.Next(3);
             InitializeComponent();
             PopulateButtonGrid();
             SetUpForm();
@@ -26,7 +34,8 @@ namespace NineMansMorrisUi
 
         private void SetUpForm()
         {
-            lblTurnIndicator.Text = _nineMansMorrisGame.Turn == 0 ? _turnIndicatorWhite : _turnIndicatorBlack;
+            
+            lblTurnIndicator.Text = gameTurn == Turn.White ? _turnIndicatorWhite : _turnIndicatorBlack;
             textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
             textBoxWhitePlayerPiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
             textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
@@ -84,9 +93,9 @@ namespace NineMansMorrisUi
                 var oldPieceState = _nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState;
 
 
-                var correctTurn = (lblTurnIndicator.Text == _turnIndicatorWhite && _nineMansMorrisGame.Turn == 0 &&
+                var correctTurn = (lblTurnIndicator.Text == _turnIndicatorWhite && gameTurn==Turn.White&&
                                    oldPieceState == PieceState.White) ||
-                                  (lblTurnIndicator.Text == _turnIndicatorBlack && _nineMansMorrisGame.Turn == 1 &&
+                                  (lblTurnIndicator.Text == _turnIndicatorBlack &&gameTurn==Turn.Black &&
                                    oldPieceState == PieceState.Black);
 
                 if (_selectButton != clickedButton && _selectButton != null &&
@@ -99,6 +108,7 @@ namespace NineMansMorrisUi
                             _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                             _btnGrid[row, col].BackColor = _whiteColor;
                             lblTurnIndicator.Text = _turnIndicatorBlack;
+                            gameTurn = Turn.Black;
                             _selectButton = null;
                             break;
                         case PieceState.Black:
@@ -106,6 +116,7 @@ namespace NineMansMorrisUi
                             _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                             _btnGrid[row, col].BackColor = _blackColor;
                             lblTurnIndicator.Text = _turnIndicatorWhite;
+                            gameTurn = Turn.White;
                             _selectButton = null;
                             break;
                         case PieceState.Open:
@@ -123,7 +134,7 @@ namespace NineMansMorrisUi
         private void PiecePlacement(int row, int col, Control clickedButton)
         {
             
-            if (_nineMansMorrisGame.Turn == 0 && _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced == false &&
+            if (gameTurn == Turn.White && _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced == false &&
                 _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
             {
                 
@@ -131,10 +142,11 @@ namespace NineMansMorrisUi
                 _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.WhitePlayer, row, col);
                 textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
                 lblTurnIndicator.Text = _turnIndicatorBlack;
+                gameTurn = Turn.Black;
                 
             }
             
-            else if (_nineMansMorrisGame.Turn == 1 && _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced == false &&
+            else if (gameTurn == Turn.Black&& _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced == false &&
                      _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
             {
                 
@@ -142,6 +154,7 @@ namespace NineMansMorrisUi
                 _nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer, row, col);
                 textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
                 lblTurnIndicator.Text = _turnIndicatorWhite;
+                gameTurn = Turn.White;
                 
             }
             
