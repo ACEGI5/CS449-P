@@ -85,7 +85,7 @@ namespace NineMansMorrisTests
             Assert.AreEqual(color,sut.GameBoard.GameBoard[newRow,newCol].PieceState);
             Assert.False(isValidMovement);
         }
-        [TestCase(0, 0,3,1)]
+        [TestCase(0, 0,3,0)]
         [TestCase(0, 0,0,3 )]
         public void TestIsValidValidSpot(int oldRow, int oldCol,int newRow, int newCol)
         {
