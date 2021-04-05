@@ -5,7 +5,9 @@
         Black,
         White,
         Open,
-        Invalid
+        Invalid,
+        BlackMilled,
+        WhiteMilled
     }
 
     public class GamePiece
