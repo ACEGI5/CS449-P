@@ -17,6 +17,14 @@ namespace NineMansMorrisUi
         private readonly Color _whiteColor = Color.GhostWhite;
         private readonly Color _blackColor = Color.Black;
 
+        public enum Mode
+        {
+            Player,
+            AI
+        }
+
+        public Mode gameMode { get; set; }
+
         private enum Turn
         {
             Black,
@@ -29,6 +37,7 @@ namespace NineMansMorrisUi
         {
             Random r = new Random();
             gameTurn = (Turn) r.Next(2);
+            gameMode = Mode.Player;
             InitializeComponent();
             PopulateButtonGrid();
             SetUpForm();

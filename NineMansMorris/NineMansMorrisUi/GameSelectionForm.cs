@@ -14,12 +14,14 @@ namespace NineMansMorrisUi
 
         private void btnPlayerVsComputer_Click(object sender, EventArgs e)
         {
+            boardForm.gameMode = BoardForm.Mode.AI;
             boardForm.Show();
             this.Hide();
         }
 
         private void btnPlayerVsPlayer_Click_1(object sender, EventArgs e)
         {
+            boardForm.gameMode = BoardForm.Mode.Player;
             boardForm.Show();
             this.Hide();
         }
