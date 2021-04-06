@@ -109,7 +109,7 @@ namespace NineMansMorrisTests
         [TestCase(0, 0, 6, 6)]
         [TestCase(0, 0, 1, 1)]
         [TestCase(0, 0, 3, 1)]
-        public void TestIsValidInValidSpot(int oldRow, int oldCol, int newRow, int newCol)
+        public void TestIsValidInvalidSpot(int oldRow, int oldCol, int newRow, int newCol)
         {
             var sut = new NineMansMorrisLogic();
             for (int i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
