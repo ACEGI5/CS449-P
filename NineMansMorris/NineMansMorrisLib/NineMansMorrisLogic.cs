@@ -210,12 +210,12 @@ namespace NineMansMorrisLib
             int colCounter = 0;
             PieceState validPieceState;
             PieceState validMilledPieceState;
-            if (currPieceState == PieceState.Black)
+            if (currPieceState == PieceState.Black|| currPieceState==PieceState.BlackMilled)
             {
                 validPieceState = PieceState.Black;
                 validMilledPieceState = PieceState.BlackMilled;
             }
-            else if (currPieceState == PieceState.White)
+            else if (currPieceState == PieceState.White|| currPieceState==PieceState.WhiteMilled)
             {
                 validPieceState = PieceState.White;
                 validMilledPieceState = PieceState.WhiteMilled;
