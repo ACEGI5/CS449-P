@@ -160,17 +160,19 @@ namespace NineMansMorrisUi
 
         private void MillPieces()
         {
+            
             for (var row = 0; row < 7; row++)
             {
                 for (var col = 0; col < 7; col++)
                 {
-                    if (_nineMansMorrisGame.CheckMill(row, col))
+                    var game = _nineMansMorrisGame.GameBoard.GameBoard[row, col];
+                    if (_nineMansMorrisGame.CheckMill(row, col) && game.MillState == MillState.Milled)
                     {
-                        if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.BlackMilled)
+                        if (game.PieceState == PieceState.Black)
                         {
                             _btnGrid[row, col].BackColor = _blackMilledColor;
                         }
-                        else if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.WhiteMilled)
+                        else if (game.PieceState == PieceState.White)
                         {
                             _btnGrid[row, col].BackColor = _whiteMilledColor;
                         }
