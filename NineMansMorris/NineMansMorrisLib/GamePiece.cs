@@ -5,13 +5,18 @@
         Black,
         White,
         Open,
-        Invalid,
-        BlackMilled,
-        WhiteMilled
+        Invalid
+    }
+
+    public enum MillState
+    {
+        NotMilled,
+        Milled
     }
 
     public class GamePiece
     {
         public PieceState PieceState { get; set; }
+        public MillState MillState { get; set; }
     }
 }

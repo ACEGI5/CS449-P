@@ -8,11 +8,10 @@ namespace NineMansMorrisLib
 {
     public class NineMansMorrisLogic
     {
-        
         public Board GameBoard { get; private set; }
         public Player WhitePlayer { get; private set; }
         public Player BlackPlayer { get; private set; }
-        
+
         private Dictionary<string, int[]> directions = new Dictionary<string, int[]>()
         {
             {"up", new int[] {-1, 0}}, {"down", new int[] {1, 0}},
@@ -91,15 +90,13 @@ namespace NineMansMorrisLib
         private bool isValid(int rowTo, int colTo, int rowFrom, int colFrom)
         {
             // traverse each direction
-            foreach (KeyValuePair<string, int[]> direction in directions)
+            foreach (var direction in directions)
             {
-                
                 // while move is not possible
-                int row = rowFrom;
-                int col = colFrom;
+                var row = rowFrom;
+                var col = colFrom;
                 while (true)
                 {
-                    
                     // update position
                     row += direction.Value[0];
                     col += direction.Value[1];
@@ -119,29 +116,21 @@ namespace NineMansMorrisLib
                     // if black, white, open
                     if (GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid)
                     {
-                        
                         // if spot is open
                         if (GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
                         {
-                            
                             // if spot is where user wants to go
                             if (rowTo == row && colTo == col)
                             {
-                                
                                 // spot is valid
                                 return true;
-                                
                             }
-                            
                         }
 
                         // spot is invalid
                         break;
-                        
                     }
-                    
                 }
-                
             }
 
             // not a valid placement
@@ -159,7 +148,7 @@ namespace NineMansMorrisLib
                 if (player == WhitePlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Black)
                 {
                     // update
-                    WhitePlayer.RemovePiece();
+                    BlackPlayer.RemovePiece();
                     GameBoard.GameBoard[row, col].PieceState = PieceState.Open;
 
                     // events have taken place
@@ -170,7 +159,7 @@ namespace NineMansMorrisLib
                 if (player == BlackPlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.White)
                 {
                     // update
-                    BlackPlayer.RemovePiece();
+                    WhitePlayer.RemovePiece();
                     GameBoard.GameBoard[row, col].PieceState = PieceState.Open;
 
                     // events have taken place
@@ -186,51 +175,56 @@ namespace NineMansMorrisLib
         public bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
             // if player can fly
-            if (player.CanFly())
+            if (!player.CanFly()) return false;
+            // if white
+            if (GameBoard.GameBoard[rowTo, colTo].PieceState != PieceState.Open ||
+                GameBoard.GameBoard[rowTo, colTo].PieceState == PieceState.Invalid) return false;
+            if (player == WhitePlayer)
             {
-                // if white
-                if (player == WhitePlayer)
-                {
-                    // update
-                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.White;
-                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
-                }
-
-                // if black
-                else
-                {
-                    // update
-                    GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
-                    GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
-                }
-
-                // events have taken place
-                return true;
+                // update
+                GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.White;
+                GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
             }
 
+            // if black
+            else
+            {
+                // update
+                GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
+                GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+            }
+
+
+            // events have taken place
+            return true;
+
             // events have not taken place
-            return false;
         }
 
         // post : 
-        
-        public bool CheckMill(Player player, int row, int col)
+
+        public bool CheckMill(int row, int col)
         {
             var currPieceState = GameBoard.GameBoard[row, col].PieceState;
-            int rowCounter = 0;
-            int colCounter = 0;
+            var rowCounter = 0;
+            var colCounter = 0;
+            PieceState validPieceState;
+            if (currPieceState == PieceState.Black) validPieceState = PieceState.Black;
+            else if (currPieceState == PieceState.White) validPieceState = PieceState.White;
+            else return false;
+
             //if current piece is not in the middle column or row we can traverse the entire column or row
             //and as long as there are a total of three pieces of the same color there is a mill
-            if (row != 3 && col != 3)
+            if (row != 3 || col != 3)
             {
-                for (int i = 0; i <= 6; i++)
+                for (var i = 0; i <= 6; i++)
                 {
-                    if (GameBoard.GameBoard[row, i].PieceState == currPieceState)
+                    if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
                     {
                         rowCounter += 1;
                     }
 
-                    if (GameBoard.GameBoard[i, col].PieceState == currPieceState)
+                    if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
                     {
                         colCounter += 1;
                     }
@@ -238,52 +232,48 @@ namespace NineMansMorrisLib
 
                 if (rowCounter == 3 || colCounter == 3)
                 {
+                    GameBoard.GameBoard[row, col].MillState = MillState.Milled;
                     return true;
                 }
             }
-            //if the current piece is in the middle we effectively split the board in half and
+            //if the current piece is in the middle we effectively split the board in half an
             //traverse the half that the current piece is in adding total number of pieces of the current color
-            else if (row == 3 || col == 3)
+            else
             {
-                if (row < 3 || col < 3)
+                for (var i = 3; i >= 0; i--)
                 {
-                    for (int i = 0; i <= 3; i++)
+                    if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
                     {
-                        if (GameBoard.GameBoard[row, i].PieceState == currPieceState)
-                        {
-                            rowCounter += 1;
-                        }
-
-                        if (GameBoard.GameBoard[i, col].PieceState == currPieceState)
-                        {
-                            colCounter += 1;
-                        }
+                        rowCounter += 1;
                     }
-                }
-                else if (row > 3 || col > 3)
-                {
-                    for (int i = 3; i <= 6; i++)
-                    {
-                        if (GameBoard.GameBoard[row, i].PieceState == currPieceState)
-                        {
-                            rowCounter += 1;
-                        }
 
-                        if (GameBoard.GameBoard[i, col].PieceState == currPieceState)
-                        {
-                            colCounter += 1;
-                        }
+                    if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
+                    {
+                        colCounter += 1;
                     }
                 }
 
-                if (rowCounter == 3 || colCounter == 3)
-                    return true;
+                for (var i = 3; i <= 6; i++)
+                {
+                    if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
+                    {
+                        rowCounter += 1;
+                    }
+
+                    if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
+                    {
+                        colCounter += 1;
+                    }
+                }
+            }
+
+            if (rowCounter == 3 || colCounter == 3)
+            {
+                GameBoard.GameBoard[row, col].MillState = MillState.Milled;
+                return true;
             }
 
             return false;
         }
     }
-    
-    
 }
-
