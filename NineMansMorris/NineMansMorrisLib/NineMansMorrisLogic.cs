@@ -227,7 +227,7 @@ namespace NineMansMorrisLib
 
             //if current piece is not in the middle column or row we can traverse the entire column or row
             //and as long as there are a total of three pieces of the same color there is a mill
-            if (row != 3 && col != 3)
+            if (row != 3 || col != 3)
             {
                 for (int i = 0; i <= 6; i++)
                 {
