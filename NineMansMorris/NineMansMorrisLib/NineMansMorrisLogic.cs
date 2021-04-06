@@ -258,7 +258,7 @@ namespace NineMansMorrisLib
                     return true;
                 }
             }
-            //if the current piece is in the middle we effectively split the board in half and
+            //if the current piece is in the middle we effectively split the board in half an
             //traverse the half that the current piece is in adding total number of pieces of the current color
             else if (row == 3 || col == 3)
             {
