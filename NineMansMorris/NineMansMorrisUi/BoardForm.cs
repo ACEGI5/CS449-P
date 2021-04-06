@@ -13,10 +13,11 @@ namespace NineMansMorrisUi
         private Button _selectButton;
         private readonly string _turnIndicatorWhite = "White's Turn";
         private readonly string _turnIndicatorBlack = "Black's Turn";
-        private readonly Color _unoccupiedColor = Color.Red;
+        private readonly Color _unoccupiedColor = Color.Purple;
         private readonly Color _whiteColor = Color.GhostWhite;
         private readonly Color _blackColor = Color.Black;
-
+        private readonly Color _blackMilledColor = Color.DarkGray;
+        private readonly Color _WhiteMilledColor = Color.LightCyan;
         private enum Turn
         {
             Black,
@@ -44,6 +45,8 @@ namespace NineMansMorrisUi
             btnUnoccupiedKey.BackColor = _unoccupiedColor;
             btnWhiteKey.BackColor = _whiteColor;
             btnBlackKey.BackColor = _blackColor;
+            btnBlackMilledKey.BackColor = _blackMilledColor;
+            btnWhiteMilledKey.BackColor = _WhiteMilledColor;
         }
 
         private void PopulateButtonGrid()
@@ -77,92 +80,106 @@ namespace NineMansMorrisUi
             var location = (Point) clickedButton.Tag;
             var row = location.X;
             var col = location.Y;
-            PiecePlacement(row, col, clickedButton);
-            PieceMovement(row, col, clickedButton);
-
             var allPiecesPlaced = _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced &&
                                   _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced;
-            if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid &&
-                _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState != PieceState.Open && allPiecesPlaced)
+            PiecePlacement(row, col, clickedButton);
+            if (allPiecesPlaced&&_selectButton!=null)
             {
-             //   RemovePiece(row, col, clickedButton);
+                if (PieceMovement(row, col, clickedButton))
+                {
+                    
+                }else FlyPiece(row, col, clickedButton);
             }
 
             _selectButton = clickedButton;
         }
 
-        private void PieceMovement(int row, int col, Button clickedButton)
+        private bool FlyPiece(int row, int col, Button clickedButton)
         {
-            var allPiecesPlaced = _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced &&
-                                  _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced;
-            if (allPiecesPlaced)
+            var oldLocation = (Point) _selectButton.Tag;
+            var oldRow = oldLocation.X;
+            var oldCol = oldLocation.Y;
+            if (_selectButton == clickedButton || _selectButton == null ||
+                _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState != PieceState.Open) return false;
+            if (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState != PieceState.White)
             {
-                var oldLocation = (Point) _selectButton.Tag;
-                var oldRow = oldLocation.X;
-                var oldCol = oldLocation.Y;
-                var oldPieceState = _nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState;
-
-
-                var correctTurn = (lblTurnIndicator.Text == _turnIndicatorWhite && gameTurn == Turn.White &&
-                                   oldPieceState == PieceState.White) ||
-                                  (lblTurnIndicator.Text == _turnIndicatorBlack && gameTurn == Turn.Black &&
-                                   oldPieceState == PieceState.Black);
-
-                if (_selectButton != clickedButton && _selectButton != null &&
-                    _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open && correctTurn)
+                if (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState == PieceState.Black)
                 {
-                    switch (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState)
-                    {
-                        case PieceState.White:
-                            if (_nineMansMorrisGame.MovePiece(_nineMansMorrisGame.WhitePlayer, row, col, oldRow,
-                                oldCol))
-                            {
-                                _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
-                                _btnGrid[row, col].BackColor = _whiteColor;
-                                lblTurnIndicator.Text = _turnIndicatorBlack;
-                                gameTurn = Turn.Black;
-                                _selectButton = null;
-                            }else if (_nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.WhitePlayer, row, col, oldRow,
-                                oldCol))
-                            {
-                                _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
-                                _btnGrid[row, col].BackColor = _whiteColor;
-                                lblTurnIndicator.Text = _turnIndicatorBlack;
-                                gameTurn = Turn.Black;
-                                _selectButton = null;
-                            }
-
-                            break;
-                        case PieceState.Black:
-                            if (_nineMansMorrisGame.MovePiece(_nineMansMorrisGame.BlackPlayer, row, col, oldRow,
-                                oldCol))
-                            {
-                                _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
-                                _btnGrid[row, col].BackColor = _blackColor;
-                                lblTurnIndicator.Text = _turnIndicatorWhite;
-                                gameTurn = Turn.White;
-                                _selectButton = null;
-                            }else if (_nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.BlackPlayer, row, col, oldRow,
-                                oldCol))
-                            {
-                                _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
-                                _btnGrid[row, col].BackColor = _blackColor;
-                                lblTurnIndicator.Text = _turnIndicatorWhite;
-                                gameTurn = Turn.White;
-                                _selectButton = null;
-                            }
-
-                            break;
-                        case PieceState.Open:
-                            break;
-                        case PieceState.Invalid:
-                            break;
-                        default:
-                            _selectButton = clickedButton;
-                            break;
-                    }
+                    if (!_nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.BlackPlayer, row, col, oldRow,
+                        oldCol)) return false;
+                    _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
+                    _btnGrid[row, col].BackColor = _blackColor;
+                    lblTurnIndicator.Text = _turnIndicatorWhite;
+                    gameTurn = Turn.White;
+                    _selectButton = null;
+                }
+                else
+                {
+                    _selectButton = clickedButton;
                 }
             }
+            else
+            {
+                if (!_nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.WhitePlayer, row, col, oldRow,
+                    oldCol)) return false;
+                _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
+                _btnGrid[row, col].BackColor = _whiteColor;
+                lblTurnIndicator.Text = _turnIndicatorBlack;
+                gameTurn = Turn.Black;
+                _selectButton = null;
+            }
+            return true;
+        }
+
+        private void UpdateMills()
+        {
+            for (var row = 0; row < 7; row++)
+            {
+                for (var col = 0; col < 7; col++)
+                {
+                    
+                }
+            }
+            
+            
+        }
+
+        private bool PieceMovement(int row, int col, Button clickedButton)
+        {
+            var oldLocation = (Point) _selectButton.Tag;
+            var oldRow = oldLocation.X;
+            var oldCol = oldLocation.Y;
+            if (_selectButton == clickedButton || _selectButton == null ||
+                _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState != PieceState.Open) return false;
+            if (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState != PieceState.White)
+            {
+                if (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState == PieceState.Black)
+                {
+                    if (!_nineMansMorrisGame.MovePiece(_nineMansMorrisGame.BlackPlayer, row, col, oldRow,
+                        oldCol)) return false;
+                    _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
+                    _btnGrid[row, col].BackColor = _blackColor;
+                    lblTurnIndicator.Text = _turnIndicatorWhite;
+                    gameTurn = Turn.White;
+                    _selectButton = null;
+                }
+                else
+                {
+                    _selectButton = clickedButton;
+                }
+            }
+            else
+            {
+                if (!_nineMansMorrisGame.MovePiece(_nineMansMorrisGame.WhitePlayer, row, col, oldRow,
+                    oldCol)) return false;
+                _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
+                _btnGrid[row, col].BackColor = _whiteColor;
+                lblTurnIndicator.Text = _turnIndicatorBlack;
+                gameTurn = Turn.Black;
+                _selectButton = null;
+            }
+
+            return true;
         }
 
         private void PiecePlacement(int row, int col, Control clickedButton)
@@ -198,8 +215,6 @@ namespace NineMansMorrisUi
 
                     break;
                 }
-                default:
-                  break;  
             }
         }
 

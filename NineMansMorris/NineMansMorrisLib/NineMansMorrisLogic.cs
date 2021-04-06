@@ -214,7 +214,7 @@ namespace NineMansMorrisLib
 
         // post : 
         
-        public bool CheckMill(Player player, int row, int col)
+        public bool CheckMill(int row, int col)
         {
             var currPieceState = GameBoard.GameBoard[row, col].PieceState;
             int rowCounter = 0;
