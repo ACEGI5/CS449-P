@@ -159,7 +159,7 @@ namespace NineMansMorrisLib
                 if (player == WhitePlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Black)
                 {
                     // update
-                    WhitePlayer.RemovePiece();
+                    BlackPlayer.RemovePiece();
                     GameBoard.GameBoard[row, col].PieceState = PieceState.Open;
 
                     // events have taken place
@@ -170,7 +170,7 @@ namespace NineMansMorrisLib
                 if (player == BlackPlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.White)
                 {
                     // update
-                    BlackPlayer.RemovePiece();
+                    WhitePlayer.RemovePiece();
                     GameBoard.GameBoard[row, col].PieceState = PieceState.Open;
 
                     // events have taken place
@@ -219,18 +219,34 @@ namespace NineMansMorrisLib
             var currPieceState = GameBoard.GameBoard[row, col].PieceState;
             int rowCounter = 0;
             int colCounter = 0;
+            PieceState validPieceState;
+            PieceState validMilledPieceState;
+            if (currPieceState == PieceState.Black)
+            {
+                validPieceState = PieceState.Black;
+                validMilledPieceState = PieceState.BlackMilled;
+            }else if (currPieceState == PieceState.White)
+            {
+                validPieceState = PieceState.White;
+                validMilledPieceState = PieceState.WhiteMilled;
+            }
+            else
+            {
+                return false;
+            }
             //if current piece is not in the middle column or row we can traverse the entire column or row
             //and as long as there are a total of three pieces of the same color there is a mill
             if (row != 3 && col != 3)
             {
                 for (int i = 0; i <= 6; i++)
                 {
-                    if (GameBoard.GameBoard[row, i].PieceState == currPieceState)
-                    {
+                    if (GameBoard.GameBoard[row, i].PieceState == validPieceState|| GameBoard.GameBoard[row,i].PieceState==validMilledPieceState)
+                    { 
+                        
                         rowCounter += 1;
                     }
 
-                    if (GameBoard.GameBoard[i, col].PieceState == currPieceState)
+                    if (GameBoard.GameBoard[i, col].PieceState == validPieceState||GameBoard.GameBoard[i,col].PieceState==validMilledPieceState)
                     {
                         colCounter += 1;
                     }
@@ -238,6 +254,13 @@ namespace NineMansMorrisLib
 
                 if (rowCounter == 3 || colCounter == 3)
                 {
+                    if (GameBoard.GameBoard[row, col].PieceState == PieceState.Black )
+                    {
+                        GameBoard.GameBoard[row, col].PieceState = PieceState.BlackMilled;
+                    }else if (GameBoard.GameBoard[row, col].PieceState == PieceState.White)
+                    {
+                        GameBoard.GameBoard[row, col].PieceState = PieceState.WhiteMilled;
+                    }
                     return true;
                 }
             }
@@ -249,12 +272,12 @@ namespace NineMansMorrisLib
                 {
                     for (int i = 0; i <= 3; i++)
                     {
-                        if (GameBoard.GameBoard[row, i].PieceState == currPieceState)
+                        if (GameBoard.GameBoard[row, i].PieceState == validPieceState|| GameBoard.GameBoard[row,i].PieceState==validMilledPieceState)
                         {
                             rowCounter += 1;
                         }
 
-                        if (GameBoard.GameBoard[i, col].PieceState == currPieceState)
+                        if (GameBoard.GameBoard[i, col].PieceState == validPieceState||GameBoard.GameBoard[i,col].PieceState==validMilledPieceState)
                         {
                             colCounter += 1;
                         }
@@ -264,12 +287,12 @@ namespace NineMansMorrisLib
                 {
                     for (int i = 3; i <= 6; i++)
                     {
-                        if (GameBoard.GameBoard[row, i].PieceState == currPieceState)
+                        if (GameBoard.GameBoard[row, i].PieceState == validPieceState|| GameBoard.GameBoard[row,i].PieceState==validMilledPieceState)
                         {
                             rowCounter += 1;
                         }
 
-                        if (GameBoard.GameBoard[i, col].PieceState == currPieceState)
+                        if (GameBoard.GameBoard[i, col].PieceState == validPieceState||GameBoard.GameBoard[i,col].PieceState==validMilledPieceState)
                         {
                             colCounter += 1;
                         }
@@ -277,7 +300,17 @@ namespace NineMansMorrisLib
                 }
 
                 if (rowCounter == 3 || colCounter == 3)
+                {
+                    if (GameBoard.GameBoard[row, col].PieceState == PieceState.Black)
+                    {
+                        GameBoard.GameBoard[row, col].PieceState = PieceState.BlackMilled;
+                    }else if (GameBoard.GameBoard[row, col].PieceState == PieceState.White)
+                    {
+                        GameBoard.GameBoard[row, col].PieceState = PieceState.WhiteMilled;
+                    }
                     return true;
+                }
+                
             }
 
             return false;

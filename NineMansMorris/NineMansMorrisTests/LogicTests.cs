@@ -132,5 +132,6 @@ namespace NineMansMorrisTests
             Assert.AreEqual(color,sut.GameBoard.GameBoard[newRow,newCol].PieceState);
             Assert.True(isValidFly);
         }
+        
     }
 }
