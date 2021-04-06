@@ -17,8 +17,8 @@ namespace NineMansMorrisUi
         private readonly Color _unoccupiedColor = Color.Purple;
         private readonly Color _whiteColor = Color.GhostWhite;
         private readonly Color _blackColor = Color.Black;
-        private readonly Color _blackMilledColor = Color.DarkGray;
-        private readonly Color _whiteMilledColor = Color.LightCyan;
+        private readonly Color _blackMilledColor = Color.Chocolate;
+        private readonly Color _whiteMilledColor = Color.Blue;
         private bool _newMillFormed = false;
 
         private enum Turn
@@ -31,7 +31,7 @@ namespace NineMansMorrisUi
 
         public BoardForm()
         {
-            Random r = new Random();
+            var r = new Random();
             gameTurn = (Turn) r.Next(2);
             InitializeComponent();
             PopulateButtonGrid();
