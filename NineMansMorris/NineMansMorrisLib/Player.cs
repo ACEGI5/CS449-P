@@ -4,9 +4,9 @@
     public class Player
     {
 
-        public int PiecesInPlay { get; private set; }
-        public int PiecesToPlace { get; private set; }
-        public bool AllPiecesPlaced { get; private set; }
+        public int PiecesInPlay { get; set; }
+        public int PiecesToPlace { get; set; }
+        public bool AllPiecesPlaced { get; set; }
 
         public Player()
         {
