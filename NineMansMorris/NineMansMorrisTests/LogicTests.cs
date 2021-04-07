@@ -181,5 +181,30 @@ namespace NineMansMorrisTests
             Assert.AreEqual(color, sut.GameBoard.GameBoard[newRow, newCol].PieceState);
             Assert.False(isValidFly);
         }
+
+        [Test]
+        public void TestValidMillPlacementVerticalNotCentered()
+        {
+            var sut = new NineMansMorrisLogic();
+            sut.PlacePiece(sut.BlackPlayer, 1, 5);
+            sut.PlacePiece(sut.BlackPlayer, 3, 5);
+            sut.PlacePiece(sut.BlackPlayer, 5, 5);
+
+            Assert.IsTrue(sut.CheckMill(3, 5, sut.BlackPlayer));
+
+        }
+        
+        [Test]
+        public void TestValidMillPlacementHorizontalNotCentered()
+        {
+            var sut = new NineMansMorrisLogic();
+            sut.PlacePiece(sut.BlackPlayer, 3, 4);
+            sut.PlacePiece(sut.BlackPlayer, 3, 5);
+            sut.PlacePiece(sut.BlackPlayer, 3, 6);
+
+            Assert.IsTrue(sut.CheckMill(3, 5, sut.BlackPlayer));
+
+        }
     }
+
 }
