@@ -160,7 +160,6 @@ namespace NineMansMorrisUi
 
         private void MillPieces()
         {
-            
             for (var row = 0; row < 7; row++)
             {
                 for (var col = 0; col < 7; col++)
