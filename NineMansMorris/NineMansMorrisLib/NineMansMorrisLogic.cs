@@ -261,7 +261,7 @@ namespace NineMansMorrisLib
                     return true;
                 }
             }
-
+//aa
             return false;
         }
         
