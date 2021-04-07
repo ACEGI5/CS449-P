@@ -118,7 +118,7 @@ namespace NineMansMorrisUi
                         oldCol)) return false;
                     _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                     _btnGrid[row, col].BackColor = _blackColor;
-                    if (_nineMansMorrisGame.CheckMill(row, col,_nineMansMorrisGame.BlackPlayer))
+                    if (_nineMansMorrisGame.CheckMill(row, col, _nineMansMorrisGame.BlackPlayer))
                     {
                         _newMillFormed = true;
                         MillPieces();
@@ -141,7 +141,7 @@ namespace NineMansMorrisUi
                     oldCol)) return false;
                 _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                 _btnGrid[row, col].BackColor = _whiteColor;
-                if (_nineMansMorrisGame.CheckMill(row, col,_nineMansMorrisGame.WhitePlayer))
+                if (_nineMansMorrisGame.CheckMill(row, col, _nineMansMorrisGame.WhitePlayer))
                 {
                     _newMillFormed = true;
                     MillPieces();
@@ -196,7 +196,7 @@ namespace NineMansMorrisUi
                     _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                     _btnGrid[row, col].BackColor = _blackColor;
 
-                    if (_nineMansMorrisGame.CheckMill(row, col,_nineMansMorrisGame.BlackPlayer))
+                    if (_nineMansMorrisGame.CheckMill(row, col, _nineMansMorrisGame.BlackPlayer))
                     {
                         _newMillFormed = true;
                         MillPieces();
@@ -220,7 +220,7 @@ namespace NineMansMorrisUi
                 _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                 _btnGrid[row, col].BackColor = _whiteColor;
 
-                if (_nineMansMorrisGame.CheckMill(row, col,_nineMansMorrisGame.WhitePlayer))
+                if (_nineMansMorrisGame.CheckMill(row, col, _nineMansMorrisGame.WhitePlayer))
                 {
                     _newMillFormed = true;
                     MillPieces();
@@ -248,7 +248,7 @@ namespace NineMansMorrisUi
                         clickedButton.BackColor = _whiteColor;
                         textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
                         textBoxWhitePlayerPiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesInPlay.ToString();
-                        if (_nineMansMorrisGame.CheckMill(row, col,_nineMansMorrisGame.WhitePlayer))
+                        if (_nineMansMorrisGame.CheckMill(row, col, _nineMansMorrisGame.WhitePlayer))
                         {
                             _newMillFormed = true;
                             MillPieces();
@@ -272,7 +272,7 @@ namespace NineMansMorrisUi
                         textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
                         textBoxBlackPlayerPiecesLeft.Text = _nineMansMorrisGame.BlackPlayer.PiecesInPlay.ToString();
 
-                        if (_nineMansMorrisGame.CheckMill(row, col,_nineMansMorrisGame.BlackPlayer))
+                        if (_nineMansMorrisGame.CheckMill(row, col, _nineMansMorrisGame.BlackPlayer))
                         {
                             _newMillFormed = true;
                             MillPieces();
@@ -301,8 +301,11 @@ namespace NineMansMorrisUi
                             _btnGrid[row, col].BackColor = _unoccupiedColor;
                             textBoxBlackPlayerPiecesLeft.Text = _nineMansMorrisGame.BlackPlayer.PiecesInPlay.ToString();
                             _newMillFormed = false;
-                            lblTurnIndicator.Text = _turnIndicatorBlack;
-                            gameTurn = Turn.Black;
+                            if (!EndGame())
+                            {
+                                lblTurnIndicator.Text = _turnIndicatorBlack;
+                                gameTurn = Turn.Black;
+                            }
                         }
                     }
 
@@ -315,14 +318,39 @@ namespace NineMansMorrisUi
                             _btnGrid[row, col].BackColor = _unoccupiedColor;
                             textBoxWhitePlayerPiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesInPlay.ToString();
                             _newMillFormed = false;
-                            lblTurnIndicator.Text = _turnIndicatorWhite;
-                            gameTurn = Turn.White;
+                            if (!EndGame())
+                            {
+                                lblTurnIndicator.Text = _turnIndicatorWhite;
+                                gameTurn = Turn.White;
+                            }
                         }
                     }
 
-
                     break;
             }
+        }
+
+        private bool EndGame()
+        {
+            if (!_nineMansMorrisGame.GameOver) return false;
+            for (var row = 0; row < 7; row++)
+            {
+                for (var col = 0; col < 7; col++)
+                {
+                    _btnGrid[row, col].Enabled = false;
+                }
+            }
+
+            if (gameTurn == Turn.Black)
+            {
+                MessageBox.Show("Black Player Wins");
+            }
+            else
+            {
+                MessageBox.Show("White Player Wins");
+            }
+
+            return true;
         }
 
         private void BtnResetClick(object sender, EventArgs e)
