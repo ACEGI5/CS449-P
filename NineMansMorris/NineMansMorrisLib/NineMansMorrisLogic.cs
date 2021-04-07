@@ -254,14 +254,17 @@ namespace NineMansMorrisLib
                 if (rowCounter == 3 || colCounter == 3)
                 {
                     GameBoard.GameBoard[row, col].MillState = MillState.Milled;
-                    
-                        player.MillPiece();
-
-                        return true;
+                    for (var j = 0; j < 3; j++)
+                    {
+                        player.MillPiece(); 
+                    }
+                    return true;
                 }
             }
 
             return false;
         }
+        
     }
+    
 }
