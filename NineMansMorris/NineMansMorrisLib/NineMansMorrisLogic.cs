@@ -213,64 +213,28 @@ namespace NineMansMorrisLib
             else if (currPieceState == PieceState.White) validPieceState = PieceState.White;
             else return false;
 
-            //if current piece is not in the middle column or row we can traverse the entire column or row
-            //and as long as there are a total of three pieces of the same color there is a mill
-            if (row != 3 || col != 3)
+            for (var i = 0; i <= 6; i++)
             {
-                for (var i = 0; i <= 6; i++)
+                if (i == 3 && row == 3)
+                    rowCounter = 0;
+                if (i == 3 && col == 3)
+                    colCounter = 0;
+                
+                if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
                 {
-                    if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
-                    {
-                        rowCounter += 1;
-                    }
-
-                    if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
-                    {
-                        colCounter += 1;
-                    }
+                    rowCounter += 1;
                 }
 
+                if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
+                {
+                    colCounter += 1;
+                }
+                
                 if (rowCounter == 3 || colCounter == 3)
                 {
                     GameBoard.GameBoard[row, col].MillState = MillState.Milled;
                     return true;
                 }
-            }
-            //if the current piece is in the middle we effectively split the board in half an
-            //traverse the half that the current piece is in adding total number of pieces of the current color
-            else
-            {
-                for (var i = 3; i >= 0; i--)
-                {
-                    if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
-                    {
-                        rowCounter += 1;
-                    }
-
-                    if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
-                    {
-                        colCounter += 1;
-                    }
-                }
-
-                for (var i = 3; i <= 6; i++)
-                {
-                    if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
-                    {
-                        rowCounter += 1;
-                    }
-
-                    if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
-                    {
-                        colCounter += 1;
-                    }
-                }
-            }
-
-            if (rowCounter == 3 || colCounter == 3)
-            {
-                GameBoard.GameBoard[row, col].MillState = MillState.Milled;
-                return true;
             }
 
             return false;
