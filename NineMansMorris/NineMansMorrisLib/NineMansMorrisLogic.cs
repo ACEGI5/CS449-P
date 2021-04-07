@@ -59,10 +59,8 @@ namespace NineMansMorrisLib
             //if mill broken
             if (GameBoard.GameBoard[rowFrom, colFrom].MillState == MillState.Milled)
             {
-                for (var j = 0; j < 3; j++)
-                {
+             
                     player.BreakMilledPiece();
-                }
             }
 
             // if white
@@ -150,10 +148,9 @@ namespace NineMansMorrisLib
             {
                 if (GameBoard.GameBoard[row, col].MillState == MillState.Milled)
                 {
-                    for (var j = 0; j < 3; j++)
-                    {
+                    
                         player.BreakMilledPiece();
-                    }
+                    
                 }
 
                 // if white and removing opponent piece

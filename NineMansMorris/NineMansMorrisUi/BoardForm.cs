@@ -337,7 +337,8 @@ namespace NineMansMorrisUi
             {
                 for (var col = 0; col < 7; col++)
                 {
-                    _btnGrid[row, col].Enabled = false;
+                    if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid)
+                        _btnGrid[row, col].Enabled = false;
                 }
             }
 
