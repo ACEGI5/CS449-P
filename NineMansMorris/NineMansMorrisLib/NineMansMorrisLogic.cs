@@ -26,6 +26,7 @@ namespace NineMansMorrisLib
         // pre : 
         public bool PlacePiece(Player player, int row, int col)
         {
+            if (GameOver) return false;
             // if player has all pieces placed or where they are placing is not valid return false
             if (player.AllPiecesPlaced || GameBoard.GameBoard[row, col].PieceState != PieceState.Open) return false;
             // if white
@@ -54,13 +55,13 @@ namespace NineMansMorrisLib
         // pre : 
         public bool MovePiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
+            if (GameOver) return false;
             // if invalid placement and not all pieces placed return
             if (!isValid(rowTo, colTo, rowFrom, colFrom) || !player.AllPiecesPlaced) return false;
             //if mill broken
             if (GameBoard.GameBoard[rowFrom, colFrom].MillState == MillState.Milled)
             {
-             
-                    player.BreakMilledPiece();
+                player.BreakMilledPiece();
             }
 
             // if white
@@ -140,17 +141,16 @@ namespace NineMansMorrisLib
         // pre : 
         public bool RemovePiece(Player player, int row, int col)
         {
+            if (GameOver) return false;
             // if invalid return false
             if (GameBoard.GameBoard[row, col].PieceState == PieceState.Invalid) return false;
-
+            // fix this opposite player check if pieces remaining equals pieces left
             if (GameBoard.GameBoard[row, col].MillState != MillState.Milled ||
                 player.PiecesInPlay == player.MilledPieces)
             {
                 if (GameBoard.GameBoard[row, col].MillState == MillState.Milled)
                 {
-                    
-                        player.BreakMilledPiece();
-                    
+                    player.BreakMilledPiece();
                 }
 
                 // if white and removing opponent piece
@@ -184,6 +184,7 @@ namespace NineMansMorrisLib
         // pre : 
         public bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
+            if (GameOver) return false;
             // if player can't fly return
             if (!player.CanFly()) return false;
             // if invalid fly return false
@@ -192,9 +193,7 @@ namespace NineMansMorrisLib
             //if mill is broken
             if (GameBoard.GameBoard[rowFrom, colFrom].MillState == MillState.Milled)
             {
-                
-                    player.BreakMilledPiece();
-                
+                player.BreakMilledPiece();
             }
 
             //white player
@@ -252,14 +251,14 @@ namespace NineMansMorrisLib
                     GameBoard.GameBoard[row, col].MillState = MillState.Milled;
                     for (var j = 0; j < 3; j++)
                     {
-                        player.MillPiece(); 
+                        player.MillPiece();
                     }
+
                     return true;
                 }
             }
+
             return false;
         }
-        
     }
-    
 }

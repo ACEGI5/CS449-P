@@ -205,6 +205,44 @@ namespace NineMansMorrisTests
             Assert.IsTrue(sut.CheckMill(3, 5, sut.BlackPlayer));
 
         }
+        [Test]
+        public void TestGameOver()
+        {
+            var sut = new NineMansMorrisLogic();
+            for (var i = sut.BlackPlayer.PiecesToPlace; i > 1; i--)
+            {
+                sut.BlackPlayer.PlacePiece();
+            }
+
+            sut.PlacePiece(sut.BlackPlayer, 0, 0);
+            for (var i = sut.BlackPlayer.PiecesInPlay; i > 3; i--)
+            {
+                sut.BlackPlayer.RemovePiece();
+            }
+
+            sut.RemovePiece(sut.WhitePlayer, 0, 0);
+            Assert.True(sut.GameOver);
+        }
+        [Test]
+        public void TestGameOverPlacePiece()
+        {
+            var sut = new NineMansMorrisLogic();
+            for (var i = sut.BlackPlayer.PiecesToPlace; i > 1; i--)
+            {
+                sut.BlackPlayer.PlacePiece();
+            }
+
+            sut.PlacePiece(sut.BlackPlayer, 0, 0);
+            for (var i = sut.BlackPlayer.PiecesInPlay; i > 3; i--)
+            {
+                sut.BlackPlayer.RemovePiece();
+            }
+
+            sut.RemovePiece(sut.WhitePlayer, 0, 0);
+            Assert.True(sut.GameOver);
+            sut.PlacePiece(sut.WhitePlayer, 6, 6);
+            Assert.AreEqual( PieceState.Open,sut.GameBoard.GameBoard[6,6].PieceState);
+        }
     }
 
 }

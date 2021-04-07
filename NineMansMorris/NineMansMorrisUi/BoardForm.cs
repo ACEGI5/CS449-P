@@ -198,6 +198,7 @@ namespace NineMansMorrisUi
 
                     if (_nineMansMorrisGame.CheckMill(row, col, _nineMansMorrisGame.BlackPlayer))
                     {
+                        MessageBox.Show("Black Has Formed Mill");
                         _newMillFormed = true;
                         MillPieces();
                     }
@@ -222,6 +223,7 @@ namespace NineMansMorrisUi
 
                 if (_nineMansMorrisGame.CheckMill(row, col, _nineMansMorrisGame.WhitePlayer))
                 {
+                    MessageBox.Show("White Has Formed Mill");
                     _newMillFormed = true;
                     MillPieces();
                 }
@@ -250,6 +252,7 @@ namespace NineMansMorrisUi
                         textBoxWhitePlayerPiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesInPlay.ToString();
                         if (_nineMansMorrisGame.CheckMill(row, col, _nineMansMorrisGame.WhitePlayer))
                         {
+                            MessageBox.Show("White Has Formed Mill");
                             _newMillFormed = true;
                             MillPieces();
                         }
@@ -274,6 +277,7 @@ namespace NineMansMorrisUi
 
                         if (_nineMansMorrisGame.CheckMill(row, col, _nineMansMorrisGame.BlackPlayer))
                         {
+                            MessageBox.Show("Black Has Formed Mill");
                             _newMillFormed = true;
                             MillPieces();
                         }
