@@ -15,13 +15,13 @@ namespace NineMansMorrisUi
         private void btnPlayerVsComputer_Click(object sender, EventArgs e)
         {
             boardForm.Show();
-            this.Hide();
+            Hide();
         }
 
         private void btnPlayerVsPlayer_Click_1(object sender, EventArgs e)
         {
             boardForm.Show();
-            this.Hide();
+            Hide();
         }
     }
 }

@@ -1,5 +1,5 @@
-﻿using NUnit.Framework;
-using NineMansMorrisLib;
+﻿using NineMansMorrisLib;
+using NUnit.Framework;
 
 namespace NineMansMorrisTests
 {
@@ -39,7 +39,7 @@ namespace NineMansMorrisTests
             var sut = new Player();
             sut.PiecesInPlay = 2;
             sut.AllPiecesPlaced = true;
-            Assert.IsTrue(sut.PlayerHasLost() == true);
+            Assert.IsTrue(sut.PlayerHasLost());
         }
     }
 }

@@ -5,8 +5,10 @@
     {
 
         public int PiecesInPlay { get; set; }
-        public int PiecesToPlace { get; set; }
-        public bool AllPiecesPlaced { get; set; }
+        public int MilledPieces { get; set; }
+        public int PiecesToPlace { get; private set; }
+        public bool AllPiecesPlaced { get;  set; }
+        
 
         public Player()
         {
@@ -55,7 +57,15 @@
             return ((PiecesInPlay < 3) && AllPiecesPlaced);
             
         }
-        
+
+        public void MillPiece()
+        {
+            MilledPieces++;
+        }
+        public void BreakMilledPiece()
+        {
+            MilledPieces--;
+        }
     }
     
 }

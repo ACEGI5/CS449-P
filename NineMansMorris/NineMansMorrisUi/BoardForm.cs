@@ -1,5 +1,4 @@
 ﻿using System;
-using System.DirectoryServices.ActiveDirectory;
 using System.Drawing;
 using System.Windows.Forms;
 using NineMansMorrisLib;
@@ -19,7 +18,7 @@ namespace NineMansMorrisUi
         private readonly Color _blackColor = Color.Black;
         private readonly Color _blackMilledColor = Color.Chocolate;
         private readonly Color _whiteMilledColor = Color.Blue;
-        private bool _newMillFormed = false;
+        private bool _newMillFormed;
 
         private enum Turn
         {
@@ -119,7 +118,7 @@ namespace NineMansMorrisUi
                         oldCol)) return false;
                     _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                     _btnGrid[row, col].BackColor = _blackColor;
-                    if (_nineMansMorrisGame.CheckMill(row, col))
+                    if (_nineMansMorrisGame.CheckMill(row, col,_nineMansMorrisGame.BlackPlayer))
                     {
                         _newMillFormed = true;
                         MillPieces();
@@ -142,7 +141,7 @@ namespace NineMansMorrisUi
                     oldCol)) return false;
                 _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                 _btnGrid[row, col].BackColor = _whiteColor;
-                if (_nineMansMorrisGame.CheckMill(row, col))
+                if (_nineMansMorrisGame.CheckMill(row, col,_nineMansMorrisGame.WhitePlayer))
                 {
                     _newMillFormed = true;
                     MillPieces();
@@ -197,7 +196,7 @@ namespace NineMansMorrisUi
                     _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                     _btnGrid[row, col].BackColor = _blackColor;
 
-                    if (_nineMansMorrisGame.CheckMill(row, col))
+                    if (_nineMansMorrisGame.CheckMill(row, col,_nineMansMorrisGame.BlackPlayer))
                     {
                         _newMillFormed = true;
                         MillPieces();
@@ -221,7 +220,7 @@ namespace NineMansMorrisUi
                 _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                 _btnGrid[row, col].BackColor = _whiteColor;
 
-                if (_nineMansMorrisGame.CheckMill(row, col))
+                if (_nineMansMorrisGame.CheckMill(row, col,_nineMansMorrisGame.WhitePlayer))
                 {
                     _newMillFormed = true;
                     MillPieces();
@@ -249,7 +248,7 @@ namespace NineMansMorrisUi
                         clickedButton.BackColor = _whiteColor;
                         textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
                         textBoxWhitePlayerPiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesInPlay.ToString();
-                        if (_nineMansMorrisGame.CheckMill(row, col))
+                        if (_nineMansMorrisGame.CheckMill(row, col,_nineMansMorrisGame.WhitePlayer))
                         {
                             _newMillFormed = true;
                             MillPieces();
@@ -273,7 +272,7 @@ namespace NineMansMorrisUi
                         textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
                         textBoxBlackPlayerPiecesLeft.Text = _nineMansMorrisGame.BlackPlayer.PiecesInPlay.ToString();
 
-                        if (_nineMansMorrisGame.CheckMill(row, col))
+                        if (_nineMansMorrisGame.CheckMill(row, col,_nineMansMorrisGame.BlackPlayer))
                         {
                             _newMillFormed = true;
                             MillPieces();
@@ -331,7 +330,7 @@ namespace NineMansMorrisUi
             var gameSelectionForm = new GameSelectionForm();
             //need reset method for pieces and player objects
             gameSelectionForm.Show();
-            this.Hide();
+            Hide();
         }
 
         private void BtnExitClick(object sender, EventArgs e)

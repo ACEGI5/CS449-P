@@ -1,6 +1,5 @@
 ﻿using System;
 
-
 namespace NineMansMorrisLib
 {
     public class Board
@@ -31,10 +30,10 @@ namespace NineMansMorrisLib
                 {
                     if (row == CenterOfBoard || col == CenterOfBoard)
                     {
-                        boardArray[row, col] = new GamePiece() {PieceState = PieceState.Open};
+                        boardArray[row, col] = new GamePiece {PieceState = PieceState.Open};
                     }
 
-                    boardArray[row, col] ??= new GamePiece() {PieceState = PieceState.Invalid};
+                    boardArray[row, col] ??= new GamePiece {PieceState = PieceState.Invalid};
                 }
             }
 
