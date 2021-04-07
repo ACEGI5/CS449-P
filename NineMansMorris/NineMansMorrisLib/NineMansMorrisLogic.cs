@@ -219,46 +219,79 @@ namespace NineMansMorrisLib
 
         // post : 
 
+        // pre :
         public bool CheckMill(int row, int col, Player player)
         {
             var currPieceState = GameBoard.GameBoard[row, col].PieceState;
-            var rowCounter = 0;
-            var colCounter = 0;
+            List<GamePiece> rowList = new List<GamePiece>();
+            List<GamePiece> colList = new List<GamePiece>();
             PieceState validPieceState;
-            if (currPieceState == PieceState.Black) validPieceState = PieceState.Black;
-            else if (currPieceState == PieceState.White) validPieceState = PieceState.White;
-            else return false;
+            //If PieceState is not Black or White, return false.
+            switch (currPieceState)
+            {
+                case PieceState.Black:
+                    validPieceState = PieceState.Black;
+                    break;
+                case PieceState.White:
+                    validPieceState = PieceState.White;
+                    break;
+                default:
+                    return false;
+            }
 
+            //Search for Mills.
             for (var i = 0; i <= 6; i++)
             {
-                if (i == 3 && row == 3)
-                    rowCounter = 0;
-                if (i == 3 && col == 3)
-                    colCounter = 0;
+                //If position MIDDLE (3,3) is hit, reset the matching list.
+                switch (i)
+                {
+                    case 3 when row == 3 && rowList.Count != 3:
+                        rowList.Clear();
+                        break;
+                    case 3 when col == 3 && rowList.Count != 3:
+                        colList.Clear();
+                        break;
+                }
 
                 if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
                 {
-                    rowCounter += 1;
+                    rowList.Add(GameBoard.GameBoard[row, i]);
                 }
 
                 if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
                 {
-                    colCounter += 1;
-                }
-
-                if (rowCounter == 3 || colCounter == 3)
-                {
-                    GameBoard.GameBoard[row, col].MillState = MillState.Milled;
-                    for (var j = 0; j < 3; j++)
-                    {
-                        player.MillPiece();
-                    }
-
-                    return true;
+                    colList.Add(GameBoard.GameBoard[i, col]);
                 }
             }
 
+            //Sets mills if any.
+            if (rowList.Count == 3 || colList.Count == 3)
+            {
+                if (rowList.Count == 3)
+                {
+                    foreach (GamePiece piece in rowList)
+                    {
+                        piece.MillState = MillState.Milled;
+                        player.MillPiece();
+                    }
+                }
+
+                if (colList.Count == 3)
+                {
+                    foreach (GamePiece piece in colList)
+                    {
+                        piece.MillState = MillState.Milled;
+                        player.MillPiece();
+                    }
+                }
+
+                return true;
+            }
+
+            //No mills found, return false.
             return false;
         }
+
+        // post :
     }
 }
