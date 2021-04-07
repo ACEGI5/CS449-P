@@ -192,10 +192,9 @@ namespace NineMansMorrisLib
             //if mill is broken
             if (GameBoard.GameBoard[rowFrom, colFrom].MillState == MillState.Milled)
             {
-                for (var j = 0; j < 3; j++)
-                {
+                
                     player.BreakMilledPiece();
-                }
+                
             }
 
             //white player
