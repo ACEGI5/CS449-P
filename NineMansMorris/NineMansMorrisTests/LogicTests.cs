@@ -145,7 +145,7 @@ namespace NineMansMorrisTests
         }
 
         [TestCase(0, 0, 1, 1, PieceState.White)]
-        public void testInvalidFlyOccupied(int oldRow, int oldCol, int newRow, int newCol, PieceState color)
+        public void TestInvalidFlyOccupied(int oldRow, int oldCol, int newRow, int newCol, PieceState color)
         {
             var sut = new NineMansMorrisLogic();
             for (var i = sut.BlackPlayer.PiecesToPlace; i > 1; i--)
@@ -164,7 +164,7 @@ namespace NineMansMorrisTests
             Assert.False(isValidFly);
         }
         [TestCase(0, 0, 3, 3, PieceState.Invalid)]
-        public void testInvalidFlyInvalidPostion(int oldRow, int oldCol, int newRow, int newCol, PieceState color)
+        public void TestInvalidFlyInvalidPosition(int oldRow, int oldCol, int newRow, int newCol, PieceState color)
         {
             var sut = new NineMansMorrisLogic();
             for (var i = sut.BlackPlayer.PiecesToPlace; i > 1; i--)
