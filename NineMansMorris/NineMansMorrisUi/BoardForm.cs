@@ -145,7 +145,7 @@ namespace NineMansMorrisUi
                 if (_nineMansMorrisGame.CheckMill(row, col))
                 {
                     _newMillFormed = true;
-                   MillPieces();
+                    MillPieces();
                 }
                 else
                 {
@@ -200,7 +200,7 @@ namespace NineMansMorrisUi
                     if (_nineMansMorrisGame.CheckMill(row, col))
                     {
                         _newMillFormed = true;
-                      MillPieces();
+                        MillPieces();
                     }
                     else
                     {
@@ -306,6 +306,7 @@ namespace NineMansMorrisUi
                             gameTurn = Turn.Black;
                         }
                     }
+
                     break;
                 case Turn.Black:
                     if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.White)
@@ -343,6 +344,5 @@ namespace NineMansMorrisUi
         {
             Application.Exit();
         }
-
     }
 }
