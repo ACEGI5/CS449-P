@@ -145,7 +145,7 @@ namespace NineMansMorrisTests
         }
 
         [TestCase(0, 0, 1, 1, PieceState.White)]
-        public void testInvalidFlyOccupied(int oldRow, int oldCol, int newRow, int newCol, PieceState color)
+        public void TestInvalidFlyOccupied(int oldRow, int oldCol, int newRow, int newCol, PieceState color)
         {
             var sut = new NineMansMorrisLogic();
             for (var i = sut.BlackPlayer.PiecesToPlace; i > 1; i--)
@@ -164,7 +164,7 @@ namespace NineMansMorrisTests
             Assert.False(isValidFly);
         }
         [TestCase(0, 0, 3, 3, PieceState.Invalid)]
-        public void testInvalidFlyInvalidPostion(int oldRow, int oldCol, int newRow, int newCol, PieceState color)
+        public void TestInvalidFlyInvalidPosition(int oldRow, int oldCol, int newRow, int newCol, PieceState color)
         {
             var sut = new NineMansMorrisLogic();
             for (var i = sut.BlackPlayer.PiecesToPlace; i > 1; i--)
@@ -181,5 +181,30 @@ namespace NineMansMorrisTests
             Assert.AreEqual(color, sut.GameBoard.GameBoard[newRow, newCol].PieceState);
             Assert.False(isValidFly);
         }
+
+        [Test]
+        public void TestValidMillPlacementVerticalNotCentered()
+        {
+            var sut = new NineMansMorrisLogic();
+            sut.PlacePiece(sut.BlackPlayer, 1, 5);
+            sut.PlacePiece(sut.BlackPlayer, 3, 5);
+            sut.PlacePiece(sut.BlackPlayer, 5, 5);
+
+            Assert.IsTrue(sut.CheckMill(3, 5, sut.BlackPlayer));
+
+        }
+        
+        [Test]
+        public void TestValidMillPlacementHorizontalNotCentered()
+        {
+            var sut = new NineMansMorrisLogic();
+            sut.PlacePiece(sut.BlackPlayer, 3, 4);
+            sut.PlacePiece(sut.BlackPlayer, 3, 5);
+            sut.PlacePiece(sut.BlackPlayer, 3, 6);
+
+            Assert.IsTrue(sut.CheckMill(3, 5, sut.BlackPlayer));
+
+        }
     }
+
 }

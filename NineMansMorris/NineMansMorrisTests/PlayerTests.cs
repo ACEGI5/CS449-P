@@ -23,23 +23,39 @@ namespace NineMansMorrisTests
         }
         
         [Test]
-        public void TestPlayerCanFlyWhenPiecesLessThanThree()
+        public void TestPlayerCanFlyWhenPiecesEqualThree()
         {
             //Test that when player has more than three pieces, they can't fly.
-            var sut = new Player();
-            sut.PiecesInPlay = 3;
-            sut.AllPiecesPlaced = true;
-            Assert.IsTrue(sut.CanFly());
+            var sut = new NineMansMorrisLogic();
+            for (var i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
+            {
+                sut.BlackPlayer.PlacePiece();
+            }
+
+            for (var i = sut.BlackPlayer.PiecesInPlay; i > 3; i--)
+            {
+                sut.BlackPlayer.RemovePiece();
+            }
+
+            Assert.IsTrue(sut.BlackPlayer.CanFly());
         }
 
         [Test]
         public void TestPlayerHasLost()
         {
             // Test that when player has less than three pieces, then PlayerHasLost should return true.
-            var sut = new Player();
-            sut.PiecesInPlay = 2;
-            sut.AllPiecesPlaced = true;
-            Assert.IsTrue(sut.PlayerHasLost());
+            var sut = new NineMansMorrisLogic();
+            for (var i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
+            {
+                sut.BlackPlayer.PlacePiece();
+            }
+
+            for (var i = sut.BlackPlayer.PiecesInPlay; i > 2; i--)
+            {
+                sut.BlackPlayer.RemovePiece();
+            }
+            
+            Assert.IsTrue(sut.BlackPlayer.PlayerHasLost());
         }
     }
 }

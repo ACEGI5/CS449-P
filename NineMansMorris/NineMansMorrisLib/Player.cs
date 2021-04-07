@@ -4,10 +4,10 @@
     public class Player
     {
 
-        public int PiecesInPlay { get; set; }
-        public int MilledPieces { get; set; }
+        public int PiecesInPlay { get; private set; }
+        public int MilledPieces { get; private set; }
         public int PiecesToPlace { get; private set; }
-        public bool AllPiecesPlaced { get;  set; }
+        public bool AllPiecesPlaced { get; private set; }
         
 
         public Player()
