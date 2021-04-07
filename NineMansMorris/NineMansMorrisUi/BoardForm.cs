@@ -145,7 +145,7 @@ namespace NineMansMorrisUi
                 if (_nineMansMorrisGame.CheckMill(row, col))
                 {
                     _newMillFormed = true;
-                    MillPieces();
+                   MillPieces();
                 }
                 else
                 {
@@ -160,24 +160,25 @@ namespace NineMansMorrisUi
 
         private void MillPieces()
         {
-            for (var row = 0; row < 7; row++)
-            {
-                for (var col = 0; col < 7; col++)
-                {
-                    var game = _nineMansMorrisGame.GameBoard.GameBoard[row, col];
-                    if (_nineMansMorrisGame.CheckMill(row, col) && game.MillState == MillState.Milled)
-                    {
-                        if (game.PieceState == PieceState.Black)
-                        {
-                            _btnGrid[row, col].BackColor = _blackMilledColor;
-                        }
-                        else if (game.PieceState == PieceState.White)
-                        {
-                            _btnGrid[row, col].BackColor = _whiteMilledColor;
-                        }
-                    }
-                }
-            }
+            // for (var row = 0; row < 7; row++)
+            // {
+            //     for (var col = 0; col < 7; col++)
+            //     {
+            //        
+            //         var game = _nineMansMorrisGame.GameBoard.GameBoard[row, col];
+            //         if (  game.MillState == MillState.Milled && _nineMansMorrisGame.CheckMill(row, col))
+            //         {
+            //             if (game.PieceState == PieceState.Black)
+            //             {
+            //                 _btnGrid[row, col].BackColor = _blackMilledColor;
+            //             }
+            //             else if (game.PieceState == PieceState.White)
+            //             {
+            //                 _btnGrid[row, col].BackColor = _whiteMilledColor;
+            //             }
+            //         }
+            //     }
+            // }
         }
 
         private bool PieceMovement(int row, int col, Button clickedButton)
@@ -199,7 +200,7 @@ namespace NineMansMorrisUi
                     if (_nineMansMorrisGame.CheckMill(row, col))
                     {
                         _newMillFormed = true;
-                        MillPieces();
+                      MillPieces();
                     }
                     else
                     {
