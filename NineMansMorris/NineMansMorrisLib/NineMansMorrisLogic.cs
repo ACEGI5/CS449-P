@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Net.NetworkInformation;
 
 namespace NineMansMorrisLib
 {
@@ -145,8 +146,17 @@ namespace NineMansMorrisLib
             // if invalid return false
             if (GameBoard.GameBoard[row, col].PieceState == PieceState.Invalid) return false;
             // fix this opposite player check if pieces remaining equals pieces left
+            Player oppositePlayer;
+            if (player == BlackPlayer)
+            {
+                oppositePlayer = WhitePlayer;
+            }
+            else
+            {
+                oppositePlayer = BlackPlayer;
+            }
             if (GameBoard.GameBoard[row, col].MillState != MillState.Milled ||
-                player.PiecesInPlay == player.MilledPieces)
+                oppositePlayer.PiecesInPlay == oppositePlayer.MilledPieces)
             {
                 if (GameBoard.GameBoard[row, col].MillState == MillState.Milled)
                 {
