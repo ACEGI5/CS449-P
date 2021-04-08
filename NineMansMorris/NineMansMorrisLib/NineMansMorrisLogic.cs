@@ -249,28 +249,48 @@ namespace NineMansMorrisLib
                     return false;
             }
 
-            //Search for Mills.
-            for (var i = 0; i <= 6; i++)
+            if (row == 3 || col == 3)
             {
-                //If position MIDDLE (3,3) is hit, reset the matching list.
-                switch (i)
+                for (var i = 0; i <= 6; i++)
                 {
-                    case 3 when row == 3 && rowList.Count != 3:
-                        rowList.Clear();
-                        break;
-                    case 3 when col == 3 && colList.Count != 3:
-                        colList.Clear();
-                        break;
-                }
+                    //If position MIDDLE (3,3) is hit, reset the matching list.
+                    switch (i)
+                    {
+                        case 3 when row == 3 && col > 3:
+                            rowList.Clear();
+                            break;
+                        case 3 when col == 3 && row > 3:
+                            colList.Clear();
+                            break;
+                    }
+                    
+                    if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
+                    {
+                        if (!(col < 3 && i > 3))
+                            rowList.Add(GameBoard.GameBoard[row, i]);
+                    }
 
-                if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
-                {
-                    rowList.Add(GameBoard.GameBoard[row, i]);
+                    if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
+                    {
+                        if (!(row < 3 && i > 3))
+                            colList.Add(GameBoard.GameBoard[i, col]);
+                    }
                 }
-
-                if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
+            }
+            else
+            {
+                //Search for Mills.
+                for (var i = 0; i <= 6; i++)
                 {
-                    colList.Add(GameBoard.GameBoard[i, col]);
+                    if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
+                    {
+                        rowList.Add(GameBoard.GameBoard[row, i]);
+                    }
+
+                    if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
+                    {
+                        colList.Add(GameBoard.GameBoard[i, col]);
+                    }
                 }
             }
 
