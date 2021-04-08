@@ -219,7 +219,58 @@ namespace NineMansMorrisTests
             Assert.AreEqual(PieceState.Open, sut.GameBoard.GameBoard[0, 0].PieceState);
         }
 
-        
+        [Test]
+        public void TestValidPieceRemovalOnlyMillsLeft()
+        {
+            var sut = new NineMansMorrisLogic();
+            
+            for (var i = sut.BlackPlayer.PiecesToPlace; i > 3; i--)
+            {
+                sut.BlackPlayer.PlacePiece();
+            }
+            
+            for (var i = sut.BlackPlayer.PiecesInPlay; i > 0; i--)
+            {
+                sut.BlackPlayer.RemovePiece();
+            }
+            
+            sut.PlacePiece(sut.BlackPlayer, 3, 4);
+            sut.PlacePiece(sut.BlackPlayer, 3, 5);
+            sut.PlacePiece(sut.BlackPlayer, 3, 6);
+            Assert.IsTrue(sut.CheckMill(3, 5, sut.BlackPlayer));
+            
+            sut.PlacePiece(sut.WhitePlayer, 6, 0);
+            sut.PlacePiece(sut.WhitePlayer, 6, 6);
+            
+            sut.PlacePiece(sut.WhitePlayer, 0, 0);
+            sut.PlacePiece(sut.WhitePlayer, 3, 0);
+            sut.PlacePiece(sut.WhitePlayer, 6, 0);
+            Assert.IsTrue(sut.CheckMill(3, 0, sut.WhitePlayer));
+
+            Assert.IsTrue(sut.RemovePiece(sut.WhitePlayer, 3, 5));
+        }
+
+        [Test]
+        public void TestInvalidPieceRemoval()
+        {
+            var sut = new NineMansMorrisLogic();
+            
+            sut.PlacePiece(sut.BlackPlayer, 3, 4);
+            sut.PlacePiece(sut.BlackPlayer, 3, 5);
+            sut.PlacePiece(sut.BlackPlayer, 3, 6);
+            Assert.IsTrue(sut.CheckMill(3, 5, sut.BlackPlayer));
+            
+            sut.PlacePiece(sut.WhitePlayer, 0, 0);
+            sut.PlacePiece(sut.WhitePlayer, 3, 0);
+            sut.PlacePiece(sut.WhitePlayer, 6, 0);
+            Assert.IsTrue(sut.CheckMill(3, 0, sut.WhitePlayer));
+
+            sut.PlacePiece(sut.WhitePlayer, 6, 0);
+            sut.PlacePiece(sut.BlackPlayer, 3, 6);
+            sut.PlacePiece(sut.WhitePlayer, 6, 6);
+            
+            Assert.IsFalse(sut.RemovePiece(sut.BlackPlayer, 3, 5));
+        }
 
         [Test]
         public void TestGameOver()
