@@ -156,7 +156,7 @@ namespace NineMansMorrisLib
                 oppositePlayer = BlackPlayer;
             }
             if (GameBoard.GameBoard[row, col].MillState != MillState.Milled ||
-                oppositePlayer.PiecesInPlay == oppositePlayer.MilledPieces)
+                oppositePlayer.PiecesInPlay == oppositePlayer.MilledPieces && oppositePlayer.AllPiecesPlaced)
             {
                 if (GameBoard.GameBoard[row, col].MillState == MillState.Milled)
                 {
