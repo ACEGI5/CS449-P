@@ -46,8 +46,7 @@ namespace NineMansMorrisUi
             btnUnoccupiedKey.BackColor = _unoccupiedColor;
             btnWhiteKey.BackColor = _whiteColor;
             btnBlackKey.BackColor = _blackColor;
-            btnBlackMilledKey.Visible = false;
-            btnWhiteMilledKey.Visible = false;
+   
             
         }
 
