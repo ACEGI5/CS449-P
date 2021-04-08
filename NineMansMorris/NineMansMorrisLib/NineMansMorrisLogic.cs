@@ -248,7 +248,7 @@ namespace NineMansMorrisLib
                     case 3 when row == 3 && rowList.Count != 3:
                         rowList.Clear();
                         break;
-                    case 3 when col == 3 && rowList.Count != 3:
+                    case 3 when col == 3 && colList.Count != 3:
                         colList.Clear();
                         break;
                 }
