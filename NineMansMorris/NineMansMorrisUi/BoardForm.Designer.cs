@@ -53,10 +53,6 @@ namespace NineMansMorrisUi
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.btnBlackMilledKey = new System.Windows.Forms.Button();
-            this.btnWhiteMilledKey = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -87,7 +83,6 @@ namespace NineMansMorrisUi
             // 
             this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.panel1.BackgroundImage = global::NineMansMorrisUi.Properties.Resources.NineMansMorrisBoard;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(319, 60);
@@ -281,53 +276,11 @@ namespace NineMansMorrisUi
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
-            // btnBlackMilledKey
-            // 
-            this.btnBlackMilledKey.Enabled = false;
-            this.btnBlackMilledKey.Location = new System.Drawing.Point(197, 359);
-            this.btnBlackMilledKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnBlackMilledKey.Name = "btnBlackMilledKey";
-            this.btnBlackMilledKey.Size = new System.Drawing.Size(40, 41);
-            this.btnBlackMilledKey.TabIndex = 36;
-            this.btnBlackMilledKey.UseVisualStyleBackColor = true;
-            // 
-            // btnWhiteMilledKey
-            // 
-            this.btnWhiteMilledKey.Enabled = false;
-            this.btnWhiteMilledKey.Location = new System.Drawing.Point(197, 431);
-            this.btnWhiteMilledKey.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnWhiteMilledKey.Name = "btnWhiteMilledKey";
-            this.btnWhiteMilledKey.Size = new System.Drawing.Size(40, 41);
-            this.btnWhiteMilledKey.TabIndex = 37;
-            this.btnWhiteMilledKey.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(11, 364);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(181, 29);
-            this.label1.TabIndex = 38;
-            this.label1.Text = "Black Milled";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(12, 436);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(181, 29);
-            this.label2.TabIndex = 39;
-            this.label2.Text = "White Milled";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // BoardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1605, 1168);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnWhiteMilledKey);
-            this.Controls.Add(this.btnBlackMilledKey);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
@@ -358,11 +311,6 @@ namespace NineMansMorrisUi
             this.ResumeLayout(false);
             this.PerformLayout();
         }
-
-        private System.Windows.Forms.Button btnBlackMilledKey;
-        private System.Windows.Forms.Button btnWhiteMilledKey;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
 
         private System.Windows.Forms.Button buttonExit;
 

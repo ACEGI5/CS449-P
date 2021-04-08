@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using NineMansMorrisLib;
@@ -16,8 +16,7 @@ namespace NineMansMorrisUi
         private readonly Color _unoccupiedColor = Color.Purple;
         private readonly Color _whiteColor = Color.GhostWhite;
         private readonly Color _blackColor = Color.Black;
-        private readonly Color _blackMilledColor = Color.Chocolate;
-        private readonly Color _whiteMilledColor = Color.Blue;
+
         private bool _newMillFormed;
 
         private enum Turn
@@ -47,8 +46,8 @@ namespace NineMansMorrisUi
             btnUnoccupiedKey.BackColor = _unoccupiedColor;
             btnWhiteKey.BackColor = _whiteColor;
             btnBlackKey.BackColor = _blackColor;
-            btnBlackMilledKey.BackColor = _blackMilledColor;
-            btnWhiteMilledKey.BackColor = _whiteMilledColor;
+   
+            
         }
 
         private void PopulateButtonGrid()
@@ -120,8 +119,9 @@ namespace NineMansMorrisUi
                     _btnGrid[row, col].BackColor = _blackColor;
                     if (_nineMansMorrisGame.CheckMill(row, col, _nineMansMorrisGame.BlackPlayer))
                     {
+                        MessageBox.Show("Black Has Formed Mill");
                         _newMillFormed = true;
-                        MillPieces();
+                       
                     }
                     else
                     {
@@ -143,8 +143,9 @@ namespace NineMansMorrisUi
                 _btnGrid[row, col].BackColor = _whiteColor;
                 if (_nineMansMorrisGame.CheckMill(row, col, _nineMansMorrisGame.WhitePlayer))
                 {
+                    MessageBox.Show("White Has Formed Mill");
                     _newMillFormed = true;
-                    MillPieces();
+                    
                 }
                 else
                 {
@@ -157,28 +158,7 @@ namespace NineMansMorrisUi
             return true;
         }
 
-        private void MillPieces()
-        {
-            // for (var row = 0; row < 7; row++)
-            // {
-            //     for (var col = 0; col < 7; col++)
-            //     {
-            //        
-            //         var game = _nineMansMorrisGame.GameBoard.GameBoard[row, col];
-            //         if (  game.MillState == MillState.Milled && _nineMansMorrisGame.CheckMill(row, col))
-            //         {
-            //             if (game.PieceState == PieceState.Black)
-            //             {
-            //                 _btnGrid[row, col].BackColor = _blackMilledColor;
-            //             }
-            //             else if (game.PieceState == PieceState.White)
-            //             {
-            //                 _btnGrid[row, col].BackColor = _whiteMilledColor;
-            //             }
-            //         }
-            //     }
-            // }
-        }
+       
 
         private bool PieceMovement(int row, int col, Button clickedButton)
         {
@@ -200,7 +180,7 @@ namespace NineMansMorrisUi
                     {
                         MessageBox.Show("Black Has Formed Mill");
                         _newMillFormed = true;
-                        MillPieces();
+
                     }
                     else
                     {
@@ -225,7 +205,7 @@ namespace NineMansMorrisUi
                 {
                     MessageBox.Show("White Has Formed Mill");
                     _newMillFormed = true;
-                    MillPieces();
+
                 }
                 else
                 {
@@ -254,7 +234,7 @@ namespace NineMansMorrisUi
                         {
                             MessageBox.Show("White Has Formed Mill");
                             _newMillFormed = true;
-                            MillPieces();
+
                         }
                         else
                         {
@@ -279,7 +259,7 @@ namespace NineMansMorrisUi
                         {
                             MessageBox.Show("Black Has Formed Mill");
                             _newMillFormed = true;
-                            MillPieces();
+
                         }
                         else
                         {
