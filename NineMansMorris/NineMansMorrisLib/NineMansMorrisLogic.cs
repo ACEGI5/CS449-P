@@ -11,7 +11,7 @@ namespace NineMansMorrisLib
         public Player BlackPlayer { get; private set; }
         public bool GameOver { get; private set; }
 
-        private Dictionary<string, int[]> directions = new Dictionary<string, int[]>
+        private Dictionary<string, int[]> _directions = new Dictionary<string, int[]>
         {
             {"up", new[] {-1, 0}}, {"down", new[] {1, 0}},
             {"left", new[] {0, -1}}, {"right", new[] {0, 1}}
@@ -92,7 +92,7 @@ namespace NineMansMorrisLib
         private bool isValid(int rowTo, int colTo, int rowFrom, int colFrom)
         {
             // traverse each direction
-            foreach (var direction in directions)
+            foreach (var direction in _directions)
             {
                 // while move is not possible
                 var row = rowFrom;
@@ -374,7 +374,7 @@ namespace NineMansMorrisLib
         {
             foreach( List<int> a in player.coordinateList)
             {
-                foreach (var direction in directions)
+                foreach (var direction in _directions)
                     {
                         // while move is not possible
                         int row = a[0];

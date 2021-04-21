@@ -79,10 +79,13 @@ namespace NineMansMorrisUi
         {
             var clickedButton = (Button) sender;
             var location = (Point) clickedButton.Tag;
-            var row = location.X;
-            var col = location.Y;
+            var row = location.Y;
+            var col = location.X;
             var allPiecesPlaced = _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced &&
                                   _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced;
+            
+            //MessageBox.Show("You have clicked row " + row + " & col " + col);
+
             if (_newMillFormed)
             {
                 RemovePiece(row, col, clickedButton);
@@ -105,8 +108,8 @@ namespace NineMansMorrisUi
         private bool FlyPiece(int row, int col, Button clickedButton)
         {
             var oldLocation = (Point) _selectButton.Tag;
-            var oldRow = oldLocation.X;
-            var oldCol = oldLocation.Y;
+            var oldRow = oldLocation.Y;
+            var oldCol = oldLocation.X;
             if (_selectButton == clickedButton || _selectButton == null ||
                 _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState != PieceState.Open) return false;
             if (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState != PieceState.White)
@@ -179,8 +182,8 @@ namespace NineMansMorrisUi
         private bool PieceMovement(int row, int col, Button clickedButton)
         {
             var oldLocation = (Point) _selectButton.Tag;
-            var oldRow = oldLocation.X;
-            var oldCol = oldLocation.Y;
+            var oldRow = oldLocation.Y;
+            var oldCol = oldLocation.X;
             if (_selectButton == clickedButton || _selectButton == null ||
                 _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState != PieceState.Open) return false;
             if (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState != PieceState.White)
