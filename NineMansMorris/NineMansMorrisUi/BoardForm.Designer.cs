@@ -31,6 +31,7 @@ namespace NineMansMorrisUi
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BoardForm));
             this.btnReset = new System.Windows.Forms.Button();
             this.BtnExit = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -53,6 +54,20 @@ namespace NineMansMorrisUi
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -85,7 +100,7 @@ namespace NineMansMorrisUi
             this.panel1.BackColor = System.Drawing.SystemColors.MenuBar;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.pictureBox1);
-            this.panel1.Location = new System.Drawing.Point(319, 60);
+            this.panel1.Location = new System.Drawing.Point(440, 61);
             this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(793, 701);
@@ -97,17 +112,18 @@ namespace NineMansMorrisUi
             this.pictureBox1.BackgroundImage = global::NineMansMorrisUi.Properties.Resources.NineMansMorrisBoard;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.InitialImage = global::NineMansMorrisUi.Properties.Resources.NineMansMorrisBoard;
-            this.pictureBox1.Location = new System.Drawing.Point(-67, -57);
+            this.pictureBox1.Location = new System.Drawing.Point(-51, -50);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(860, 774);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            
             // 
             // label14
             // 
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label14.Location = new System.Drawing.Point(1179, 284);
+            this.label14.Location = new System.Drawing.Point(1291, 287);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(208, 55);
             this.label14.TabIndex = 18;
@@ -117,7 +133,7 @@ namespace NineMansMorrisUi
             // label15
             // 
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label15.Location = new System.Drawing.Point(1179, 520);
+            this.label15.Location = new System.Drawing.Point(1291, 523);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(208, 55);
             this.label15.TabIndex = 19;
@@ -126,7 +142,7 @@ namespace NineMansMorrisUi
             // 
             // textBoxWhitePlayerPiecesToPlace
             // 
-            this.textBoxWhitePlayerPiecesToPlace.Location = new System.Drawing.Point(1155, 341);
+            this.textBoxWhitePlayerPiecesToPlace.Location = new System.Drawing.Point(1267, 344);
             this.textBoxWhitePlayerPiecesToPlace.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxWhitePlayerPiecesToPlace.Name = "textBoxWhitePlayerPiecesToPlace";
             this.textBoxWhitePlayerPiecesToPlace.ReadOnly = true;
@@ -135,7 +151,7 @@ namespace NineMansMorrisUi
             // 
             // textBoxWhitePlayerPiecesLeft
             // 
-            this.textBoxWhitePlayerPiecesLeft.Location = new System.Drawing.Point(1155, 413);
+            this.textBoxWhitePlayerPiecesLeft.Location = new System.Drawing.Point(1267, 416);
             this.textBoxWhitePlayerPiecesLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxWhitePlayerPiecesLeft.Name = "textBoxWhitePlayerPiecesLeft";
             this.textBoxWhitePlayerPiecesLeft.ReadOnly = true;
@@ -144,7 +160,7 @@ namespace NineMansMorrisUi
             // 
             // textBoxBlackPlayerPiecesToPlace
             // 
-            this.textBoxBlackPlayerPiecesToPlace.Location = new System.Drawing.Point(1155, 577);
+            this.textBoxBlackPlayerPiecesToPlace.Location = new System.Drawing.Point(1267, 580);
             this.textBoxBlackPlayerPiecesToPlace.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBlackPlayerPiecesToPlace.Name = "textBoxBlackPlayerPiecesToPlace";
             this.textBoxBlackPlayerPiecesToPlace.ReadOnly = true;
@@ -153,7 +169,7 @@ namespace NineMansMorrisUi
             // 
             // textBoxBlackPlayerPiecesLeft
             // 
-            this.textBoxBlackPlayerPiecesLeft.Location = new System.Drawing.Point(1155, 649);
+            this.textBoxBlackPlayerPiecesLeft.Location = new System.Drawing.Point(1267, 652);
             this.textBoxBlackPlayerPiecesLeft.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBoxBlackPlayerPiecesLeft.Name = "textBoxBlackPlayerPiecesLeft";
             this.textBoxBlackPlayerPiecesLeft.ReadOnly = true;
@@ -163,47 +179,47 @@ namespace NineMansMorrisUi
             // label16
             // 
             this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label16.Location = new System.Drawing.Point(1248, 348);
+            this.label16.Location = new System.Drawing.Point(1360, 351);
             this.label16.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(320, 52);
+            this.label16.Size = new System.Drawing.Size(228, 52);
             this.label16.TabIndex = 24;
             this.label16.Text = "Pieces To Place";
             // 
             // label17
             // 
             this.label17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label17.Location = new System.Drawing.Point(1248, 584);
+            this.label17.Location = new System.Drawing.Point(1360, 587);
             this.label17.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(320, 52);
+            this.label17.Size = new System.Drawing.Size(228, 52);
             this.label17.TabIndex = 25;
             this.label17.Text = "Pieces To Place";
             // 
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label18.Location = new System.Drawing.Point(1248, 420);
+            this.label18.Location = new System.Drawing.Point(1360, 423);
             this.label18.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(320, 52);
+            this.label18.Size = new System.Drawing.Size(228, 52);
             this.label18.TabIndex = 26;
             this.label18.Text = "Pieces Left";
             // 
             // label19
             // 
             this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label19.Location = new System.Drawing.Point(1248, 656);
+            this.label19.Location = new System.Drawing.Point(1360, 659);
             this.label19.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(320, 52);
+            this.label19.Size = new System.Drawing.Size(228, 52);
             this.label19.TabIndex = 27;
             this.label19.Text = "Pieces Left";
             // 
             // lblTurnIndicator
             // 
             this.lblTurnIndicator.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.lblTurnIndicator.Location = new System.Drawing.Point(1149, 207);
+            this.lblTurnIndicator.Location = new System.Drawing.Point(1291, 218);
             this.lblTurnIndicator.Name = "lblTurnIndicator";
             this.lblTurnIndicator.Size = new System.Drawing.Size(248, 55);
             this.lblTurnIndicator.TabIndex = 28;
@@ -276,11 +292,151 @@ namespace NineMansMorrisUi
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label1.Location = new System.Drawing.Point(353, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 39);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "0";
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label2.Location = new System.Drawing.Point(353, 158);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(100, 39);
+            this.label2.TabIndex = 36;
+            this.label2.Text = "1";
+            // 
+            // label3
+            // 
+            this.label3.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label3.Location = new System.Drawing.Point(353, 265);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(100, 50);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "2";
+            // 
+            // label4
+            // 
+            this.label4.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label4.Location = new System.Drawing.Point(353, 364);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(100, 39);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "3";
+            // 
+            // label5
+            // 
+            this.label5.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label5.Location = new System.Drawing.Point(353, 468);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 39);
+            this.label5.TabIndex = 39;
+            this.label5.Text = "4";
+            // 
+            // label6
+            // 
+            this.label6.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label6.Location = new System.Drawing.Point(353, 579);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(100, 39);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "5";
+            // 
+            // label7
+            // 
+            this.label7.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label7.Location = new System.Drawing.Point(353, 672);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(100, 39);
+            this.label7.TabIndex = 41;
+            this.label7.Text = "6";
+            // 
+            // label8
+            // 
+            this.label8.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label8.Location = new System.Drawing.Point(461, 787);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(100, 39);
+            this.label8.TabIndex = 42;
+            this.label8.Text = "0";
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label9.Location = new System.Drawing.Point(554, 787);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(100, 39);
+            this.label9.TabIndex = 43;
+            this.label9.Text = "1";
+            // 
+            // label10
+            // 
+            this.label10.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label10.Location = new System.Drawing.Point(660, 787);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(100, 39);
+            this.label10.TabIndex = 44;
+            this.label10.Text = "2";
+            // 
+            // label11
+            // 
+            this.label11.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label11.Location = new System.Drawing.Point(795, 787);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(100, 39);
+            this.label11.TabIndex = 45;
+            this.label11.Text = "3";
+            // 
+            // label12
+            // 
+            this.label12.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label12.Location = new System.Drawing.Point(937, 787);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(100, 39);
+            this.label12.TabIndex = 46;
+            this.label12.Text = "4";
+            // 
+            // label13
+            // 
+            this.label13.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label13.Location = new System.Drawing.Point(1043, 787);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(100, 39);
+            this.label13.TabIndex = 47;
+            this.label13.Text = "5";
+            // 
+            // label23
+            // 
+            this.label23.Font = new System.Drawing.Font("Comic Sans MS", 11.1F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label23.Location = new System.Drawing.Point(1149, 787);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(100, 39);
+            this.label23.TabIndex = 48;
+            this.label23.Text = "6";
+            // 
             // BoardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1605, 1168);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label21);
@@ -311,6 +467,22 @@ namespace NineMansMorrisUi
             this.ResumeLayout(false);
             this.PerformLayout();
         }
+
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+
+        private System.Windows.Forms.Label label1;
 
         private System.Windows.Forms.Button buttonExit;
 

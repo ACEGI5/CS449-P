@@ -389,5 +389,7 @@ namespace NineMansMorrisUi
         {
             Application.Exit();
         }
+
+       
     }
 }
