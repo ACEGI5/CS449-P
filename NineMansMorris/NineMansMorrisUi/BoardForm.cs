@@ -57,19 +57,19 @@ namespace NineMansMorrisUi
             {
                 for (var col = 0; col < BoardSize; col++)
                 {
-                    if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
+                    if (_nineMansMorrisGame.GameBoard.GameBoard[col, row].PieceState == PieceState.Open)
                     {
-                        _btnGrid[row, col] = new Button
+                        _btnGrid[col, row] = new Button
                             {Height = buttonSize, Width = buttonSize, BackColor = _unoccupiedColor};
-                        _btnGrid[row, col].Click += Grid_Button_click;
-                        panel1.Controls.Add(_btnGrid[row, col]);
-                        _btnGrid[row, col].BringToFront();
-                        _btnGrid[row, col].Location = new Point((row * 50), (col * 50));
-                        _btnGrid[row, col].Tag = new Point(row, col);
+                        _btnGrid[col, row].Click += Grid_Button_click;
+                        panel1.Controls.Add(_btnGrid[col, row]);
+                        _btnGrid[col, row].BringToFront();
+                        _btnGrid[col, row].Location = new Point((row * 50), (col * 50));
+                        _btnGrid[col, row].Tag = new Point(row, col);
                     }
                     else
                     {
-                        _btnGrid[row, col] = null;
+                        _btnGrid[col, row] = null;
                     }
                 }
             }
