@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Net.NetworkInformation;
 
 namespace NineMansMorrisLib
@@ -368,6 +369,79 @@ namespace NineMansMorrisLib
             }
         }
 
+        
+        public bool CheckIfMovementNotPossible(Player player)
+        {
+            foreach( List<int> a in player.coordinateList)
+            {
+                foreach (var direction in directions)
+                    {
+                        // while move is not possible
+                        int row = a[0];
+                        int col = a[1];
+                        while (true)
+                        {
+                            // update position
+                            row += direction.Value[0];
+                            a[1] += direction.Value[1];
+
+                            // if out of bounds
+                            if ((row > 6 || col > 6) || (col <= -1) || (row <= -1))
+                            {
+                                break;
+                            }
+
+                            // if middle, do not cross
+                            if (row == 3 && col == 3)
+                            {
+                                break;
+                            }
+
+                            // if black, white, open
+                            if (GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid)
+                            {
+                                // if spot is open
+                                if (GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
+                                {
+                                    return false;
+                                }
+
+                                // spot is invalid
+                                break;
+                            }
+                        }
+                    }
+                }
+            
+            return true;
+        }
         // post :
+
+        public void UpdateCoordinateList(Player blackPlayer, Player whitePlayer)
+        {
+            for (int row = 0; row <= 7; row++)
+            {
+                for (int col = 0; col <= 7; col++)
+                {
+                    List<int> coordinate = new List<int>();
+                    coordinate.Add(row);
+                    coordinate.Add(col);
+                    var color = GameBoard.GameBoard[row, col].PieceState;
+
+                    switch (color)
+                    {
+                        case PieceState.Black:
+                            blackPlayer.coordinateList.Add(coordinate);
+                            break;
+                        case PieceState.White:
+                            whitePlayer.coordinateList.Add(coordinate);
+                            break;
+                    }
+                }
+            }
+        }
+        
+        
+        
     }
 }

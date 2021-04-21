@@ -1,17 +1,23 @@
-﻿namespace NineMansMorrisLib
+﻿using System.Collections.Generic;
+using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
+
+namespace NineMansMorrisLib
 {
     
     public class Player
     {
-
+         
         public int PiecesInPlay { get; private set; }
         public int MilledPieces { get; private set; }
         public int PiecesToPlace { get; private set; }
         public bool AllPiecesPlaced { get; private set; }
         
+        public List<List<int>> coordinateList = new List<List<int>>();
 
         public Player()
         {
+            
             
             PiecesToPlace = 9;
             PiecesInPlay = 0;
@@ -55,6 +61,8 @@
         {
             
             return ((PiecesInPlay < 3) && AllPiecesPlaced);
+            
+            
             
         }
 
