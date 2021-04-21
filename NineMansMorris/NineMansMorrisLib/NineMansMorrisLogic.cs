@@ -61,10 +61,7 @@ namespace NineMansMorrisLib
             // if invalid placement and not all pieces placed return
             if (!isValid(rowTo, colTo, rowFrom, colFrom) || !player.AllPiecesPlaced) return false;
             //if mill broken
-            if (GameBoard.GameBoard[rowFrom, colFrom].MillState == MillState.Milled)
-            {
-                player.BreakMilledPiece();
-            }
+            RemoveMill(rowFrom,colFrom,player);
 
             // if white
             if (player == WhitePlayer)
@@ -160,11 +157,7 @@ namespace NineMansMorrisLib
             if (GameBoard.GameBoard[row, col].MillState != MillState.Milled ||
                 oppositePlayer.PiecesInPlay == oppositePlayer.MilledPieces && oppositePlayer.AllPiecesPlaced)
             {
-                if (GameBoard.GameBoard[row, col].MillState == MillState.Milled)
-                {
-                    player.BreakMilledPiece();
-                }
-
+                RemoveMill(row,col,player);
                 // if white and removing opponent piece
                 if (player == WhitePlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Black)
                 {
@@ -203,11 +196,7 @@ namespace NineMansMorrisLib
             if (GameBoard.GameBoard[rowTo, colTo].PieceState != PieceState.Open ||
                 GameBoard.GameBoard[rowTo, colTo].PieceState == PieceState.Invalid) return false;
             //if mill is broken
-            if (GameBoard.GameBoard[rowFrom, colFrom].MillState == MillState.Milled)
-            {
-                player.BreakMilledPiece();
-            }
-
+            RemoveMill(rowFrom,colFrom,player);
             //white player
             if (player == WhitePlayer)
             {
