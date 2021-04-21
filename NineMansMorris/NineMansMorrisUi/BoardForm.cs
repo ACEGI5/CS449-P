@@ -359,14 +359,7 @@ namespace NineMansMorrisUi
                 }
             }
 
-            if (gameTurn == Turn.Black)
-            {
-                MessageBox.Show("Black Player Wins");
-            }
-            else
-            {
-                MessageBox.Show("White Player Wins");
-            }
+            MessageBox.Show(gameTurn == Turn.Black ? "Black Player Wins" : "White Player Wins");
 
             return true;
         }
