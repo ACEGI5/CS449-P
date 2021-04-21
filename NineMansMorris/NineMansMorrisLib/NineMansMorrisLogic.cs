@@ -375,42 +375,42 @@ namespace NineMansMorrisLib
             foreach( var a in player.coordinateList)
             {
                 foreach (var direction in directions)
+                {
+                    // while move is not possible
+                    var row = a[0];
+                    var col = a[1];
+                    while (true)
                     {
-                        // while move is not possible
-                        var row = a[0];
-                        var col = a[1];
-                        while (true)
+                        // update position
+                        row += direction.Value[0];
+                        a[1] += direction.Value[1];
+
+                        // if out of bounds
+                        if ((row > 6 || col > 6) || (col <= -1) || (row <= -1))
                         {
-                            // update position
-                            row += direction.Value[0];
-                            a[1] += direction.Value[1];
+                            break;
+                        }
 
-                            // if out of bounds
-                            if ((row > 6 || col > 6) || (col <= -1) || (row <= -1))
+                        // if middle, do not cross
+                        if (row == 3 && col == 3)
+                        {
+                            break;
+                        }
+
+                        // if black, white, open
+                        if (GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid)
+                        {
+                            // if spot is open
+                            if (GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
                             {
-                                break;
+                                return false;
                             }
 
-                            // if middle, do not cross
-                            if (row == 3 && col == 3)
-                            {
-                                break;
-                            }
-
-                            // if black, white, open
-                            if (GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid)
-                            {
-                                // if spot is open
-                                if (GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
-                                {
-                                    return false;
-                                }
-
-                                // spot is invalid
-                                break;
-                            }
+                            // spot is invalid
+                            break;
                         }
                     }
+                }
                 }
             
             return true;
