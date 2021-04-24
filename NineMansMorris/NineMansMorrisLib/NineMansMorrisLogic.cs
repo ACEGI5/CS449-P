@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Net.NetworkInformation;
 
@@ -11,6 +12,13 @@ namespace NineMansMorrisLib
         public Player BlackPlayer { get; private set; }
         public bool GameOver { get; private set; }
 
+        public enum Turn
+        {
+            Black,
+            White,
+        }
+
+        public Turn gameTurn { get; private set; }
         private Dictionary<string, int[]> _directions = new Dictionary<string, int[]>
         {
             {"up", new[] {-1, 0}}, {"down", new[] {1, 0}},
@@ -19,9 +27,12 @@ namespace NineMansMorrisLib
 
         public NineMansMorrisLogic()
         {
+            
+            var r = new Random();
             GameBoard = new Board();
             WhitePlayer = new Player();
             BlackPlayer = new Player();
+            gameTurn = (Turn) r.Next(2);
             GameOver = false;
         }
 
@@ -37,6 +48,7 @@ namespace NineMansMorrisLib
                 // update
                 WhitePlayer.PlacePiece();
                 GameBoard.GameBoard[row, col].PieceState = PieceState.White;
+                gameTurn = Turn.Black;
             }
 
             // if black
@@ -45,6 +57,7 @@ namespace NineMansMorrisLib
                 // update
                 BlackPlayer.PlacePiece();
                 GameBoard.GameBoard[row, col].PieceState = PieceState.Black;
+                gameTurn = Turn.White;
             }
 
             // events have taken place
@@ -69,6 +82,7 @@ namespace NineMansMorrisLib
                 // update
                 GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.White;
                 GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+                gameTurn = Turn.Black;
             }
 
             // if black
@@ -77,6 +91,7 @@ namespace NineMansMorrisLib
                 // update
                 GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
                 GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+                gameTurn = Turn.White;
             }
 
             // events have taken place
@@ -165,7 +180,7 @@ namespace NineMansMorrisLib
                     BlackPlayer.RemovePiece();
                     GameOver = BlackPlayer.PlayerHasLost();
                     GameBoard.GameBoard[row, col].PieceState = PieceState.Open;
-
+                    gameTurn = Turn.Black;
                     // events have taken place
                     return true;
                 }
@@ -177,7 +192,7 @@ namespace NineMansMorrisLib
                     WhitePlayer.RemovePiece();
                     GameOver = WhitePlayer.PlayerHasLost();
                     GameBoard.GameBoard[row, col].PieceState = PieceState.Open;
-
+                    gameTurn = Turn.White;
                     // events have taken place
                     return true;
                 }
@@ -203,6 +218,7 @@ namespace NineMansMorrisLib
                 // update
                 GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.White;
                 GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+                gameTurn = Turn.Black;
             }
 
             // if black
@@ -211,6 +227,7 @@ namespace NineMansMorrisLib
                 // update
                 GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
                 GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+                gameTurn = Turn.White;
             }
 
 

@@ -19,18 +19,10 @@ namespace NineMansMorrisUi
 
         private bool _newMillFormed;
 
-        private enum Turn
-        {
-            Black,
-            White,
-        }
-
-        private Turn gameTurn;
+      
 
         public BoardForm()
         {
-            var r = new Random();
-            gameTurn = (Turn) r.Next(2);
             InitializeComponent();
             PopulateButtonGrid();
             SetUpForm();
@@ -38,7 +30,7 @@ namespace NineMansMorrisUi
 
         private void SetUpForm()
         {
-            lblTurnIndicator.Text = gameTurn == Turn.White ? _turnIndicatorWhite : _turnIndicatorBlack;
+            lblTurnIndicator.Text = _nineMansMorrisGame.gameTurn == NineMansMorrisLogic.Turn.White ? _turnIndicatorWhite : _turnIndicatorBlack;
             textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
             textBoxWhitePlayerPiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesInPlay.ToString();
             textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
@@ -116,7 +108,7 @@ namespace NineMansMorrisUi
             {
                 if (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState == PieceState.Black)
                 {
-                    if (gameTurn == Turn.Black)
+                    if (_nineMansMorrisGame.gameTurn == NineMansMorrisLogic.Turn.Black)
                     {
                         if (!_nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.BlackPlayer, row, col, oldRow,
                             oldCol)) return false;
@@ -131,7 +123,6 @@ namespace NineMansMorrisUi
                         else
                         {
                             lblTurnIndicator.Text = _turnIndicatorWhite;
-                            gameTurn = Turn.White;
                             _selectButton = null;
                         }
                     }
@@ -148,7 +139,7 @@ namespace NineMansMorrisUi
             }
             else
             {
-                if (gameTurn == Turn.White)
+                if (_nineMansMorrisGame.gameTurn == NineMansMorrisLogic.Turn.White)
                 {
                     if (!_nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.WhitePlayer, row, col, oldRow,
                         oldCol)) return false;
@@ -163,7 +154,6 @@ namespace NineMansMorrisUi
                     else
                     {
                         lblTurnIndicator.Text = _turnIndicatorBlack;
-                        gameTurn = Turn.Black;
                         _selectButton = null;
                     }
                 }
@@ -190,7 +180,7 @@ namespace NineMansMorrisUi
             {
                 if (_nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState == PieceState.Black)
                 {
-                    if (gameTurn == Turn.Black)
+                    if (_nineMansMorrisGame.gameTurn == NineMansMorrisLogic.Turn.Black)
                     {
                         if (!_nineMansMorrisGame.MovePiece(_nineMansMorrisGame.BlackPlayer, row, col, oldRow,
                             oldCol)) return false;
@@ -206,7 +196,6 @@ namespace NineMansMorrisUi
                         else
                         {
                             lblTurnIndicator.Text = _turnIndicatorWhite;
-                            gameTurn = Turn.White;
                             _selectButton = null;
                         }
 
@@ -225,7 +214,7 @@ namespace NineMansMorrisUi
             }
             else
             {
-                if (gameTurn == Turn.White)
+                if (_nineMansMorrisGame.gameTurn == NineMansMorrisLogic.Turn.White)
                 {
                     if (!_nineMansMorrisGame.MovePiece(_nineMansMorrisGame.WhitePlayer, row, col, oldRow,
                         oldCol)) return false;
@@ -241,7 +230,6 @@ namespace NineMansMorrisUi
                     else
                     {
                         lblTurnIndicator.Text = _turnIndicatorBlack;
-                        gameTurn = Turn.Black;
                         _selectButton = null;
                     }
                 }
@@ -256,10 +244,10 @@ namespace NineMansMorrisUi
 
         private void PiecePlacement(int row, int col, Control clickedButton)
         {
-            switch (gameTurn)
+            switch (_nineMansMorrisGame.gameTurn)
             {
-                case Turn.White when _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced == false &&
-                                     _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open:
+                case NineMansMorrisLogic.Turn.White when _nineMansMorrisGame.WhitePlayer.AllPiecesPlaced == false &&
+                                                         _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open:
                 {
                     if (_nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.WhitePlayer, row, col))
                     {
@@ -275,14 +263,13 @@ namespace NineMansMorrisUi
                         else
                         {
                             lblTurnIndicator.Text = _turnIndicatorBlack;
-                            gameTurn = Turn.Black;
                         }
                     }
 
                     break;
                 }
-                case Turn.Black when _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced == false &&
-                                     _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open:
+                case NineMansMorrisLogic.Turn.Black when _nineMansMorrisGame.BlackPlayer.AllPiecesPlaced == false &&
+                                                         _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open:
                 {
                     if (_nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer, row, col))
                     {
@@ -300,7 +287,6 @@ namespace NineMansMorrisUi
                         else
                         {
                             lblTurnIndicator.Text = _turnIndicatorWhite;
-                            gameTurn = Turn.White;
                         }
                     }
 
@@ -311,9 +297,9 @@ namespace NineMansMorrisUi
 
         private void RemovePiece(int row, int col, Control clickedButton)
         {
-            switch (gameTurn)
+            switch (_nineMansMorrisGame.gameTurn)
             {
-                case Turn.White:
+                case NineMansMorrisLogic.Turn.White:
                     if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Black)
                     {
                         if (_nineMansMorrisGame.RemovePiece(_nineMansMorrisGame.WhitePlayer, row, col))
@@ -324,13 +310,12 @@ namespace NineMansMorrisUi
                             if (!EndGame())
                             {
                                 lblTurnIndicator.Text = _turnIndicatorBlack;
-                                gameTurn = Turn.Black;
                             }
                         }
                     }
 
                     break;
-                case Turn.Black:
+                case NineMansMorrisLogic.Turn.Black:
                     if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.White)
                     {
                         if (_nineMansMorrisGame.RemovePiece(_nineMansMorrisGame.BlackPlayer, row, col))
@@ -341,7 +326,6 @@ namespace NineMansMorrisUi
                             if (!EndGame())
                             {
                                 lblTurnIndicator.Text = _turnIndicatorWhite;
-                                gameTurn = Turn.White;
                             }
                         }
                     }
@@ -362,7 +346,7 @@ namespace NineMansMorrisUi
                 }
             }
 
-            if (gameTurn == Turn.Black)
+            if (_nineMansMorrisGame.gameTurn == NineMansMorrisLogic.Turn.Black)
             {
                 MessageBox.Show("Black Player Wins");
             }
