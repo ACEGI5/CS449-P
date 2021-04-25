@@ -198,11 +198,35 @@ namespace NineMansMorrisTests
         public void TestValidMillPlacementHorizontalNotCentered()
         {
             var sut = new NineMansMorrisLogic();
+            sut.PlacePiece(sut.BlackPlayer, 3, 0);
+            sut.PlacePiece(sut.BlackPlayer, 3, 1);
+            sut.PlacePiece(sut.BlackPlayer, 3, 2);
+
+            Assert.IsTrue(sut.CheckMill(3, 0, sut.BlackPlayer));
+            Assert.IsTrue(sut.CheckMill(3, 1, sut.BlackPlayer));
+        }
+        
+        [Test]
+        public void TestInvalidMillPlacementVerticalCentered()
+        {
+            var sut = new NineMansMorrisLogic();
+            sut.PlacePiece(sut.BlackPlayer, 2, 4);
+            sut.PlacePiece(sut.BlackPlayer, 3, 4);
+            sut.PlacePiece(sut.BlackPlayer, 5, 4);
+
+            Assert.IsFalse(sut.CheckMill(3, 5, sut.BlackPlayer));
+
+        }
+        
+        [Test]
+        public void TestInvalidMillPlacementHorizontalCentered()
+        {
+            var sut = new NineMansMorrisLogic();
+            sut.PlacePiece(sut.BlackPlayer, 3, 2);
             sut.PlacePiece(sut.BlackPlayer, 3, 4);
             sut.PlacePiece(sut.BlackPlayer, 3, 5);
-            sut.PlacePiece(sut.BlackPlayer, 3, 6);
 
-            Assert.IsTrue(sut.CheckMill(3, 5, sut.BlackPlayer));
+            Assert.IsFalse(sut.CheckMill(3, 5, sut.BlackPlayer));
 
         }
 
@@ -270,6 +294,40 @@ namespace NineMansMorrisTests
             sut.PlacePiece(sut.WhitePlayer, 6, 6);
             
             Assert.IsFalse(sut.RemovePiece(sut.BlackPlayer, 3, 5));
+        }
+        
+        [Test]
+        public void TestOutOfBoundsMovement()
+        {
+            var sut = new NineMansMorrisLogic();
+            sut.PlacePiece(sut.BlackPlayer, 6, 1);
+            sut.PlacePiece(sut.BlackPlayer, 6, 3);
+            sut.PlacePiece(sut.BlackPlayer, 6, 6);
+            for (var i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
+            {
+                sut.BlackPlayer.PlacePiece();
+            }
+
+
+            var isValidMovement = sut.MovePiece(sut.BlackPlayer, 7, 1, 6, 1);
+            Assert.False(isValidMovement);
+        }
+
+        [Test]
+        public void TestOverCenterMovement()
+        {
+            var sut = new NineMansMorrisLogic();
+            sut.PlacePiece(sut.BlackPlayer, 3, 0);
+            sut.PlacePiece(sut.BlackPlayer, 3, 1);
+            sut.PlacePiece(sut.BlackPlayer, 3, 2);
+            for (var i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
+            {
+                sut.BlackPlayer.PlacePiece();
+            }
+
+
+            var isValidMovement = sut.MovePiece(sut.BlackPlayer, 3, 4, 3, 2);
+            Assert.False(isValidMovement);
         }
 
         [Test]
