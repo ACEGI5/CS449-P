@@ -10,7 +10,7 @@ namespace NineMansMorrisUi
     {
         private readonly Button[,] _btnGrid = new Button[BoardSize, BoardSize];
         private readonly NineMansMorrisLogic _nineMansMorrisGame;
-        private bool _newMillFormed;
+        public bool _newMillFormed { get; private set; }
 
         public BoardFormHelper(Button[,] btnGrid,NineMansMorrisLogic nineMansMorrisGame)
         {
@@ -71,7 +71,7 @@ namespace NineMansMorrisUi
                     return false;
                 }
 
-                if (!CheckMillFormed(row, col, _nineMansMorrisGame.WhitePlayer))
+                if (!CheckMillFormed(row, col, _nineMansMorrisGame.BlackPlayer))
                 {
                     _selectButton = null;
                 }
@@ -121,11 +121,42 @@ namespace NineMansMorrisUi
                     return false;
                 }
 
-                CheckMillFormed(row, col, _nineMansMorrisGame.WhitePlayer);
+                CheckMillFormed(row, col, _nineMansMorrisGame.BlackPlayer);
 
             }
 
             return true;
+        }
+        public bool RemovePiece(int row, int col)
+        {
+            switch (_nineMansMorrisGame.gameTurn)
+            {
+                case NineMansMorrisLogic.Turn.Black:
+                    if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Black)
+                    {
+                        if (_nineMansMorrisGame.RemovePiece(_nineMansMorrisGame.WhitePlayer, row, col))
+                        {
+
+                            _newMillFormed = false;
+                            return true;
+                        }
+                    }
+
+                    break;
+                case NineMansMorrisLogic.Turn.White:
+                    if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.White)
+                    {
+                        if (_nineMansMorrisGame.RemovePiece(_nineMansMorrisGame.BlackPlayer, row, col))
+                        {
+                            _newMillFormed = false;
+                            return true;
+                        }
+                    }
+
+                    break;
+            }
+
+            return false;
         }
 
         private bool CheckMillFormed(int row, int col, Player player)
