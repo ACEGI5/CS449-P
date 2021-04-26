@@ -8,7 +8,7 @@ namespace NineMansMorrisUi
 {
     public class BoardFormHelper
     {
-        private readonly Button[,] _btnGrid = new Button[BoardSize, BoardSize];
+        private readonly Button[,] _btnGrid;
         private readonly NineMansMorrisLogic _nineMansMorrisGame;
         public bool _newMillFormed { get; private set; }
 
