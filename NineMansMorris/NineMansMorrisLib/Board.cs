@@ -1,4 +1,4 @@
-﻿namespace NineMansMorrisLib
+namespace NineMansMorrisLib
 {
     public class Board
     {
