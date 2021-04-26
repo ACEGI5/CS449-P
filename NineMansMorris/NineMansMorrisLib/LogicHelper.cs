@@ -8,11 +8,11 @@ namespace NineMansMorrisLib
         public Player WhitePlayer { get; private set; }
         public Player BlackPlayer { get; private set; }
 
-        public LogicHelper(Board _GameBoard, Player _WhitePlayer, Player _BlackPlayer)
+        public LogicHelper(Board gameBoard, Player whitePlayer, Player blackPlayer)
         {
-            GameBoard = _GameBoard;
-            WhitePlayer = _WhitePlayer;
-            BlackPlayer = _BlackPlayer;
+            GameBoard = gameBoard;
+            WhitePlayer = whitePlayer;
+            BlackPlayer = blackPlayer;
         }
 
         public static Dictionary<string, int[]> Directions { set; get; } = new Dictionary<string, int[]>
@@ -73,7 +73,7 @@ namespace NineMansMorrisLib
 
         
         
-        public void UpdateCoordinateList(Player blackPlayer, Player whitePlayer, NineMansMorrisLogic nineMansMorrisLogic)
+        public void UpdateCoordinateList(Player blackPlayer, Player whitePlayer)
         {
             for (var row = 0; row <= 7; row++)
             {
@@ -82,7 +82,7 @@ namespace NineMansMorrisLib
                     var coordinate = new List<int>();
                     coordinate.Add(row);
                     coordinate.Add(col);
-                    var color = nineMansMorrisLogic.GameBoard.GameBoard[row, col].PieceState;
+                    var color = GameBoard.GameBoard[row, col].PieceState;
 
                     switch (color)
                     {
