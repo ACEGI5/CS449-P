@@ -8,7 +8,7 @@ using static NineMansMorrisLib.Board;
 namespace NineMansMorrisUi
 {
     public partial class BoardForm : Form
-    {
+    {//aa
         private readonly NineMansMorrisLogic _nineMansMorrisGame = new();
         private readonly Button[,] _btnGrid = new Button[BoardSize, BoardSize];
         private Button _selectButton;
