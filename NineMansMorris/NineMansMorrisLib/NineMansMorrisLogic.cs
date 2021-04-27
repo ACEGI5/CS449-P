@@ -286,7 +286,7 @@ namespace NineMansMorrisLib
                     if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
                     {
                         if (!(row < 3 && i > 3))
-                            lists["col"].Add(GameBoard.GameBoard[row, i]);
+                            lists["col"].Add(GameBoard.GameBoard[i, col]);
                     }
                 }
             }
@@ -302,7 +302,7 @@ namespace NineMansMorrisLib
 
                     if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
                     {
-                        lists["col"].Add(GameBoard.GameBoard[row, i]);
+                        lists["col"].Add(GameBoard.GameBoard[i, col]);
                     }
                 }
             }
