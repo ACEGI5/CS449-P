@@ -19,6 +19,7 @@ namespace NineMansMorrisLib
         }
 
         public Turn gameTurn { get; private set; }
+
         private Dictionary<string, int[]> _directions = new Dictionary<string, int[]>
         {
             {"up", new[] {-1, 0}}, {"down", new[] {1, 0}},
@@ -27,7 +28,6 @@ namespace NineMansMorrisLib
 
         public NineMansMorrisLogic()
         {
-            
             var r = new Random();
             GameBoard = new Board();
             WhitePlayer = new Player();
@@ -74,7 +74,7 @@ namespace NineMansMorrisLib
             // if invalid placement and not all pieces placed return
             if (!isValid(rowTo, colTo, rowFrom, colFrom) || !player.AllPiecesPlaced) return false;
             //if mill broken
-            RemoveMill(rowFrom,colFrom,player);
+            RemoveMill(rowFrom, colFrom, player);
 
             // if white
             if (player == WhitePlayer)
@@ -172,7 +172,7 @@ namespace NineMansMorrisLib
             if (GameBoard.GameBoard[row, col].MillState != MillState.Milled ||
                 oppositePlayer.PiecesInPlay == oppositePlayer.MilledPieces && oppositePlayer.AllPiecesPlaced)
             {
-                RemoveMill(row,col,player);
+                RemoveMill(row, col, player);
                 // if white and removing opponent piece
                 if (player == WhitePlayer && GameBoard.GameBoard[row, col].PieceState == PieceState.Black)
                 {
@@ -211,7 +211,7 @@ namespace NineMansMorrisLib
             if (GameBoard.GameBoard[rowTo, colTo].PieceState != PieceState.Open ||
                 GameBoard.GameBoard[rowTo, colTo].PieceState == PieceState.Invalid) return false;
             //if mill is broken
-            RemoveMill(rowFrom,colFrom,player);
+            RemoveMill(rowFrom, colFrom, player);
             //white player
             if (player == WhitePlayer)
             {
@@ -324,8 +324,9 @@ namespace NineMansMorrisLib
                 {
                     foreach (GamePiece piece in lists["row"])
                     {
+                        if (piece.MillState == MillState.NotMilled)
+                            player.MillPiece();
                         piece.MillState = MillState.Milled;
-                        player.MillPiece();
                     }
                 }
 
@@ -333,8 +334,9 @@ namespace NineMansMorrisLib
                 {
                     foreach (GamePiece piece in lists["col"])
                     {
+                        if (piece.MillState == MillState.NotMilled)
+                            player.MillPiece();
                         piece.MillState = MillState.Milled;
-                        player.MillPiece();
                     }
                 }
 
@@ -360,8 +362,8 @@ namespace NineMansMorrisLib
                     foreach (GamePiece piece in lists["row"])
                     {
                         piece.MillState = MillState.NotMilled;
+                        player.UnmillPiece();
                     }
-                    player.BreakMilledPiece();
                 }
 
                 if (lists["col"].Count == 3)
@@ -369,85 +371,59 @@ namespace NineMansMorrisLib
                     foreach (GamePiece piece in lists["col"])
                     {
                         piece.MillState = MillState.NotMilled;
+                        player.UnmillPiece();
                     }
-                    player.BreakMilledPiece();
                 }
             }
         }
 
-        
+
         public bool CheckIfMovementNotPossible(Player player)
         {
-            foreach( List<int> a in player.coordinateList)
+            foreach (List<int> a in player.coordinateList)
             {
                 foreach (var direction in _directions)
+                {
+                    // while move is not possible
+                    int row = a[0];
+                    int col = a[1];
+                    while (true)
                     {
-                        // while move is not possible
-                        int row = a[0];
-                        int col = a[1];
-                        while (true)
+                        // update position
+                        row += direction.Value[0];
+                        a[1] += direction.Value[1];
+
+                        // if out of bounds
+                        if ((row > 6 || col > 6) || (col <= -1) || (row <= -1))
                         {
-                            // update position
-                            row += direction.Value[0];
-                            a[1] += direction.Value[1];
+                            break;
+                        }
 
-                            // if out of bounds
-                            if ((row > 6 || col > 6) || (col <= -1) || (row <= -1))
+                        // if middle, do not cross
+                        if (row == 3 && col == 3)
+                        {
+                            break;
+                        }
+
+                        // if black, white, open
+                        if (GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid)
+                        {
+                            // if spot is open
+                            if (GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
                             {
-                                break;
+                                return false;
                             }
 
-                            // if middle, do not cross
-                            if (row == 3 && col == 3)
-                            {
-                                break;
-                            }
-
-                            // if black, white, open
-                            if (GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid)
-                            {
-                                // if spot is open
-                                if (GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
-                                {
-                                    return false;
-                                }
-
-                                // spot is invalid
-                                break;
-                            }
+                            // spot is invalid
+                            break;
                         }
                     }
                 }
-            
+            }
+
             return true;
         }
+
         // post :
-
-        public void UpdateCoordinateList(Player blackPlayer, Player whitePlayer)
-        {
-            for (int row = 0; row <= 7; row++)
-            {
-                for (int col = 0; col <= 7; col++)
-                {
-                    List<int> coordinate = new List<int>();
-                    coordinate.Add(row);
-                    coordinate.Add(col);
-                    var color = GameBoard.GameBoard[row, col].PieceState;
-
-                    switch (color)
-                    {
-                        case PieceState.Black:
-                            blackPlayer.coordinateList.Add(coordinate);
-                            break;
-                        case PieceState.White:
-                            whitePlayer.coordinateList.Add(coordinate);
-                            break;
-                    }
-                }
-            }
-        }
-        
-        
-        
     }
 }
