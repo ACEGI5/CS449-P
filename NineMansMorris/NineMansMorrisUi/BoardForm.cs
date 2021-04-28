@@ -8,7 +8,8 @@ using static NineMansMorrisLib.Board;
 namespace NineMansMorrisUi
 {
     public partial class BoardForm : Form
-    {//aa
+    {
+        //aa
         private readonly NineMansMorrisLogic _nineMansMorrisGame = new();
         private readonly Button[,] _btnGrid = new Button[BoardSize, BoardSize];
         private Button _selectButton;
@@ -103,13 +104,11 @@ namespace NineMansMorrisUi
                 {
                     if (_boardFormHelper.PieceMovement(row, col, clickedButton, ref _selectButton))
                     {
-                        if (!_boardFormHelper._newMillFormed)
-                            BoardMovementUpdate(row, col, clickedButton);
+                        BoardMovementUpdate(row, col, clickedButton);
                     }
                     else if (_boardFormHelper.FlyPiece(row, col, clickedButton, ref _selectButton))
                     {
-                        if (!_boardFormHelper._newMillFormed)
-                            BoardMovementUpdate(row, col, clickedButton);
+                        BoardMovementUpdate(row, col, clickedButton);
                     }
                 }
             }
@@ -126,20 +125,36 @@ namespace NineMansMorrisUi
 
             if (_nineMansMorrisGame.gameTurn == NineMansMorrisLogic.Turn.White)
             {
+                if (_boardFormHelper._newMillFormed)
+                {
+                    MessageBox.Show("Black Mill Formed");
+                }
+                else
+                {
+                    lblTurnIndicator.Text = _turnIndicatorWhite;
+                }
+
                 _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                 _btnGrid[row, col].BackColor = _blackColor;
-                lblTurnIndicator.Text = _turnIndicatorWhite;
-                if (_boardFormHelper._newMillFormed)
-                    MessageBox.Show("Black Mill Formed");
+
+
                 _selectButton = null;
             }
             else
             {
+                if (_boardFormHelper._newMillFormed)
+                {
+                    MessageBox.Show("White Mill Formed");
+                }
+                else
+                {
+                    lblTurnIndicator.Text = _turnIndicatorBlack;
+                }
+
                 _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                 _btnGrid[row, col].BackColor = _whiteColor;
-                lblTurnIndicator.Text = _turnIndicatorBlack;
-                if (_boardFormHelper._newMillFormed)
-                    MessageBox.Show("White Mill Formed");
+
+
                 _selectButton = null;
             }
         }
