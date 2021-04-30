@@ -37,7 +37,7 @@ namespace NineMansMorrisLib
         }
 
         // pre : 
-        public bool PlacePiece(Player player, int row, int col)
+        public virtual bool PlacePiece(Player player, int row, int col)
         {
             if (GameOver) return false;
             // if player has all pieces placed or where they are placing is not valid return false
@@ -68,7 +68,7 @@ namespace NineMansMorrisLib
         // post : 
 
         // pre : 
-        public bool MovePiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
+        public virtual bool MovePiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
             if (GameOver) return false;
             // if invalid placement and not all pieces placed return
@@ -153,7 +153,7 @@ namespace NineMansMorrisLib
         // post : 
 
         // pre : 
-        public bool RemovePiece(Player player, int row, int col)
+        public virtual bool RemovePiece(Player player, int row, int col)
         {
             if (GameOver) return false;
             // if invalid return false
@@ -169,7 +169,7 @@ namespace NineMansMorrisLib
                 oppositePlayer = BlackPlayer;
             }
 
-            if (GameBoard.GameBoard[row, col].MillState != MillState.Milled ||
+            if (GameBoard.GameBoard[row, col].MillState == MillState.NotMilled ||
                 oppositePlayer.PiecesInPlay == oppositePlayer.MilledPieces && oppositePlayer.AllPiecesPlaced)
             {
                 RemoveMill(row, col, player);
@@ -202,7 +202,7 @@ namespace NineMansMorrisLib
         }
 
         // pre : 
-        public bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
+        public virtual bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
             if (GameOver) return false;
             // if player can't fly return
