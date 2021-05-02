@@ -71,7 +71,7 @@ namespace NineMansMorrisLib
             return false;
         }
 
-        public void UpdateCoordinateList(Player blackPlayer, Player whitePlayer)
+        public static void UpdateCoordinateList(Player blackPlayer, Player whitePlayer)
         {
             for (var row = 0; row <= 7; row++)
             {

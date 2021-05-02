@@ -1,4 +1,9 @@
-﻿namespace NineMansMorrisLib
+﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+
+namespace NineMansMorrisLib
 {
     public class AutoNineMansMorrisLogic : NineMansMorrisLogic
     {

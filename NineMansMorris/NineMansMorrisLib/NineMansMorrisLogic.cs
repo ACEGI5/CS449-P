@@ -425,5 +425,55 @@ namespace NineMansMorrisLib
         }
 
         // post :
+
+
+
+        public List<List<int>> GetValidAdjacentCoordinates(int row, int col)
+        {
+            var coordinateList = new List<List<int>>();
+
+            // traverse each direction
+            foreach (var direction in _directions)
+            {
+                // while move is not possible
+                while (true)
+                {
+                    // update position
+                    row += direction.Value[0];
+                    col += direction.Value[1];
+
+                    // if out of bounds
+                    if ((row > 6 || col > 6) || (col <= -1) || (row <= -1))
+                    {
+                        break;
+                    }
+
+                    // if middle, do not cross
+                    if (row == 3 && col == 3)
+                    {
+                        break;
+                    }
+
+                    // if black, white, open
+                    if (GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid)
+                    {
+                        // if spot is open
+                        if (GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
+                        {
+                            var validCoordinate = new List<int> {row, col};
+                            coordinateList.Add(validCoordinate);
+                        }
+
+                        // spot is invalid
+                        break;
+                    }
+                }
+
+            }
+            return coordinateList;
+        }
+        
+        
+        
     }
 }
