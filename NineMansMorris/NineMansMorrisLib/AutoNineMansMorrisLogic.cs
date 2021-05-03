@@ -37,27 +37,25 @@ namespace NineMansMorrisLib
         }
 
         // Returns list of to and from coordinates
-        public Dictionary<String, List<int>> EvalMovePiece(Player player, PieceState pieceState)
+        public Dictionary<string, List<int>> EvalMovePiece(Player player, PieceState pieceState)
         {
             var rand = new Random();
             // List of pieces on the board with same color
-            var sameColorPieces = LogicHelper.GetPieces(pieceState, GameBoard);
+            List<List<int>> sameColorPieces = LogicHelper.GetPieces(pieceState, GameBoard);
             
             // List of open Adjacent pieces
-            var possibleMoves = new List<Dictionary<String, List<int>>>();
+            List<Dictionary<string, List<int>>> possibleMoves = new List<Dictionary<string, List<int>>>();
 
-            foreach (var piece in sameColorPieces)
+            foreach (List<int> piece in sameColorPieces)
             {
-                var adjacentPieces = base.GetValidAdjacentCoordinates(piece[0], piece[1]);
-                foreach (var adjacentPiece in adjacentPieces)
+                List<List<int>> adjacentPieces = base.GetValidAdjacentCoordinates(piece[0], piece[1]);
+                foreach (List<int> adjacentPiece in adjacentPieces)
                 {
-                    var adjacentPiecePlace = GameBoard.GameBoard[adjacentPiece[0], adjacentPiece[1]];
+                    GamePiece adjacentPiecePlace = GameBoard.GameBoard[adjacentPiece[0], adjacentPiece[1]];
                     if (adjacentPiecePlace.PieceState == PieceState.Open)
                     {
-                        var toPiece = new List<int>();
-                        var fromPiece = new List<int>();
                         // List of movements 
-                        var toFrom = new Dictionary<string, List<int>>()
+                        Dictionary<string, List<int>> toFrom = new Dictionary<string, List<int>>()
                         {
                             {"to", adjacentPiece},
                             {"from", piece}
