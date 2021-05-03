@@ -72,7 +72,10 @@ namespace NineMansMorrisLib
 
         public List<int> EvalRemovePiece(PieceState pieceState)
         {
-            var pieceToRemove = new List<int>();
+            var rand = new Random();
+
+            var piecesToRemove = new List<List<int>>();
+
             var opponentPieces = LogicHelper.GetPieces(pieceState, GameBoard);
             foreach (var piece in opponentPieces)
             {
@@ -81,11 +84,15 @@ namespace NineMansMorrisLib
                 
                 if (GameBoard.GameBoard[row, col].MillState == MillState.NotMilled)
                 {
+                    var pieceToRemove = new List<int>();
+
                     pieceToRemove.Add(row);
                     pieceToRemove.Add(col);
+                    piecesToRemove.Add(pieceToRemove);
+                    
                 }
             }
-            return pieceToRemove;
+            return piecesToRemove[rand.Next(piecesToRemove.Count)];
         }
         
         public bool RemovePiece(Player player)
