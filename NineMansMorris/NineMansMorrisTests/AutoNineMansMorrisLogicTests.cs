@@ -36,6 +36,7 @@ namespace NineMansMorrisTests
             var numAfter = LogicHelper.GetPieces(PieceState.Black, sut.GameBoard).Count;
             Assert.AreEqual(numBefore, numAfter);
         }
+
     }
     
     
