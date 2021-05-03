@@ -25,7 +25,7 @@ namespace NineMansMorrisLib
             return openPieces[rand.Next(openPieces.Count)];
         }
 
-        public bool PlacePiece(Player player)
+        public bool AutoPlacePiece(Player player)
         {
             List<int> piece = EvalPlacePiece(player);
             return base.PlacePiece(player, piece[0], piece[1]);
