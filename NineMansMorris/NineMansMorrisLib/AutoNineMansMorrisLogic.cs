@@ -70,7 +70,7 @@ namespace NineMansMorrisLib
             return possibleMoves[rand.Next(possibleMoves.Count)];
         }
 
-        public List<int> EvalRemovePiece(Player player, PieceState pieceState)
+        public List<int> EvalRemovePiece(PieceState pieceState)
         {
             var pieceToRemove = new List<int>();
             var opponentPieces = LogicHelper.GetPieces(pieceState, GameBoard);
@@ -87,14 +87,14 @@ namespace NineMansMorrisLib
             }
             return pieceToRemove;
         }
+        
         public bool RemovePiece(Player player)
         {
-            var coordinate = EvalRemovePiece(player, PieceState.White);
+            var coordinate = EvalRemovePiece(PieceState.White);
             var row = coordinate[0];
             var col = coordinate[1];
             return base.RemovePiece(player, row, col);
         }
-
         public bool MovePiece(Player player)
         {
             var toFrom = EvalMovePiece(player, PieceState.Black);

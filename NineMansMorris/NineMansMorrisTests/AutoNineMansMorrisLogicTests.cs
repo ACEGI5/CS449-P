@@ -9,7 +9,7 @@ namespace NineMansMorrisTests
         public void TestValidAutoPlacement()
         {
             var sut = new AutoNineMansMorrisLogic();
-            
+
             for (var i = sut.BlackPlayer.PiecesToPlace; i > 1; i--)
             {
                 sut.PlacePiece(sut.BlackPlayer);
@@ -20,7 +20,7 @@ namespace NineMansMorrisTests
             var numAfter = LogicHelper.GetPieces(PieceState.Black, sut.GameBoard).Count - 1;
             Assert.AreEqual(numBefore, numAfter);
         }
-        
+
         [Test]
         public void TestValidAutoMovement()
         {
@@ -36,8 +36,24 @@ namespace NineMansMorrisTests
             var numAfter = LogicHelper.GetPieces(PieceState.Black, sut.GameBoard).Count;
             Assert.AreEqual(numBefore, numAfter);
         }
+        
+        [Test]
+        public void TestValidAutoRemoval()
+        {
+            var sut = new AutoNineMansMorrisLogic();
 
+            
+            var row = 0;
+            var col = 0;
+            
+            sut.PlacePiece(sut.WhitePlayer, row, col);
+
+
+            sut.RemovePiece(sut.BlackPlayer);
+            Assert.AreEqual(sut.GameBoard.GameBoard[row, col].PieceState, PieceState.Open);
+
+        }
     }
-    
-    
 }
+    
+    
