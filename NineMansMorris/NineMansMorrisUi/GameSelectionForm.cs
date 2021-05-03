@@ -20,7 +20,7 @@ namespace NineMansMorrisUi
 
         private void btnPlayerVsPlayer_Click_1(object sender, EventArgs e)
         {
-            BoardForm.ComputerOpponent = true;
+            BoardForm.ComputerOpponent = false;
             BoardForm boardForm = new BoardForm();
             boardForm.Show();
             Hide();

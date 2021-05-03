@@ -27,8 +27,9 @@ namespace NineMansMorrisUi
 
             return false;
         }
-        public bool PiecePlacement(int row, int col, Control clickedButton)
+        public bool PiecePlacement(int row=-1, int col=-1, Control clickedButton=null)
         {
+            
             switch (_nineMansMorrisGame.gameTurn)
             {
                 case NineMansMorrisLogic.Turn.White when CanPlacePiece(row, col, _nineMansMorrisGame.WhitePlayer):
@@ -45,10 +46,9 @@ namespace NineMansMorrisUi
                 {
                     if (BoardForm.ComputerOpponent)
                     {
-                        if (autoPlacePiece())
-                            return true;
-                        return false;
+                        return autoPlacePiece();
                     }
+                  
                     if (_nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer, row, col))
                     {
                         CheckMillFormed(row, col, _nineMansMorrisGame.BlackPlayer);
@@ -64,6 +64,10 @@ namespace NineMansMorrisUi
 
         private bool CanPlacePiece(int row, int col, Player player)
         {
+            if (BoardForm.ComputerOpponent)
+            {
+                return player.AllPiecesPlaced == false;
+            }
             return player.AllPiecesPlaced == false &&
                    _nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState ==
                    PieceState.Open;
