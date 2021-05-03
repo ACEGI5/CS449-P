@@ -70,10 +70,9 @@ namespace NineMansMorrisLib
             // not a valid placement
             return false;
         }
-        
-        
-        
-        List<List<int>> GetPieces(PieceState chosen){
+
+
+        public static List<List<int>> GetPieces(PieceState chosen){
             var pieces = new List<List<int>>();
 
             for (var row = 0; row <= 7; row++)
@@ -84,9 +83,7 @@ namespace NineMansMorrisLib
 
                     if (currPiece == chosen)
                     {
-                        var coordinate = new List<int>();
-                        coordinate.Add(row);
-                        coordinate.Add(col);
+                        var coordinate = new List<int> {row, col};
                         pieces.Add(coordinate);
                     }
                         

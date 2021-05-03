@@ -7,9 +7,25 @@ namespace NineMansMorrisLib
 {
     public class AutoNineMansMorrisLogic : NineMansMorrisLogic
     {
+        List<int> evalPlacePiece(Player player){
+            var openPieces = LogicHelper.GetPieces(PieceState.Open);
+            var goodPieces = LogicHelper.GetPieces(PieceState.Open);
+
+            for (var pieces = 0; pieces <= openPieces.Count; pieces++)
+            {
+                var row = openPieces[pieces][0];
+                var col = openPieces[pieces][1];
+                if(base.IsInMill(row, col, player)) {
+                    var goodPiece = new List<int> {row, col};
+                    goodPieces.Add(goodPiece);
+                }
+            }
+
+            return goodPieces[0];
+        }
+
         public override bool PlacePiece(Player player, int row, int col)
         {
-            
             return base.PlacePiece(player, row, col);
         }
 
