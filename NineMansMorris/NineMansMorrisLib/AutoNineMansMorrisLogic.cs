@@ -33,15 +33,12 @@ namespace NineMansMorrisLib
             ComputerFormedNewMill = CheckMill(piece[0], piece[1], player);
             return successfulPlace;
         }
-
-        // Returns list of to and from coordinates
-        private Dictionary<string, List<int>> EvalMovePiece(Player player, PieceState pieceState)
+        
+        private Dictionary<string, List<int>> EvalMovePiece(Player player)
         {
             var rand = new Random();
-            // List of pieces on the board with same color
-            var sameColorPieces = LogicHelper.GetPieces(pieceState, GameBoard);
-
-            // List of open Adjacent pieces
+            var samePieceState = player == BlackPlayer ? PieceState.Black : PieceState.White;
+            var sameColorPieces = LogicHelper.GetPieces(samePieceState, GameBoard);
             var possibleMoves = new List<Dictionary<string, List<int>>>();
 
             foreach (var piece in sameColorPieces)
@@ -52,7 +49,6 @@ namespace NineMansMorrisLib
                     var adjacentPieceState = GameBoard.GameBoard[adjacentPiece[0], adjacentPiece[1]].PieceState;
                     if (adjacentPieceState == PieceState.Open)
                     {
-                        // List of movements 
                         var toFrom = new Dictionary<string, List<int>>()
                         {
                             {"to", adjacentPiece},
@@ -70,7 +66,7 @@ namespace NineMansMorrisLib
 
         public bool MovePiece(Player player)
         {
-            Dictionary<string, List<int>> toFrom = EvalMovePiece(player, PieceState.Black);
+            Dictionary<string, List<int>> toFrom = EvalMovePiece(player);
             List<int> pieceTo = toFrom["to"];
             List<int> pieceFrom = toFrom["from"];
             return base.MovePiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
@@ -104,6 +100,41 @@ namespace NineMansMorrisLib
             var row = coordinate[0];
             var col = coordinate[1];
             return base.RemovePiece(player, row, col);
+        }
+        
+        private Dictionary<String, List<int>> EvalFlyPiece(Player player)
+        {
+            var rand = new Random();
+            var openPieces = LogicHelper.GetPieces(PieceState.Open, GameBoard);
+            var sameColorPieces = LogicHelper.GetPieces(PieceState.Black, GameBoard);
+            var possibleFlys = new List<Dictionary<string, List<int>>>();
+
+            foreach (var sameColorPiece in sameColorPieces)
+            {
+                foreach (var openPiece in openPieces)
+                {
+                    var row = openPiece[0];
+                    var col = openPiece[1];
+                    var toFrom = new Dictionary<string, List<int>>()
+                    {
+                        {"to", openPiece},
+                        {"from", sameColorPiece}
+                    };
+                    possibleFlys.Add(toFrom);
+                    if (base.IsInMill(row, col, player))
+                        return toFrom;
+                }
+            }
+
+            return possibleFlys[rand.Next(possibleFlys.Count)];
+        }
+
+        private bool FlyPiece(Player player)
+        {
+            var toFrom = EvalFlyPiece(player);
+            var pieceTo = toFrom["to"];
+            var pieceFrom = toFrom["from"];
+            return base.MovePiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
         }
     }
 }

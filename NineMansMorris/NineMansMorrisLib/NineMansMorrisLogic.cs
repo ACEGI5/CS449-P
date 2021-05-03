@@ -37,7 +37,7 @@ namespace NineMansMorrisLib
         }
 
         // pre : 
-        public virtual bool PlacePiece(Player player, int row, int col)
+        public bool PlacePiece(Player player, int row, int col)
         {
             if (GameOver) return false;
             // if player has all pieces placed or where they are placing is not valid return false
@@ -68,7 +68,7 @@ namespace NineMansMorrisLib
         // post : 
 
         // pre : 
-        public virtual bool MovePiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
+        public bool MovePiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
             //GameOver = CheckIfMovementNotPossible(player);
             if (GameOver) return false;
@@ -154,7 +154,7 @@ namespace NineMansMorrisLib
         // post : 
 
         // pre : 
-        public virtual bool RemovePiece(Player player, int row, int col)
+        public bool RemovePiece(Player player, int row, int col)
         {
             if (GameOver) return false;
             // if invalid return false
@@ -203,7 +203,7 @@ namespace NineMansMorrisLib
         }
 
         // pre : 
-        public virtual bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
+        public bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
           //  GameOver = CheckIfMovementNotPossible(player);
             if (GameOver) return false;
