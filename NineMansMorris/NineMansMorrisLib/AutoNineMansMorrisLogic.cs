@@ -7,11 +7,11 @@ namespace NineMansMorrisLib
 {
     public class AutoNineMansMorrisLogic : NineMansMorrisLogic
     {
-        List<int> evalPlacePiece(Player player){
+        public List<int> EvalPlacePiece(Player player){
             var openPieces = LogicHelper.GetPieces(PieceState.Open);
             var rand = new Random();
 
-             foreach(var piece in openPieces) 
+            foreach(var piece in openPieces) 
             {
                 
                 var row = piece[0];
@@ -23,6 +23,12 @@ namespace NineMansMorrisLib
                 }
             }
             return openPieces[rand.Next(openPieces.Count)];
+        }
+
+        public bool PlacePiece(Player player)
+        {
+            List<int> piece = EvalPlacePiece(player);
+            return base.PlacePiece(player, piece[0], piece[1]);
         }
 
         public override bool PlacePiece(Player player, int row, int col)
