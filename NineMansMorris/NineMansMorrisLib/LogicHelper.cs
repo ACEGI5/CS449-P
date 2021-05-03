@@ -71,8 +71,8 @@ namespace NineMansMorrisLib
             return false;
         }
 
-
-        public static List<List<int>> GetPieces(PieceState chosen, Board gameBoard){
+        public static List<List<int>> GetPieces(PieceState chosen, Board gameBoard)
+        {
             var pieces = new List<List<int>>();
 
             for (var row = 0; row < 7; row++)
@@ -86,14 +86,10 @@ namespace NineMansMorrisLib
                         var coordinate = new List<int> {row, col};
                         pieces.Add(coordinate);
                     }
-                        
                 }
             }
 
             return pieces;
         }
-
-        
-        
     }
 }
