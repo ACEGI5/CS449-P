@@ -70,6 +70,7 @@ namespace NineMansMorrisLib
         // pre : 
         public virtual bool MovePiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
+            //GameOver = CheckIfMovementNotPossible(player);
             if (GameOver) return false;
             // if invalid placement and not all pieces placed return
             if (!isValid(rowTo, colTo, rowFrom, colFrom) || !player.AllPiecesPlaced) return false;
@@ -204,6 +205,7 @@ namespace NineMansMorrisLib
         // pre : 
         public virtual bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
+          //  GameOver = CheckIfMovementNotPossible(player);
             if (GameOver) return false;
             // if player can't fly return
             if (!player.CanFly()) return false;
@@ -238,7 +240,7 @@ namespace NineMansMorrisLib
         // post : 
 
         // pre :
-        public Dictionary<string, List<GamePiece>> GetMills(int row, int col)
+        private Dictionary<string, List<GamePiece>> GetMills(int row, int col)
         {
             var currPieceState = GameBoard.GameBoard[row, col].PieceState;
             List<GamePiece> rowList = new List<GamePiece>();
@@ -362,7 +364,7 @@ namespace NineMansMorrisLib
         // post :
 
         // pre :
-        public void RemoveMill(int row, int col, Player player)
+        private void RemoveMill(int row, int col, Player player)
         {
             var lists = GetMills(row, col);
 

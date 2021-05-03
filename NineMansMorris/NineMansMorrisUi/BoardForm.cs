@@ -136,7 +136,7 @@ namespace NineMansMorrisUi
 
                 _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                 _btnGrid[row, col].BackColor = _blackColor;
-
+                EndGame();
 
                 _selectButton = null;
             }
@@ -154,7 +154,7 @@ namespace NineMansMorrisUi
                 _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                 _btnGrid[row, col].BackColor = _whiteColor;
 
-
+                EndGame();
                 _selectButton = null;
             }
         }

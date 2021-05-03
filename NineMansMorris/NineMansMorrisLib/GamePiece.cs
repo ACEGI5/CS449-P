@@ -16,6 +16,9 @@
 
     public class GamePiece
     {
+        
+        
+        
         public PieceState PieceState { get; set; }
         public MillState MillState { get; set; }
     }

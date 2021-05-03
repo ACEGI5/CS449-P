@@ -4,9 +4,9 @@ namespace NineMansMorrisLib
 {
     public class LogicHelper
     {
-        public static Board GameBoard { get; private set; }
-        public Player WhitePlayer { get; private set; }
-        public Player BlackPlayer { get; private set; }
+        private static Board GameBoard { get; set; }
+        private Player WhitePlayer { get; set; }
+        private Player BlackPlayer { get; set; }
 
         public LogicHelper(Board gameBoard, Player whitePlayer, Player blackPlayer)
         {
@@ -15,7 +15,7 @@ namespace NineMansMorrisLib
             BlackPlayer = blackPlayer;
         }
 
-        public static Dictionary<string, int[]> Directions { set; get; } = new Dictionary<string, int[]>
+        private static Dictionary<string, int[]> Directions { set; get; } = new Dictionary<string, int[]>
         {
             {"up", new[] {-1, 0}}, {"down", new[] {1, 0}},
             {"left", new[] {0, -1}}, {"right", new[] {0, 1}}
