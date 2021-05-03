@@ -243,8 +243,8 @@ namespace NineMansMorrisLib
         private Dictionary<string, List<GamePiece>> GetMills(int row, int col)
         {
             var currPieceState = GameBoard.GameBoard[row, col].PieceState;
-            List<GamePiece> rowList = new List<GamePiece>();
-            List<GamePiece> colList = new List<GamePiece>();
+            var rowList = new List<GamePiece>();
+            var colList = new List<GamePiece>();
             var lists = new Dictionary<string, List<GamePiece>>()
             {
                 {"row", rowList},
@@ -336,7 +336,7 @@ namespace NineMansMorrisLib
             {
                 if (lists["row"].Count == 3)
                 {
-                    foreach (GamePiece piece in lists["row"])
+                    foreach (var piece in lists["row"])
                     {
                         if (piece.MillState == MillState.NotMilled)
                             player.MillPiece();
@@ -346,7 +346,7 @@ namespace NineMansMorrisLib
 
                 if (lists["col"].Count == 3)
                 {
-                    foreach (GamePiece piece in lists["col"])
+                    foreach (var piece in lists["col"])
                     {
                         if (piece.MillState == MillState.NotMilled)
                             player.MillPiece();
@@ -373,7 +373,7 @@ namespace NineMansMorrisLib
             {
                 if (lists["row"].Count == 3)
                 {
-                    foreach (GamePiece piece in lists["row"])
+                    foreach (var piece in lists["row"])
                     {
                         piece.MillState = MillState.NotMilled;
                         player.UnmillPiece();
@@ -382,7 +382,7 @@ namespace NineMansMorrisLib
 
                 if (lists["col"].Count == 3)
                 {
-                    foreach (GamePiece piece in lists["col"])
+                    foreach (var piece in lists["col"])
                     {
                         piece.MillState = MillState.NotMilled;
                         player.UnmillPiece();
@@ -394,13 +394,13 @@ namespace NineMansMorrisLib
 
         public bool CheckIfMovementNotPossible(Player player)
         {
-            foreach (List<int> a in player.coordinateList)
+            foreach (var a in player.coordinateList)
             {
                 foreach (var direction in _directions)
                 {
                     // while move is not possible
-                    int row = a[0];
-                    int col = a[1];
+                    var row = a[0];
+                    var col = a[1];
                     while (true)
                     {
                         // update position
