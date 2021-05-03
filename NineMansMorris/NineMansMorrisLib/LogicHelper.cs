@@ -70,29 +70,33 @@ namespace NineMansMorrisLib
             // not a valid placement
             return false;
         }
+        
+        
+        
+        List<List<int>> GetPieces(PieceState chosen){
+            var pieces = new List<List<int>>();
 
-        public static void UpdateCoordinateList(Player blackPlayer, Player whitePlayer)
-        {
             for (var row = 0; row <= 7; row++)
             {
                 for (var col = 0; col <= 7; col++)
                 {
-                    var coordinate = new List<int>();
-                    coordinate.Add(row);
-                    coordinate.Add(col);
-                    var color = GameBoard.GameBoard[row, col].PieceState;
+                    var currPiece = GameBoard.GameBoard[row, col].PieceState;
 
-                    switch (color)
+                    if (currPiece == chosen)
                     {
-                        case PieceState.Black:
-                            blackPlayer.coordinateList.Add(coordinate);
-                            break;
-                        case PieceState.White:
-                            whitePlayer.coordinateList.Add(coordinate);
-                            break;
+                        var coordinate = new List<int>();
+                        coordinate.Add(row);
+                        coordinate.Add(col);
+                        pieces.Add(coordinate);
                     }
+                        
                 }
             }
+
+            return pieces;
         }
+
+        
+        
     }
 }

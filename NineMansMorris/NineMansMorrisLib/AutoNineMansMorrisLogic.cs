@@ -9,6 +9,7 @@ namespace NineMansMorrisLib
     {
         public override bool PlacePiece(Player player, int row, int col)
         {
+            
             return base.PlacePiece(player, row, col);
         }
 
