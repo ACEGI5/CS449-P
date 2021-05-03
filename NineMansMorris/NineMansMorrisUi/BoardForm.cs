@@ -38,7 +38,7 @@ namespace NineMansMorrisUi
                 updateGameBoard();
             }
         }
-
+//aaa
         private void updateGameBoard()
         {
             for (int row = 0; row < 7; row++)
