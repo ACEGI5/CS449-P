@@ -9,19 +9,20 @@ namespace NineMansMorrisLib
     {
         List<int> evalPlacePiece(Player player){
             var openPieces = LogicHelper.GetPieces(PieceState.Open);
-            var goodPieces = LogicHelper.GetPieces(PieceState.Open);
+            var rand = new Random();
 
-            for (var pieces = 0; pieces <= openPieces.Count; pieces++)
+             foreach(var piece in openPieces) 
             {
-                var row = openPieces[pieces][0];
-                var col = openPieces[pieces][1];
-                if(base.IsInMill(row, col, player)) {
+                
+                var row = piece[0];
+                var col = piece[1];
+                if (base.IsInMill(row, col, player))
+                {
                     var goodPiece = new List<int> {row, col};
-                    goodPieces.Add(goodPiece);
+                    return goodPiece;
                 }
             }
-
-            return goodPieces[0];
+            return openPieces[rand.Next(openPieces.Count)];
         }
 
         public override bool PlacePiece(Player player, int row, int col)
