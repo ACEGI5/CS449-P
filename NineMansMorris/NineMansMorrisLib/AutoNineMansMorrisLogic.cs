@@ -43,21 +43,17 @@ namespace NineMansMorrisLib
 
             foreach (var piece in sameColorPieces)
             {
-                var adjacentPieces = base.GetValidAdjacentCoordinates(piece[0], piece[1]);
-                foreach (var adjacentPiece in adjacentPieces)
+                var openAdjacentPieces = base.GetValidAdjacentCoordinates(piece[0], piece[1]);
+                foreach (var openAdjacentPiece in openAdjacentPieces)
                 {
-                    var adjacentPieceState = GameBoard.GameBoard[adjacentPiece[0], adjacentPiece[1]].PieceState;
-                    if (adjacentPieceState == PieceState.Open)
+                    var toFrom = new Dictionary<string, List<int>>()
                     {
-                        var toFrom = new Dictionary<string, List<int>>()
-                        {
-                            {"to", adjacentPiece},
-                            {"from", piece}
-                        };
-                        possibleMoves.Add(toFrom);
-                        if (base.IsInMill(adjacentPiece[0], adjacentPiece[1], player))
-                            return toFrom;
-                    }
+                        {"to", openAdjacentPiece},
+                        {"from", piece}
+                    };
+                    possibleMoves.Add(toFrom);
+                    if (base.IsInMill(openAdjacentPiece[0], openAdjacentPiece[1], player))
+                        return toFrom;
                 }
             }
 
