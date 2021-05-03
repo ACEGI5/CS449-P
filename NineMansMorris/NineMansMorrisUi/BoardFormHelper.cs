@@ -47,7 +47,7 @@ namespace NineMansMorrisUi
                     if (BoardForm.ComputerOpponent)
                     {
                         var goodPlacement = autoPlacePiece();
-                        if (_nineMansMorrisGame.computerFormedNewMill)
+                        if (_nineMansMorrisGame.ComputerFormedNewMill)
                             _newMillFormed=true;
                         return goodPlacement;
                     }
