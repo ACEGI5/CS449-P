@@ -25,20 +25,10 @@ namespace NineMansMorrisLib
             return openPieces[rand.Next(openPieces.Count)];
         }
 
-        public bool AutoPlacePiece(Player player)
+        public bool PlacePiece(Player player)
         {
             List<int> piece = EvalPlacePiece(player);
             return base.PlacePiece(player, piece[0], piece[1]);
-        }
-
-        public override bool PlacePiece(Player player, int row, int col)
-        {
-            return base.PlacePiece(player, row, col);
-        }
-
-        public override bool MovePiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
-        {
-            return base.MovePiece(player, rowTo, colTo, rowFrom, colFrom);
         }
 
         public override bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
