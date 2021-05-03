@@ -10,7 +10,8 @@ namespace NineMansMorrisUi
     public partial class BoardForm : Form
     {
         //aa
-        private readonly NineMansMorrisLogic _nineMansMorrisGame = new();
+
+        private AutoNineMansMorrisLogic _nineMansMorrisGame = new AutoNineMansMorrisLogic();
         private readonly Button[,] _btnGrid = new Button[BoardSize, BoardSize];
         private Button _selectButton;
         private readonly string _turnIndicatorWhite = "White's Turn";
@@ -19,15 +20,44 @@ namespace NineMansMorrisUi
         private readonly Color _whiteColor = Color.GhostWhite;
         private readonly Color _blackColor = Color.Black;
         private BoardFormHelper _boardFormHelper;
-
+        public static bool ComputerOpponent = false;
 
         public BoardForm()
         {
             InitializeComponent();
             PopulateButtonGrid();
+            InitComputerPlayer();
             SetUpForm();
         }
 
+        private void InitComputerPlayer()
+        {
+            if (ComputerOpponent)
+            {
+                _boardFormHelper.autoPlacePiece();
+                updateGameBoard();
+            }
+        }
+
+        private void updateGameBoard()
+        {
+            for (int row = 0; row < 7; row++)
+            {
+                for (int col = 0; col < 7; col++)
+                {
+                    if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Black)
+                    {
+                        _btnGrid[row, col].BackColor = _blackColor;
+                    }else if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.White)
+                    {
+                        _btnGrid[row, col].BackColor = _whiteColor;
+                    }else if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
+                    {
+                        _btnGrid[row, col].BackColor = _unoccupiedColor;
+                    }
+                }
+            }
+        }
         private void SetUpForm()
         {
             if (_nineMansMorrisGame.gameTurn == NineMansMorrisLogic.Turn.White)
@@ -69,6 +99,7 @@ namespace NineMansMorrisUi
                     {
                         _btnGrid[col, row] = null;
                     }
+
 
                     _boardFormHelper = new BoardFormHelper(_btnGrid, _nineMansMorrisGame);
                 }

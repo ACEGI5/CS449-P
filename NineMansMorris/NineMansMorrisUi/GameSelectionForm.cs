@@ -5,8 +5,6 @@ namespace NineMansMorrisUi
 {
     public partial class GameSelectionForm : Form
     {
-        BoardForm boardForm = new BoardForm();
-
         public GameSelectionForm()
         {
             InitializeComponent();
@@ -14,12 +12,16 @@ namespace NineMansMorrisUi
 
         private void btnPlayerVsComputer_Click(object sender, EventArgs e)
         {
+            BoardForm.ComputerOpponent = true;
+            BoardForm boardForm = new BoardForm();
             boardForm.Show();
             Hide();
         }
 
         private void btnPlayerVsPlayer_Click_1(object sender, EventArgs e)
         {
+            BoardForm.ComputerOpponent = true;
+            BoardForm boardForm = new BoardForm();
             boardForm.Show();
             Hide();
         }

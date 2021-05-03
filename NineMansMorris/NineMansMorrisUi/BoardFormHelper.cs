@@ -9,15 +9,24 @@ namespace NineMansMorrisUi
     public class BoardFormHelper
     {
         private readonly Button[,] _btnGrid;
-        private readonly NineMansMorrisLogic _nineMansMorrisGame;
+        private readonly AutoNineMansMorrisLogic _nineMansMorrisGame;
         public bool _newMillFormed { get; private set; }
 
-        public BoardFormHelper(Button[,] btnGrid, NineMansMorrisLogic nineMansMorrisGame)
+        public BoardFormHelper(Button[,] btnGrid,AutoNineMansMorrisLogic nineMansMorrisGame)
         {
             _btnGrid = btnGrid;
             _nineMansMorrisGame = nineMansMorrisGame;
         }
 
+        public bool autoPlacePiece()
+        {
+            if(_nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer)&&_nineMansMorrisGame.gameTurn == NineMansMorrisLogic.Turn.White)
+            {
+                return true;
+            }
+
+            return false;
+        }
         public bool PiecePlacement(int row, int col, Control clickedButton)
         {
             switch (_nineMansMorrisGame.gameTurn)
@@ -34,6 +43,12 @@ namespace NineMansMorrisUi
                 }
                 case NineMansMorrisLogic.Turn.Black when CanPlacePiece(row, col, _nineMansMorrisGame.BlackPlayer):
                 {
+                    if (BoardForm.ComputerOpponent)
+                    {
+                        if (autoPlacePiece())
+                            return true;
+                        return false;
+                    }
                     if (_nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer, row, col))
                     {
                         CheckMillFormed(row, col, _nineMansMorrisGame.BlackPlayer);

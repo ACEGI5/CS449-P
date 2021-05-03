@@ -72,16 +72,16 @@ namespace NineMansMorrisLib
         }
 
 
-        public static List<List<int>> GetPieces(PieceState chosen){
+        public static List<List<int>> GetPieces(PieceState chosen, Board gameBoard){
             var pieces = new List<List<int>>();
 
-            for (var row = 0; row <= 7; row++)
+            for (var row = 0; row < 7; row++)
             {
-                for (var col = 0; col <= 7; col++)
+                for (var col = 0; col < 7; col++)
                 {
-                    var currPiece = GameBoard.GameBoard[row, col].PieceState;
+                    GamePiece currPiece = gameBoard.GameBoard[row, col];
 
-                    if (currPiece == chosen)
+                    if (currPiece.PieceState == chosen)
                     {
                         var coordinate = new List<int> {row, col};
                         pieces.Add(coordinate);
