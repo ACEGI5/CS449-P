@@ -15,9 +15,10 @@ namespace NineMansMorrisTests
                 sut.PlacePiece(sut.BlackPlayer);
             }
 
-            Assert.AreEqual(1, sut.BlackPlayer.PiecesToPlace);
+            var numBefore = LogicHelper.GetPieces(PieceState.Black, sut.GameBoard).Count;
             sut.PlacePiece(sut.BlackPlayer);
-            Assert.AreEqual(0, sut.BlackPlayer.PiecesToPlace);
+            var numAfter = LogicHelper.GetPieces(PieceState.Black, sut.GameBoard).Count - 1;
+            Assert.AreEqual(numBefore, numAfter);
         }
         
         [Test]
@@ -30,10 +31,10 @@ namespace NineMansMorrisTests
                 sut.BlackPlayer.PlacePiece();
             }
 
-            Assert.AreEqual(9, sut.BlackPlayer.PiecesInPlay);
-            var isMoved = sut.MovePiece(sut.BlackPlayer);
-            Assert.AreEqual(9, sut.BlackPlayer.PiecesInPlay);
-            Assert.IsTrue(isMoved);
+            var numBefore = LogicHelper.GetPieces(PieceState.Black, sut.GameBoard).Count;
+            sut.MovePiece(sut.BlackPlayer);
+            var numAfter = LogicHelper.GetPieces(PieceState.Black, sut.GameBoard).Count;
+            Assert.AreEqual(numBefore, numAfter);
         }
     }
     
