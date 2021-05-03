@@ -79,7 +79,7 @@ namespace NineMansMorrisLib
             {
                 for (var col = 0; col < 7; col++)
                 {
-                    GamePiece currPiece = gameBoard.GameBoard[row, col];
+                    var currPiece = gameBoard.GameBoard[row, col];
 
                     if (currPiece.PieceState == chosen)
                     {

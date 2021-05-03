@@ -42,9 +42,9 @@ namespace NineMansMorrisUi
 //aaa
         private void updateGameBoard()
         {
-            for (int row = 0; row < 7; row++)
+            for (var row = 0; row < 7; row++)
             {
-                for (int col = 0; col < 7; col++)
+                for (var col = 0; col < 7; col++)
                 {
                     if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.Black)
                     {
@@ -149,7 +149,7 @@ namespace NineMansMorrisUi
             }
 
             _selectButton = clickedButton;
-            if (ComputerOpponent)
+            if (ComputerOpponent&&_boardFormHelper._newMillFormed==false&&_nineMansMorrisGame.gameTurn==NineMansMorrisLogic.Turn.Black)
             {
                 if (_boardFormHelper.PiecePlacement())
                 {

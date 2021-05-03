@@ -8,6 +8,7 @@ namespace NineMansMorrisLib
 {
     public class AutoNineMansMorrisLogic : NineMansMorrisLogic
     {
+        public bool computerFormedNewMill = false;
         public List<int> EvalPlacePiece(Player player){
             var openPieces = LogicHelper.GetPieces(PieceState.Open, GameBoard);
             var rand = new Random();
@@ -28,8 +29,11 @@ namespace NineMansMorrisLib
 
         public bool PlacePiece(Player player)
         {
-            List<int> piece = EvalPlacePiece(player);
-            return base.PlacePiece(player, piece[0], piece[1]);
+            var piece = EvalPlacePiece(player);
+            var successfulPlace = base.PlacePiece(player, piece[0], piece[1]);
+           computerFormedNewMill= CheckMill(piece[0], piece[1], player);
+           return successfulPlace;
+
         }
 
         // Returns list of to and from coordinates
@@ -37,23 +41,23 @@ namespace NineMansMorrisLib
         {
             var rand = new Random();
             // List of pieces on the board with same color
-            List<List<int>> sameColorPieces = LogicHelper.GetPieces(pieceState, GameBoard);
+            var sameColorPieces = LogicHelper.GetPieces(pieceState, GameBoard);
             
             // List of open Adjacent pieces
-            List<Dictionary<String, List<int>>> possibleMoves = new List<Dictionary<String, List<int>>>();
+            var possibleMoves = new List<Dictionary<String, List<int>>>();
 
-            foreach (List<int> piece in sameColorPieces)
+            foreach (var piece in sameColorPieces)
             {
-                List<List<int>> adjacentPieces = base.GetValidAdjacentCoordinates(piece[0], piece[1]);
-                foreach (List<int> adjacentPiece in adjacentPieces)
+                var adjacentPieces = base.GetValidAdjacentCoordinates(piece[0], piece[1]);
+                foreach (var adjacentPiece in adjacentPieces)
                 {
-                    GamePiece adjacentPiecePlace = GameBoard.GameBoard[adjacentPiece[0], adjacentPiece[1]];
+                    var adjacentPiecePlace = GameBoard.GameBoard[adjacentPiece[0], adjacentPiece[1]];
                     if (adjacentPiecePlace.PieceState == PieceState.Open)
                     {
-                        List<int> toPiece = new List<int>();
-                        List<int> fromPiece = new List<int>();
+                        var toPiece = new List<int>();
+                        var fromPiece = new List<int>();
                         // List of movements 
-                        Dictionary<String, List<int>> toFrom = new Dictionary<string, List<int>>()
+                        var toFrom = new Dictionary<string, List<int>>()
                         {
                             {"to", adjacentPiece},
                             {"from", piece}
