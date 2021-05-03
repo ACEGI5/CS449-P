@@ -28,7 +28,7 @@ namespace NineMansMorrisTests
 
             for (var i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
             {
-                sut.BlackPlayer.PlacePiece();
+                sut.PlacePiece(sut.BlackPlayer);
             }
 
             var numBefore = LogicHelper.GetPieces(PieceState.Black, sut.GameBoard).Count;
