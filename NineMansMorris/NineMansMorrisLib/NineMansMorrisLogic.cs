@@ -311,6 +311,18 @@ namespace NineMansMorrisLib
         }
 
         // post :
+        
+        // pre :
+        public bool IsInMill(int row, int col, Player player)
+        {
+            var lists = GetMills(row, col);
+
+            if (lists["row"].Count == 3 || lists["col"].Count == 3)
+                return true;
+            else 
+                return false;
+        }
+        // post:
 
         // pre :
         public bool CheckMill(int row, int col, Player player)
