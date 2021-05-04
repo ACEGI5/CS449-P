@@ -63,7 +63,7 @@ namespace NineMansMorrisLib
         }
 
         public bool MovePiece(Player player)
-        {
+        { //aaa
             Dictionary<string, List<int>> toFrom = EvalMovePiece(player);
             if (toFrom == null)
             {
