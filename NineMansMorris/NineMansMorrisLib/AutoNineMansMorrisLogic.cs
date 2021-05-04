@@ -67,7 +67,7 @@ namespace NineMansMorrisLib
             Dictionary<string, List<int>> toFrom = EvalMovePiece(player);
             if (toFrom == null)
             {
-                return false;
+                MovePiece(player);
             }
             List<int> pieceTo = toFrom["to"];
             List<int> pieceFrom = toFrom["from"];
