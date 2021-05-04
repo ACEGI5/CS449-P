@@ -1,4 +1,5 @@
-﻿using NineMansMorrisLib;
+﻿using System.Collections.Generic;
+using NineMansMorrisLib;
 using NUnit.Framework;
 
 namespace NineMansMorrisTests
@@ -432,6 +433,29 @@ namespace NineMansMorrisTests
             sut.PlacePiece(sut.BlackPlayer, 0, 3);
             var isValidRemoval = sut.RemovePiece(sut.BlackPlayer, 0, 3);
             Assert.IsFalse(isValidRemoval);
+        }
+        [Test]
+        public void TestValidGetAdjacent()
+        {
+            var sut = new NineMansMorrisLogic();
+            var possibleMoves = new List<List<int>>();
+            
+            var row = 3;
+            var col = 1;
+            var up = new List<int>() {1, 1};
+            var down = new List<int>() {5,1};
+            var left = new List<int>() {3,0};
+            var right = new List<int>() {3,2};
+            
+            
+            //1,1 3,0  3,2  5,1
+            possibleMoves = sut.GetValidAdjacentCoordinates(row, col);
+            
+            Assert.True((possibleMoves.Contains(up) && possibleMoves.Contains(up) && possibleMoves.Contains(up) &&
+                         possibleMoves.Contains(up)));
+            
+
+
         }
     }
 
