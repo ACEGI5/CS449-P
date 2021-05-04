@@ -154,6 +154,12 @@ namespace NineMansMorrisUi
                 if (_boardFormHelper.PiecePlacement())
                 {
                     PlacementBoardUpdate(row,col,clickedButton);
+                    return;
+                }
+
+                if (_boardFormHelper.PieceMovement(0,0,clickedButton,ref _selectButton))
+                {
+                    BoardMovementUpdate(0,0,clickedButton);
                 }
             }
         }
@@ -176,11 +182,18 @@ namespace NineMansMorrisUi
                     lblTurnIndicator.Text = _turnIndicatorWhite;
                 }
 
+                if (ComputerOpponent)
+                {
+                    updateGameBoard();
+                    EndGame();
+                    _selectButton = null;
+                    return;
+                }
                 _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                 _btnGrid[row, col].BackColor = _blackColor;
                 EndGame();
-
                 _selectButton = null;
+                
             }
             else
             {

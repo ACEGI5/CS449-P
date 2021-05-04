@@ -57,14 +57,21 @@ namespace NineMansMorrisLib
                 }
             }
 
-            return possibleMoves[rand.Next(possibleMoves.Count)];
+            if (possibleMoves.Count > 0)
+                return possibleMoves[rand.Next(possibleMoves.Count)];
+            return null;
         }
 
         public bool MovePiece(Player player)
         {
             Dictionary<string, List<int>> toFrom = EvalMovePiece(player);
+            if (toFrom == null)
+            {
+                return false;
+            }
             List<int> pieceTo = toFrom["to"];
             List<int> pieceFrom = toFrom["from"];
+            ComputerFormedNewMill = CheckMill(pieceTo[0], pieceTo[1], player);
             return base.MovePiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
         }
 
