@@ -139,7 +139,7 @@ namespace NineMansMorrisTests
                 sut.BlackPlayer.RemovePiece();
             }
 
-            
+
             var isValidFly = sut.FlyPiece(sut.BlackPlayer, newRow, newCol, oldRow, oldCol);
             Assert.AreEqual(color, sut.GameBoard.GameBoard[newRow, newCol].PieceState);
             Assert.True(isValidFly);
@@ -159,11 +159,13 @@ namespace NineMansMorrisTests
             {
                 sut.BlackPlayer.RemovePiece();
             }
+
             sut.PlacePiece(sut.WhitePlayer, newRow, newCol);
             var isValidFly = sut.FlyPiece(sut.BlackPlayer, newRow, newCol, oldRow, oldCol);
             Assert.AreEqual(color, sut.GameBoard.GameBoard[newRow, newCol].PieceState);
             Assert.False(isValidFly);
         }
+
         [TestCase(0, 0, 3, 3, PieceState.Invalid)]
         public void TestInvalidFlyInvalidPosition(int oldRow, int oldCol, int newRow, int newCol, PieceState color)
         {
@@ -178,6 +180,7 @@ namespace NineMansMorrisTests
             {
                 sut.BlackPlayer.RemovePiece();
             }
+
             var isValidFly = sut.FlyPiece(sut.BlackPlayer, newRow, newCol, oldRow, oldCol);
             Assert.AreEqual(color, sut.GameBoard.GameBoard[newRow, newCol].PieceState);
             Assert.False(isValidFly);
@@ -192,9 +195,8 @@ namespace NineMansMorrisTests
             sut.PlacePiece(sut.BlackPlayer, 5, 5);
 
             Assert.IsTrue(sut.CheckMill(3, 5, sut.BlackPlayer));
-
         }
-        
+
         [Test]
         public void TestValidMillPlacementHorizontalNotCentered()
         {
@@ -206,7 +208,7 @@ namespace NineMansMorrisTests
             Assert.IsTrue(sut.CheckMill(3, 0, sut.BlackPlayer));
             Assert.IsTrue(sut.CheckMill(3, 1, sut.BlackPlayer));
         }
-        
+
         [Test]
         public void TestInvalidMillPlacementVerticalCentered()
         {
@@ -216,9 +218,8 @@ namespace NineMansMorrisTests
             sut.PlacePiece(sut.BlackPlayer, 5, 4);
 
             Assert.IsFalse(sut.CheckMill(3, 5, sut.BlackPlayer));
-
         }
-        
+
         [Test]
         public void TestInvalidMillPlacementHorizontalCentered()
         {
@@ -228,7 +229,6 @@ namespace NineMansMorrisTests
             sut.PlacePiece(sut.BlackPlayer, 3, 5);
 
             Assert.IsFalse(sut.CheckMill(3, 5, sut.BlackPlayer));
-
         }
 
         [Test]
@@ -248,25 +248,25 @@ namespace NineMansMorrisTests
         public void TestValidPieceRemovalOnlyMillsLeft()
         {
             var sut = new NineMansMorrisLogic();
-            
+
             for (var i = sut.BlackPlayer.PiecesToPlace; i > 3; i--)
             {
                 sut.BlackPlayer.PlacePiece();
             }
-            
+
             for (var i = sut.BlackPlayer.PiecesInPlay; i > 0; i--)
             {
                 sut.BlackPlayer.RemovePiece();
             }
-            
+
             sut.PlacePiece(sut.BlackPlayer, 3, 4);
             sut.PlacePiece(sut.BlackPlayer, 3, 5);
             sut.PlacePiece(sut.BlackPlayer, 3, 6);
             Assert.IsTrue(sut.CheckMill(3, 5, sut.BlackPlayer));
-            
+
             sut.PlacePiece(sut.WhitePlayer, 6, 0);
             sut.PlacePiece(sut.WhitePlayer, 6, 6);
-            
+
             sut.PlacePiece(sut.WhitePlayer, 0, 0);
             sut.PlacePiece(sut.WhitePlayer, 3, 0);
             sut.PlacePiece(sut.WhitePlayer, 6, 0);
@@ -279,12 +279,12 @@ namespace NineMansMorrisTests
         public void TestInvalidPieceRemoval()
         {
             var sut = new NineMansMorrisLogic();
-            
+
             sut.PlacePiece(sut.BlackPlayer, 3, 4);
             sut.PlacePiece(sut.BlackPlayer, 3, 5);
             sut.PlacePiece(sut.BlackPlayer, 3, 6);
             Assert.IsTrue(sut.CheckMill(3, 5, sut.BlackPlayer));
-            
+
             sut.PlacePiece(sut.WhitePlayer, 0, 0);
             sut.PlacePiece(sut.WhitePlayer, 3, 0);
             sut.PlacePiece(sut.WhitePlayer, 6, 0);
@@ -293,10 +293,10 @@ namespace NineMansMorrisTests
             sut.PlacePiece(sut.WhitePlayer, 6, 0);
             sut.PlacePiece(sut.BlackPlayer, 3, 6);
             sut.PlacePiece(sut.WhitePlayer, 6, 6);
-            
+
             Assert.IsFalse(sut.RemovePiece(sut.BlackPlayer, 3, 5));
         }
-        
+
         [Test]
         public void TestOutOfBoundsMovement()
         {
@@ -349,7 +349,7 @@ namespace NineMansMorrisTests
             sut.RemovePiece(sut.WhitePlayer, 0, 0);
             Assert.True(sut.GameOver);
         }
-        
+
         [Test]
         public void TestGameOverPlacePiece()
         {
@@ -368,9 +368,9 @@ namespace NineMansMorrisTests
             sut.RemovePiece(sut.WhitePlayer, 0, 0);
             Assert.True(sut.GameOver);
             sut.PlacePiece(sut.WhitePlayer, 6, 6);
-            Assert.AreEqual( PieceState.Open,sut.GameBoard.GameBoard[6,6].PieceState);
+            Assert.AreEqual(PieceState.Open, sut.GameBoard.GameBoard[6, 6].PieceState);
         }
-        
+
         [Test]
         public void TestGameOverMovePiece()
         {
@@ -391,7 +391,7 @@ namespace NineMansMorrisTests
             var isValidMovement = sut.MovePiece(sut.BlackPlayer, 0, 0, 3, 0);
             Assert.IsFalse(isValidMovement);
         }
-        
+
         [Test]
         public void TestGameOverFlyPiece()
         {
@@ -412,7 +412,7 @@ namespace NineMansMorrisTests
             var isValidFly = sut.FlyPiece(sut.BlackPlayer, 0, 0, 3, 0);
             Assert.IsFalse(isValidFly);
         }
-        
+
         [Test]
         public void TestGameOverRemovePiece()
         {
@@ -421,7 +421,7 @@ namespace NineMansMorrisTests
             {
                 sut.BlackPlayer.PlacePiece();
             }
-            
+
             sut.PlacePiece(sut.BlackPlayer, 0, 0);
             for (var i = sut.BlackPlayer.PiecesInPlay; i > 3; i--)
             {
@@ -434,29 +434,25 @@ namespace NineMansMorrisTests
             var isValidRemoval = sut.RemovePiece(sut.BlackPlayer, 0, 3);
             Assert.IsFalse(isValidRemoval);
         }
+
         [Test]
-        public void TestValidGetAdjacent()
+        public void TestGetOpenAdjacentCoordinates()
         {
             var sut = new NineMansMorrisLogic();
-            var possibleMoves = new List<List<int>>();
-            
-            var row = 3;
-            var col = 1;
+
+            const int row = 3;
+            const int col = 1;
             var up = new List<int>() {1, 1};
-            var down = new List<int>() {5,1};
-            var left = new List<int>() {3,0};
-            var right = new List<int>() {3,2};
-            
-            
-            //1,1 3,0  3,2  5,1
-            possibleMoves = sut.GetValidAdjacentCoordinates(row, col);
-            
-            Assert.True((possibleMoves.Contains(up) && possibleMoves.Contains(up) && possibleMoves.Contains(up) &&
-                         possibleMoves.Contains(up)));
-            
+            var down = new List<int>() {5, 1};
+            var left = new List<int>() {3, 0};
+            var right = new List<int>() {3, 2};
 
 
+            //1,1  3,0  3,2  5,1
+            List<List<int>> possibleMoves = sut.GetOpenAdjacentCoordinates(row, col);
+
+            Assert.True((possibleMoves.Contains(up) && possibleMoves.Contains(down) && possibleMoves.Contains(left) &&
+                         possibleMoves.Contains(right)));
         }
     }
-
 }

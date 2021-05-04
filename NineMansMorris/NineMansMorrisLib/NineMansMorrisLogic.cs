@@ -205,7 +205,7 @@ namespace NineMansMorrisLib
         // pre : 
         public bool FlyPiece(Player player, int rowTo, int colTo, int rowFrom, int colFrom)
         {
-          //  GameOver = CheckIfMovementNotPossible(player);
+            //  GameOver = CheckIfMovementNotPossible(player);
             if (GameOver) return false;
             // if player can't fly return
             if (!player.CanFly()) return false;
@@ -313,7 +313,7 @@ namespace NineMansMorrisLib
         }
 
         // post :
-        
+
         // pre :
         public bool IsInMill(int row, int col, Player player)
         {
@@ -321,7 +321,7 @@ namespace NineMansMorrisLib
 
             if (lists["row"].Count == 3 || lists["col"].Count == 3)
                 return true;
-            else 
+            else
                 return false;
         }
         // post:
@@ -441,53 +441,18 @@ namespace NineMansMorrisLib
         // post :
 
 
-
-        public List<List<int>> GetValidAdjacentCoordinates(int row, int col)
+        public List<List<int>> GetOpenAdjacentCoordinates(int row, int col)
         {
             var coordinateList = new List<List<int>>();
+            var openPieces = LogicHelper.GetPieces(PieceState.Open, GameBoard);
 
-            // traverse each direction
-            foreach (var direction in _directions)
+            foreach (var piece in openPieces)
             {
-                // while move is not possible
-                while (true)
-                {
-                    // update position
-                    row += direction.Value[0];
-                    col += direction.Value[1];
-
-                    // if out of bounds
-                    if ((row > 6 || col > 6) || (col <= -1) || (row <= -1))
-                    {
-                        break;
-                    }
-
-                    // if middle, do not cross
-                    if (row == 3 && col == 3)
-                    {
-                        break;
-                    }
-
-                    // if black, white, open
-                    if (GameBoard.GameBoard[row, col].PieceState != PieceState.Invalid)
-                    {
-                        // if spot is open
-                        if (GameBoard.GameBoard[row, col].PieceState == PieceState.Open)
-                        {
-                            var validCoordinate = new List<int> {row, col};
-                            coordinateList.Add(validCoordinate);
-                        }
-
-                        // spot is invalid
-                        break;
-                    }
-                }
-
+                if (isValid(piece[0], piece[1], row, col))
+                    coordinateList.Add(piece);
             }
+
             return coordinateList;
         }
-        
-        
-        
     }
 }

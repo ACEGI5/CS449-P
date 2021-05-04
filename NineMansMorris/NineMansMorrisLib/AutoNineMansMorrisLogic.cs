@@ -33,7 +33,7 @@ namespace NineMansMorrisLib
             ComputerFormedNewMill = CheckMill(piece[0], piece[1], player);
             return successfulPlace;
         }
-        
+
         private Dictionary<string, List<int>> EvalMovePiece(Player player)
         {
             var rand = new Random();
@@ -43,7 +43,7 @@ namespace NineMansMorrisLib
 
             foreach (var piece in sameColorPieces)
             {
-                var openAdjacentPieces = base.GetValidAdjacentCoordinates(piece[0], piece[1]);
+                var openAdjacentPieces = base.GetOpenAdjacentCoordinates(piece[0], piece[1]);
                 foreach (var openAdjacentPiece in openAdjacentPieces)
                 {
                     var toFrom = new Dictionary<string, List<int>>()
@@ -57,18 +57,14 @@ namespace NineMansMorrisLib
                 }
             }
 
-            if (possibleMoves.Count > 0)
-                return possibleMoves[rand.Next(possibleMoves.Count)];
-            return null;
+            return possibleMoves[rand.Next(possibleMoves.Count)];
         }
 
         public bool MovePiece(Player player)
-        { //aaa
+        {
             Dictionary<string, List<int>> toFrom = EvalMovePiece(player);
-            if (toFrom == null)
-            {
-                MovePiece(player);
-            }
+            //if (toFrom == null)
+            //MovePiece(player);
             List<int> pieceTo = toFrom["to"];
             List<int> pieceFrom = toFrom["from"];
             ComputerFormedNewMill = CheckMill(pieceTo[0], pieceTo[1], player);
@@ -104,7 +100,7 @@ namespace NineMansMorrisLib
             var col = coordinate[1];
             return base.RemovePiece(player, row, col);
         }
-        
+
         private Dictionary<String, List<int>> EvalFlyPiece(Player player)
         {
             var rand = new Random();
