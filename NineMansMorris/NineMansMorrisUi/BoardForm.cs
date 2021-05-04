@@ -64,7 +64,7 @@ namespace NineMansMorrisUi
 
         private void SetUpForm()
         {
-            if (_nineMansMorrisGame.gameTurn == NineMansMorrisLogic.Turn.White)
+            if (_nineMansMorrisGame.GameTurn == NineMansMorrisLogic.Turn.White)
             {
                 lblTurnIndicator.Text = _turnIndicatorWhite;
             }
@@ -149,7 +149,7 @@ namespace NineMansMorrisUi
             }
 
             _selectButton = clickedButton;
-            if (ComputerOpponent&&_boardFormHelper._newMillFormed==false&&_nineMansMorrisGame.gameTurn==NineMansMorrisLogic.Turn.Black)
+            if (ComputerOpponent&&_boardFormHelper._newMillFormed==false&&_nineMansMorrisGame.GameTurn==NineMansMorrisLogic.Turn.Black)
             {
                 if (_boardFormHelper.PiecePlacement())
                 {
@@ -171,7 +171,7 @@ namespace NineMansMorrisUi
             var oldRow = oldLocation.Y;
             var oldCol = oldLocation.X;
 
-            if (_nineMansMorrisGame.gameTurn == NineMansMorrisLogic.Turn.White)
+            if (_nineMansMorrisGame.GameTurn == NineMansMorrisLogic.Turn.White)
             {
                 if (_boardFormHelper._newMillFormed)
                 {
@@ -217,7 +217,7 @@ namespace NineMansMorrisUi
 
         private void PlacementBoardUpdate(int row, int col, Control clickedButton)
         {
-            switch (_nineMansMorrisGame.gameTurn)
+            switch (_nineMansMorrisGame.GameTurn)
             {
                 case NineMansMorrisLogic.Turn.Black:
                 {
@@ -261,7 +261,7 @@ namespace NineMansMorrisUi
 
         private void RemovePieceBoardUpdate(int row, int col, Control clickedButton)
         {
-            switch (_nineMansMorrisGame.gameTurn)
+            switch (_nineMansMorrisGame.GameTurn)
             {
                 case NineMansMorrisLogic.Turn.Black:
 
@@ -300,7 +300,7 @@ namespace NineMansMorrisUi
                 }
             }
 
-            if (_nineMansMorrisGame.gameTurn == NineMansMorrisLogic.Turn.Black)
+            if (_nineMansMorrisGame.GameTurn == NineMansMorrisLogic.Turn.Black)
             {
                 MessageBox.Show("Black Player Wins");
             }

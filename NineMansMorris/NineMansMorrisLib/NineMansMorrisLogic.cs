@@ -18,7 +18,7 @@ namespace NineMansMorrisLib
             White,
         }
 
-        public Turn gameTurn { get; private set; }
+        public Turn GameTurn { get; private set; }
 
         private Dictionary<string, int[]> _directions = new Dictionary<string, int[]>
         {
@@ -32,7 +32,7 @@ namespace NineMansMorrisLib
             GameBoard = new Board();
             WhitePlayer = new Player();
             BlackPlayer = new Player();
-            gameTurn = (Turn) r.Next(2);
+            GameTurn = (Turn) r.Next(2);
             GameOver = false;
         }
 
@@ -48,7 +48,7 @@ namespace NineMansMorrisLib
                 // update
                 WhitePlayer.PlacePiece();
                 GameBoard.GameBoard[row, col].PieceState = PieceState.White;
-                gameTurn = Turn.Black;
+                GameTurn = Turn.Black;
             }
 
             // if black
@@ -57,7 +57,7 @@ namespace NineMansMorrisLib
                 // update
                 BlackPlayer.PlacePiece();
                 GameBoard.GameBoard[row, col].PieceState = PieceState.Black;
-                gameTurn = Turn.White;
+                GameTurn = Turn.White;
             }
 
             // events have taken place
@@ -73,7 +73,7 @@ namespace NineMansMorrisLib
             //GameOver = CheckIfMovementNotPossible(player);
             if (GameOver) return false;
             // if invalid placement and not all pieces placed return
-            if (!isValid(rowTo, colTo, rowFrom, colFrom) || !player.AllPiecesPlaced) return false;
+            if (!IsValid(rowTo, colTo, rowFrom, colFrom) || !player.AllPiecesPlaced) return false;
             //if mill broken
             RemoveMill(rowFrom, colFrom, player);
 
@@ -83,7 +83,7 @@ namespace NineMansMorrisLib
                 // update
                 GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.White;
                 GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
-                gameTurn = Turn.Black;
+                GameTurn = Turn.Black;
             }
 
             // if black
@@ -92,7 +92,7 @@ namespace NineMansMorrisLib
                 // update
                 GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
                 GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
-                gameTurn = Turn.White;
+                GameTurn = Turn.White;
             }
 
             // events have taken place
@@ -102,7 +102,7 @@ namespace NineMansMorrisLib
         }
         // post : 
 
-        private bool isValid(int rowTo, int colTo, int rowFrom, int colFrom)
+        private bool IsValid(int rowTo, int colTo, int rowFrom, int colFrom)
         {
             // traverse each direction
             foreach (var direction in _directions)
@@ -181,7 +181,7 @@ namespace NineMansMorrisLib
                     BlackPlayer.RemovePiece();
                     GameOver = BlackPlayer.PlayerHasLost();
                     GameBoard.GameBoard[row, col].PieceState = PieceState.Open;
-                    gameTurn = Turn.Black;
+                    GameTurn = Turn.Black;
                     // events have taken place
                     return true;
                 }
@@ -193,7 +193,7 @@ namespace NineMansMorrisLib
                     WhitePlayer.RemovePiece();
                     GameOver = WhitePlayer.PlayerHasLost();
                     GameBoard.GameBoard[row, col].PieceState = PieceState.Open;
-                    gameTurn = Turn.White;
+                    GameTurn = Turn.White;
                     // events have taken place
                     return true;
                 }
@@ -220,7 +220,7 @@ namespace NineMansMorrisLib
                 // update
                 GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.White;
                 GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
-                gameTurn = Turn.Black;
+                GameTurn = Turn.Black;
             }
 
             // if black
@@ -229,7 +229,7 @@ namespace NineMansMorrisLib
                 // update
                 GameBoard.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
                 GameBoard.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
-                gameTurn = Turn.White;
+                GameTurn = Turn.White;
             }
 
 
@@ -394,7 +394,7 @@ namespace NineMansMorrisLib
 
         public bool CheckIfMovementNotPossible(Player player)
         {
-            foreach (var a in player.coordinateList)
+            foreach (var a in player.CoordinateList)
             {
                 foreach (var direction in _directions)
                 {
@@ -448,7 +448,7 @@ namespace NineMansMorrisLib
 
             foreach (var piece in openPieces)
             {
-                if (isValid(piece[0], piece[1], row, col))
+                if (IsValid(piece[0], piece[1], row, col))
                     coordinateList.Add(piece);
             }
 

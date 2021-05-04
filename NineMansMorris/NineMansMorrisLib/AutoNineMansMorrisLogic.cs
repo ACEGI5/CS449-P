@@ -63,8 +63,6 @@ namespace NineMansMorrisLib
         public bool MovePiece(Player player)
         {
             Dictionary<string, List<int>> toFrom = EvalMovePiece(player);
-            //if (toFrom == null)
-            //MovePiece(player);
             List<int> pieceTo = toFrom["to"];
             List<int> pieceFrom = toFrom["from"];
             ComputerFormedNewMill = CheckMill(pieceTo[0], pieceTo[1], player);

@@ -11,7 +11,7 @@ namespace NineMansMorrisLib
         public int PiecesToPlace { get; private set; }
         public bool AllPiecesPlaced { get; private set; }
 
-        public List<List<int>> coordinateList = new List<List<int>>();
+        public List<List<int>> CoordinateList = new List<List<int>>();
 
         public Player()
         {
