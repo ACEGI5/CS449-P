@@ -53,6 +53,28 @@ namespace NineMansMorrisTests
             Assert.AreEqual(sut.GameBoard.GameBoard[row, col].PieceState, PieceState.Open);
 
         }
+        
+        [Test]
+        public void TestValidAutoFlyPiece()
+        {
+            var sut = new AutoNineMansMorrisLogic();
+
+            for (var i = sut.BlackPlayer.PiecesToPlace; i > 0; i--)
+            {
+                sut.PlacePiece(sut.BlackPlayer);
+            }
+            
+            for (var i = sut.BlackPlayer.PiecesInPlay; i > 3; i--)
+            {
+                sut.RemovePiece(sut.WhitePlayer);
+            }
+
+            var numBefore = LogicHelper.GetPieces(PieceState.Black, sut.GameBoard).Count;
+            var didFly = sut.FlyPiece(sut.BlackPlayer);
+            var numAfter = LogicHelper.GetPieces(PieceState.Black, sut.GameBoard).Count;
+            Assert.AreEqual(numBefore, numAfter);
+            Assert.True(didFly);
+        }
     }
 }
     
