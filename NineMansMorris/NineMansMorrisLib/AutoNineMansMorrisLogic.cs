@@ -88,7 +88,9 @@ namespace NineMansMorrisLib
                 }
             }
 
-            return removablePieces[rand.Next(removablePieces.Count)];
+            // Return peiece from removeablePiece if not empty
+            // Other return piece from opponentPiece
+            return removablePieces.Count > 0 ? removablePieces[rand.Next(removablePieces.Count)] : opponentPieces[rand.Next(opponentPieces.Count)];
         }
 
         public bool RemovePiece(Player player)
@@ -131,7 +133,7 @@ namespace NineMansMorrisLib
             var toFrom = EvalFlyPiece(player);
             var pieceTo = toFrom["to"];
             var pieceFrom = toFrom["from"];
-            return base.MovePiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
+            return base.FlyPiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
         }
     }
 }
