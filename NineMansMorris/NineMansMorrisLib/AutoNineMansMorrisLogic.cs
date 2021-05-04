@@ -126,7 +126,7 @@ namespace NineMansMorrisLib
             return possibleFlys[rand.Next(possibleFlys.Count)];
         }
 
-        private bool FlyPiece(Player player)
+        public bool FlyPiece(Player player)
         {
             var toFrom = EvalFlyPiece(player);
             var pieceTo = toFrom["to"];
