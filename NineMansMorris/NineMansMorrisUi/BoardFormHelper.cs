@@ -18,7 +18,7 @@ namespace NineMansMorrisUi
             _nineMansMorrisGame = nineMansMorrisGame;
         }
 
-        public bool autoPlacePiece()
+        public bool AutoPlacePiece()
         {
             if (_nineMansMorrisGame.PlacePiece(_nineMansMorrisGame.BlackPlayer) &&
                 _nineMansMorrisGame.GameTurn == NineMansMorrisLogic.Turn.White)
@@ -30,13 +30,27 @@ namespace NineMansMorrisUi
             return false;
         }
 
-        public bool autoMovePiece()
+        private bool AutoFlyPiece()
         {
             if (_nineMansMorrisGame.GameTurn == NineMansMorrisLogic.Turn.Black && BoardForm.ComputerOpponent)
             {
-                if (_nineMansMorrisGame.MovePiece(_nineMansMorrisGame.BlackPlayer)
-                )
+                if (_nineMansMorrisGame.FlyPiece(_nineMansMorrisGame.BlackPlayer))
                 {
+                    _newMillFormed = _nineMansMorrisGame.ComputerFormedNewMill;
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        private bool AutoMovePiece()
+        {
+            if (_nineMansMorrisGame.GameTurn == NineMansMorrisLogic.Turn.Black && BoardForm.ComputerOpponent)
+            {
+                if (_nineMansMorrisGame.MovePiece(_nineMansMorrisGame.BlackPlayer))
+                {
+                    _newMillFormed = _nineMansMorrisGame.ComputerFormedNewMill;
                     return true;
                 }
             }
@@ -45,6 +59,10 @@ namespace NineMansMorrisUi
             return false;
         }
 
+        private bool AutoRemovePiece()
+        {
+            return (_nineMansMorrisGame.RemovePiece(_nineMansMorrisGame.BlackPlayer));
+        }
         public bool PiecePlacement(int row = -1, int col = -1, Control clickedButton = null)
         {
             switch (_nineMansMorrisGame.GameTurn)
@@ -63,7 +81,7 @@ namespace NineMansMorrisUi
                 {
                     if (BoardForm.ComputerOpponent)
                     {
-                        var goodPlacement = autoPlacePiece();
+                        var goodPlacement = AutoPlacePiece();
                         if (_nineMansMorrisGame.ComputerFormedNewMill)
                             _newMillFormed = true;
                         return goodPlacement;
@@ -100,7 +118,7 @@ namespace NineMansMorrisUi
             var oldRow = oldLocation.Y;
             var oldCol = oldLocation.X;
             if (!ValidPieceMovement(row, col, clickedButton, _selectButton)) return false;
-            if (autoMovePiece()) return true;
+            if (AutoMovePiece()) return true;
             if (_nineMansMorrisGame.GameTurn == NineMansMorrisLogic.Turn.Black &&
                 _nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState == PieceState.Black)
             {
@@ -109,11 +127,7 @@ namespace NineMansMorrisUi
                 {
                     return false;
                 }
-
-                if (!CheckMillFormed(row, col, _nineMansMorrisGame.BlackPlayer))
-                {
-                    _selectButton = null;
-                }
+                
             }
             else if (_nineMansMorrisGame.GameTurn == NineMansMorrisLogic.Turn.White &&
                      _nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState == PieceState.White)
@@ -124,10 +138,6 @@ namespace NineMansMorrisUi
                     return false;
                 }
 
-                if (!CheckMillFormed(row, col, _nineMansMorrisGame.WhitePlayer))
-                {
-                    _selectButton = null;
-                }
             }
             else
             {
@@ -142,7 +152,7 @@ namespace NineMansMorrisUi
             var oldLocation = (Point) _selectButton.Tag;
             var oldRow = oldLocation.Y;
             var oldCol = oldLocation.X;
-            if (autoMovePiece()) return true;
+            if (AutoMovePiece()) return true;
             if (!ValidPieceMovement(row, col, clickedButton, _selectButton)) return false;
             if (_nineMansMorrisGame.GameTurn == NineMansMorrisLogic.Turn.Black &&
                 _nineMansMorrisGame.GameBoard.GameBoard[oldRow, oldCol].PieceState == PieceState.Black)
@@ -190,6 +200,11 @@ namespace NineMansMorrisUi
 
                     break;
                 case NineMansMorrisLogic.Turn.White:
+                    if (BoardForm.ComputerOpponent)
+                    {
+                        _newMillFormed = false;
+                        return (AutoRemovePiece());
+                    }
                     if (_nineMansMorrisGame.GameBoard.GameBoard[row, col].PieceState == PieceState.White)
                     {
                         if (_nineMansMorrisGame.RemovePiece(_nineMansMorrisGame.BlackPlayer, row, col))

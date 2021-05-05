@@ -34,7 +34,7 @@ namespace NineMansMorrisUi
         {
             if (ComputerOpponent)
             {
-                _boardFormHelper.autoPlacePiece();
+                _boardFormHelper.AutoPlacePiece();
                 updateGameBoard();
             }
         }
@@ -60,6 +60,11 @@ namespace NineMansMorrisUi
                     }
                 }
             }
+
+            textBoxWhitePlayerPiecesToPlace.Text = _nineMansMorrisGame.WhitePlayer.PiecesToPlace.ToString();
+            textBoxWhitePlayerPiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesInPlay.ToString();
+            textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
+            textBoxBlackPlayerPiecesLeft.Text = _nineMansMorrisGame.BlackPlayer.PiecesInPlay.ToString();
         }
 
         private void SetUpForm()
@@ -149,18 +154,28 @@ namespace NineMansMorrisUi
             }
 
             _selectButton = clickedButton;
-            if (ComputerOpponent&&_boardFormHelper._newMillFormed==false&&_nineMansMorrisGame.GameTurn==NineMansMorrisLogic.Turn.Black)
+
+            if (ComputerOpponent && _boardFormHelper._newMillFormed == false &&
+                _nineMansMorrisGame.GameTurn == NineMansMorrisLogic.Turn.Black)
             {
                 if (_boardFormHelper.PiecePlacement())
                 {
-                    PlacementBoardUpdate(row,col,clickedButton);
-                    return;
+                    PlacementBoardUpdate(row, col, clickedButton);
                 }
 
-                if (_boardFormHelper.PieceMovement(0,0,clickedButton,ref _selectButton))
+                if (_boardFormHelper.FlyPiece(0, 0, clickedButton, ref _selectButton))
                 {
-                    BoardMovementUpdate(0,0,clickedButton);
+                    BoardMovementUpdate(0, 0, clickedButton);
                 }
+
+                if (_boardFormHelper.PieceMovement(0, 0, clickedButton, ref _selectButton))
+                {
+                    BoardMovementUpdate(0, 0, clickedButton);
+                }
+
+                if (!_boardFormHelper._newMillFormed) return;
+                _boardFormHelper.RemovePiece(0, 0);
+                RemovePieceBoardUpdate(0, 0, clickedButton);
             }
         }
 
@@ -189,11 +204,11 @@ namespace NineMansMorrisUi
                     _selectButton = null;
                     return;
                 }
+
                 _btnGrid[oldRow, oldCol].BackColor = _unoccupiedColor;
                 _btnGrid[row, col].BackColor = _blackColor;
                 EndGame();
                 _selectButton = null;
-                
             }
             else
             {
@@ -251,6 +266,7 @@ namespace NineMansMorrisUi
                         MessageBox.Show("Black Mill Formed");
                         return;
                     }
+
                     textBoxBlackPlayerPiecesToPlace.Text = _nineMansMorrisGame.BlackPlayer.PiecesToPlace.ToString();
                     textBoxBlackPlayerPiecesLeft.Text = _nineMansMorrisGame.BlackPlayer.PiecesInPlay.ToString();
                     lblTurnIndicator.Text = _turnIndicatorWhite;
@@ -276,8 +292,15 @@ namespace NineMansMorrisUi
 
                     break;
                 case NineMansMorrisLogic.Turn.White:
+                    if (ComputerOpponent)
+                    {
+                        updateGameBoard();
+                    }
+                    else
+                    {
+                        _btnGrid[row, col].BackColor = _unoccupiedColor;
+                    }
 
-                    _btnGrid[row, col].BackColor = _unoccupiedColor;
                     textBoxWhitePlayerPiecesLeft.Text = _nineMansMorrisGame.WhitePlayer.PiecesInPlay.ToString();
                     if (!EndGame())
                     {
@@ -300,14 +323,19 @@ namespace NineMansMorrisUi
                 }
             }
 
-            if (_nineMansMorrisGame.GameTurn == NineMansMorrisLogic.Turn.Black)
+            if (ComputerOpponent)
             {
-                MessageBox.Show("Black Player Wins");
+                MessageBox.Show(_nineMansMorrisGame.GameTurn != NineMansMorrisLogic.Turn.Black
+                    ? "Black Player Wins"
+                    : "White Player Wins");
             }
             else
             {
-                MessageBox.Show("White Player Wins");
+                MessageBox.Show(_nineMansMorrisGame.GameTurn != NineMansMorrisLogic.Turn.Black
+                    ? "Black Player Wins"
+                    : "White Player Wins");
             }
+
 
             return true;
         }

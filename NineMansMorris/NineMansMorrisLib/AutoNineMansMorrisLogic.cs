@@ -65,8 +65,9 @@ namespace NineMansMorrisLib
             Dictionary<string, List<int>> toFrom = EvalMovePiece(player);
             List<int> pieceTo = toFrom["to"];
             List<int> pieceFrom = toFrom["from"];
+            var successfulPlace =  base.MovePiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
             ComputerFormedNewMill = CheckMill(pieceTo[0], pieceTo[1], player);
-            return base.MovePiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
+            return successfulPlace;
         }
 
         private List<int> EvalRemovePiece(Player player)
@@ -98,6 +99,7 @@ namespace NineMansMorrisLib
             var coordinate = EvalRemovePiece(player);
             var row = coordinate[0];
             var col = coordinate[1];
+            ComputerFormedNewMill = false;
             return base.RemovePiece(player, row, col);
         }
 
@@ -133,7 +135,9 @@ namespace NineMansMorrisLib
             var toFrom = EvalFlyPiece(player);
             var pieceTo = toFrom["to"];
             var pieceFrom = toFrom["from"];
-            return base.FlyPiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
+            var successfulPlace =  base.FlyPiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
+            ComputerFormedNewMill = CheckMill(pieceTo[0], pieceTo[1], player);
+            return successfulPlace;
         }
     }
 }
