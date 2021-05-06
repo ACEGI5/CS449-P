@@ -44,6 +44,7 @@ namespace NineMansMorrisLib
             foreach (var piece in sameColorPieces)
             {
                 var openAdjacentPieces = base.GetOpenAdjacentCoordinates(piece[0], piece[1]);
+                // If any move will form a mill, return it
                 foreach (var openAdjacentPiece in openAdjacentPieces)
                 {
                     var toFrom = new Dictionary<string, List<int>>()
@@ -54,6 +55,12 @@ namespace NineMansMorrisLib
                     possibleMoves.Add(toFrom);
                     if (base.IsInMill(player, openAdjacentPiece[0], openAdjacentPiece[1], piece[0], piece[1]))
                         return toFrom;
+                }
+                // If any moves are in a mill currently, move it out
+                foreach (var move in possibleMoves)
+                {
+                    if (base.IsInMill(player, move["from"][0], move["from"][1]))
+                        return move;
                 }
             }
 
