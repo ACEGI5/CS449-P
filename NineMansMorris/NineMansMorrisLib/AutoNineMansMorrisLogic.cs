@@ -19,7 +19,7 @@ namespace NineMansMorrisLib
             {
                 var row = piece[0];
                 var col = piece[1];
-                if (base.IsInMill(row, col, player))
+                if (base.IsInMill(player, row, col))
                     return new List<int> {row, col};
             }
 
@@ -52,7 +52,7 @@ namespace NineMansMorrisLib
                         {"from", piece}
                     };
                     possibleMoves.Add(toFrom);
-                    if (base.IsInMill(openAdjacentPiece[0], openAdjacentPiece[1], player))
+                    if (base.IsInMill(player, openAdjacentPiece[0], openAdjacentPiece[1], piece[0], piece[1]))
                         return toFrom;
                 }
             }
@@ -65,7 +65,7 @@ namespace NineMansMorrisLib
             Dictionary<string, List<int>> toFrom = EvalMovePiece(player);
             List<int> pieceTo = toFrom["to"];
             List<int> pieceFrom = toFrom["from"];
-            var successfulPlace =  base.MovePiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
+            var successfulPlace = base.MovePiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
             ComputerFormedNewMill = CheckMill(pieceTo[0], pieceTo[1], player);
             return successfulPlace;
         }
@@ -91,7 +91,9 @@ namespace NineMansMorrisLib
 
             // Return peiece from removeablePiece if not empty
             // Other return piece from opponentPiece
-            return removablePieces.Count > 0 ? removablePieces[rand.Next(removablePieces.Count)] : opponentPieces[rand.Next(opponentPieces.Count)];
+            return removablePieces.Count > 0
+                ? removablePieces[rand.Next(removablePieces.Count)]
+                : opponentPieces[rand.Next(opponentPieces.Count)];
         }
 
         public bool RemovePiece(Player player)
@@ -122,7 +124,7 @@ namespace NineMansMorrisLib
                         {"from", sameColorPiece}
                     };
                     possibleFlys.Add(toFrom);
-                    if (base.IsInMill(row, col, player))
+                    if (base.IsInMill(player, row, col, sameColorPiece[0], sameColorPiece[1]))
                         return toFrom;
                 }
             }
@@ -135,7 +137,7 @@ namespace NineMansMorrisLib
             var toFrom = EvalFlyPiece(player);
             var pieceTo = toFrom["to"];
             var pieceFrom = toFrom["from"];
-            var successfulPlace =  base.FlyPiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
+            var successfulPlace = base.FlyPiece(player, pieceTo[0], pieceTo[1], pieceFrom[0], pieceFrom[1]);
             ComputerFormedNewMill = CheckMill(pieceTo[0], pieceTo[1], player);
             return successfulPlace;
         }

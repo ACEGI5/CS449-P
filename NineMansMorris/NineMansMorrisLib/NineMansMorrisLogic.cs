@@ -240,9 +240,9 @@ namespace NineMansMorrisLib
         // post : 
 
         // pre :
-        private Dictionary<string, List<GamePiece>> GetMills(int row, int col)
+        private Dictionary<string, List<GamePiece>> GetMills(int row, int col, Board gameBoard)
         {
-            var currPieceState = GameBoard.GameBoard[row, col].PieceState;
+            var currPieceState = gameBoard.GameBoard[row, col].PieceState;
             var rowList = new List<GamePiece>();
             var colList = new List<GamePiece>();
             var lists = new Dictionary<string, List<GamePiece>>()
@@ -279,16 +279,16 @@ namespace NineMansMorrisLib
                             break;
                     }
 
-                    if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
+                    if (gameBoard.GameBoard[row, i].PieceState == validPieceState)
                     {
                         if (!(col < 3 && i > 3))
-                            lists["row"].Add(GameBoard.GameBoard[row, i]);
+                            lists["row"].Add(gameBoard.GameBoard[row, i]);
                     }
 
-                    if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
+                    if (gameBoard.GameBoard[i, col].PieceState == validPieceState)
                     {
                         if (!(row < 3 && i > 3))
-                            lists["col"].Add(GameBoard.GameBoard[i, col]);
+                            lists["col"].Add(gameBoard.GameBoard[i, col]);
                     }
                 }
             }
@@ -297,14 +297,14 @@ namespace NineMansMorrisLib
                 //Search for Mills.
                 for (var i = 0; i <= 6; i++)
                 {
-                    if (GameBoard.GameBoard[row, i].PieceState == validPieceState)
+                    if (gameBoard.GameBoard[row, i].PieceState == validPieceState)
                     {
-                        lists["row"].Add(GameBoard.GameBoard[row, i]);
+                        lists["row"].Add(gameBoard.GameBoard[row, i]);
                     }
 
-                    if (GameBoard.GameBoard[i, col].PieceState == validPieceState)
+                    if (gameBoard.GameBoard[i, col].PieceState == validPieceState)
                     {
-                        lists["col"].Add(GameBoard.GameBoard[i, col]);
+                        lists["col"].Add(gameBoard.GameBoard[i, col]);
                     }
                 }
             }
@@ -315,9 +315,15 @@ namespace NineMansMorrisLib
         // post :
 
         // pre :
-        public bool IsInMill(int row, int col, Player player)
+        public bool IsInMill(Player player, int rowTo, int colTo, int rowFrom = -1, int colFrom = -1)
         {
-            var lists = GetMills(row, col);
+            Board boardClone = new Board();
+            CloneBoard(boardClone, GameBoard);
+            boardClone.GameBoard[rowTo, colTo].PieceState = PieceState.Black;
+            if (rowFrom >= 0 && colFrom >= 0)
+                boardClone.GameBoard[rowFrom, colFrom].PieceState = PieceState.Open;
+
+            var lists = GetMills(rowTo, colTo, boardClone);
 
             if (lists["row"].Count == 3 || lists["col"].Count == 3)
                 return true;
@@ -329,7 +335,7 @@ namespace NineMansMorrisLib
         // pre :
         public bool CheckMill(int row, int col, Player player)
         {
-            var lists = GetMills(row, col);
+            var lists = GetMills(row, col, GameBoard);
 
             //Sets mills if any.
             if (lists["row"].Count == 3 || lists["col"].Count == 3)
@@ -366,7 +372,7 @@ namespace NineMansMorrisLib
         // pre :
         private void RemoveMill(int row, int col, Player player)
         {
-            var lists = GetMills(row, col);
+            var lists = GetMills(row, col, GameBoard);
 
             //Remove mills if any.
             if (lists["row"].Count == 3 || lists["col"].Count == 3)
@@ -453,6 +459,18 @@ namespace NineMansMorrisLib
             }
 
             return coordinateList;
+        }
+
+        private void CloneBoard(Board newBoard, Board oldBoard)
+        {
+            for (var row = 0; row < 7; row++)
+            {
+                for (var col = 0; col < 7; col++)
+                {
+                    newBoard.GameBoard[row, col].PieceState = oldBoard.GameBoard[row, col].PieceState;
+                    newBoard.GameBoard[row, col].MillState = oldBoard.GameBoard[row, col].MillState;
+                }
+            }
         }
     }
 }
