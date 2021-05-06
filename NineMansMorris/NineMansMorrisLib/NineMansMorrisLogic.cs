@@ -445,14 +445,12 @@ namespace NineMansMorrisLib
         }
 
         // post :
-
-
-        public List<List<int>> GetOpenAdjacentCoordinates(int row, int col)
+        public List<List<int>> GetAdjacentCoordinates(int row, int col, PieceState pieceState)
         {
             var coordinateList = new List<List<int>>();
-            var openPieces = LogicHelper.GetPieces(PieceState.Open, GameBoard);
+            var pieces = LogicHelper.GetPieces(pieceState, GameBoard);
 
-            foreach (var piece in openPieces)
+            foreach (var piece in pieces)
             {
                 if (IsValid(piece[0], piece[1], row, col))
                     coordinateList.Add(piece);
@@ -461,7 +459,12 @@ namespace NineMansMorrisLib
             return coordinateList;
         }
 
-        private void CloneBoard(Board newBoard, Board oldBoard)
+        public List<List<int>> GetOpenAdjacentCoordinates(int row, int col)
+        {
+            return GetAdjacentCoordinates(row, col, PieceState.Open);
+        }
+
+            private void CloneBoard(Board newBoard, Board oldBoard)
         {
             for (var row = 0; row < 7; row++)
             {

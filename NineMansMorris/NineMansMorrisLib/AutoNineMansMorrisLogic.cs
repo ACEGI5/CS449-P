@@ -14,7 +14,9 @@ namespace NineMansMorrisLib
         {
             var rand = new Random();
             var openPieces = LogicHelper.GetPieces(PieceState.Open, GameBoard);
+            var sameColorPieces = LogicHelper.GetPieces(PieceState.Black, GameBoard);
 
+            // If placement will form a mill, place there.
             foreach (var piece in openPieces)
             {
                 var row = piece[0];
@@ -22,7 +24,16 @@ namespace NineMansMorrisLib
                 if (base.IsInMill(player, row, col))
                     return new List<int> {row, col};
             }
-
+            // Else If placement is next to same color piece, place there.
+            foreach (var piece in sameColorPieces)
+            {
+                var row = piece[0];
+                var col = piece[1];
+                var adjacentOpenPieces = GetOpenAdjacentCoordinates(row, col);
+                if (adjacentOpenPieces.Count > 0)
+                    return new List<int> {adjacentOpenPieces[0][0], adjacentOpenPieces[0][1]};
+            }
+            // Else return random open piece.
             return openPieces[rand.Next(openPieces.Count)];
         }
 
@@ -40,11 +51,10 @@ namespace NineMansMorrisLib
             var samePieceState = player == BlackPlayer ? PieceState.Black : PieceState.White;
             var sameColorPieces = LogicHelper.GetPieces(samePieceState, GameBoard);
             var possibleMoves = new List<Dictionary<string, List<int>>>();
-
             foreach (var piece in sameColorPieces)
             {
                 var openAdjacentPieces = base.GetOpenAdjacentCoordinates(piece[0], piece[1]);
-                // If any move will form a mill, return it
+                // If any move will form a mill, return it.
                 foreach (var openAdjacentPiece in openAdjacentPieces)
                 {
                     var toFrom = new Dictionary<string, List<int>>()
@@ -56,14 +66,14 @@ namespace NineMansMorrisLib
                     if (base.IsInMill(player, openAdjacentPiece[0], openAdjacentPiece[1], piece[0], piece[1]))
                         return toFrom;
                 }
-                // If any moves are in a mill currently, move it out
+                // Else If any moves are in a mill currently, move it out.
                 foreach (var move in possibleMoves)
                 {
                     if (base.IsInMill(player, move["from"][0], move["from"][1]))
                         return move;
                 }
             }
-
+            // Else return random possible move.
             return possibleMoves[rand.Next(possibleMoves.Count)];
         }
 
@@ -96,7 +106,7 @@ namespace NineMansMorrisLib
                 }
             }
 
-            // Return peiece from removeablePiece if not empty
+            // Return piece from removeablePiece if not empty
             // Other return piece from opponentPiece
             return removablePieces.Count > 0
                 ? removablePieces[rand.Next(removablePieces.Count)]
@@ -121,6 +131,7 @@ namespace NineMansMorrisLib
 
             foreach (var sameColorPiece in sameColorPieces)
             {
+                // If any fly will return a mill, return it.
                 foreach (var openPiece in openPieces)
                 {
                     var row = openPiece[0];
@@ -135,7 +146,7 @@ namespace NineMansMorrisLib
                         return toFrom;
                 }
             }
-
+            // Else return random fly.
             return possibleFlys[rand.Next(possibleFlys.Count)];
         }
 
