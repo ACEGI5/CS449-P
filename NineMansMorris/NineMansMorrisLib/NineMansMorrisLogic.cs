@@ -464,7 +464,7 @@ namespace NineMansMorrisLib
             return GetAdjacentCoordinates(row, col, PieceState.Open);
         }
 
-            private void CloneBoard(Board newBoard, Board oldBoard)
+        private void CloneBoard(Board newBoard, Board oldBoard)
         {
             for (var row = 0; row < 7; row++)
             {
